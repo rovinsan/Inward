@@ -1,0 +1,19 @@
+{
+  "name": "code19",
+  "version": "1.0.0",
+  "description": "Health Information System Inward Module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Athiththan/code19.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Athiththan/code19/issues"
+  },
+  "homepage": "https://github.com/Athiththan/code19#readme"
+}
