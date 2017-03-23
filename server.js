@@ -14,10 +14,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 
-app.use('*', (req, res, next) => {
-    res.send("Hello World");
-    next();
-});
+app.set('views', __dirname + '/public/views');
+
+require('./app/routes/client.routes')(app);
+require('./app/routes/server.routes')(app);
+
+// app.use('*', (req, res, next) => {
+//     res.send("Hello World");
+//     next();
+// });
 
 app.listen(port, function(err){
     if(err){
@@ -27,3 +32,5 @@ app.listen(port, function(err){
 
     console.log("Server running on port 3000");
 });
+
+exports = module.exports = app;

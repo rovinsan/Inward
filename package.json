@@ -16,6 +16,15 @@
     "url": "https://github.com/Athiththan/code19/issues"
   },
   "homepage": "https://github.com/Athiththan/code19#readme",
+  "private" : true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
   "dependencies": {
     "body-parser": "1.17.1",
     "bower": "1.8.0",
