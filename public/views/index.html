@@ -2,15 +2,25 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <base href="/">
-    <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css">
+
     <title>code19</title>
+
+    <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script src="../libs/angular/angular.min.js"></script>
+    <script src="../libs/angular-route/angular-route.min.js"></script>
+
 </head>
 
-<body>
-    <div class="container">
-        Summa Than
+<body ng-app="code19" ng-controller="HomeController">
+    <div class="container-fluid">
+
+        <div ng-view></div>
+
     </div>
 </body>
 
