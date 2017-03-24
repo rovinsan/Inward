@@ -1,0 +1,84 @@
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="522.667px" height="521.333px" viewBox="0 0 522.667 521.333" style="enable-background:new 0 0 522.667 521.333;"
+	 xml:space="preserve">
+
+<defs>
+	<style>
+		.st0{
+			stroke-dasharray:2000;
+			stroke-dashoffset:0;
+			-webkit-animation:dash 2s linear forwards;
+			-o-animation:dash 2s linear forwards;
+			-moz-animation:dash 4s linear forwards;
+			animation:dash 2s linear forwards;
+		}
+
+		.st1{
+			stroke-dasharray:2000;
+			stroke-dashoffset:0;
+			-webkit-animation:dash 2s linear forwards;
+			-o-animation:dash 2s linear forwards;
+			-moz-animation:dash 2.75s linear forwards;
+			animation:dash 2.75s linear forwards;
+		}
+
+
+
+			#st0{
+			stroke-dasharray:5000;
+			stroke-dashoffset:0;
+			-webkit-animation:dash 2s linear forwards;
+			-o-animation:dash 2s linear forwards;
+			-moz-animation:dash 3s linear forwards;
+			animation:dash 3s linear forwards;
+		}
+
+	
+
+		@-moz-keyframes dash{
+			from{
+				stroke-dashoffset:5000;
+			}
+			to{
+				stroke-dashoffset:0;
+			}
+		}
+
+		@-webkit-keyframes dash{
+			from{
+				stroke-dashoffset:5000;
+			}
+			to{
+				stroke-dashoffset:0;
+			}
+		}
+
+		@-o-keyframes dash{
+			from{
+				stroke-dashoffset:5000;
+			}
+			to{
+				stroke-dashoffset:0;
+			}
+		}
+
+	</style>
+</defs>
+
+<style type="text/css">
+<![CDATA[
+	.st0{fill:none;stroke:#bdbdbd;stroke-width:8;stroke-miterlimit:10;}
+
+	.st1{fill:none;stroke:#009688;stroke-width:8;stroke-miterlimit:10;}
+]]>
+</style>
+<!--<rect x="9.275" y="8.344" class="st0" width="505.495" height="504.396"/>-->
+
+<rect x="9.275" y="8.344" id="st0" width="505.495" height="504.396" class="st0"/>
+		<line class="st0" x1="9.275" y1="8.344" x2="263" y2="512.74"/>
+		<line class="st0" x1="263" y1="512.74" x2="514.77" y2="8.344"/>
+		<line class="st0" x1="385.935" y1="266.454" x2="262.022" y2="8.344"/>
+		<line class="st1" x1="262.022" y1="369.883" x2="187.297" y2="227.026"/>
+		<line class="st1" x1="314.674" y1="258.416" x2="239.948" y2="115.559"/>
+</svg>
