@@ -3,5 +3,5 @@
 'use strict';
 
 angular.module('home.controller', []).controller('HomeController', function($scope) {
-    // $scope.tagline = 'home.controller';
+    $scope.tagline = 'home.controller';
 });
