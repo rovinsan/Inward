@@ -1,7 +1,7 @@
 /* public/css/style.css */
 
 body {
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Roboto', sans-serif;
 }
 
 .code19-logo {
@@ -13,20 +13,20 @@ body {
 .navbar-inverse,
 .navbar-inverse .navbar-toggle:focus,
 .navbar-inverse .navbar-toggle:hover {
-    background-color: #F9F9F9 !important;
+    background-color: #F9F9F9;
 }
 
 .navbar-inverse .navbar-toggle {
-    border: none !important;
+    border: none;
 }
 
 .navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #9d9d9d !important;
+    background-color: #9d9d9d;
 }
 
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-    border-color: #E1E1E1 !important;
+    border-color: #E1E1E1;
     border-top: 2px solid;
 }
 
@@ -36,22 +36,22 @@ body {
 
 .navbar-inverse .navbar-brand:focus,
 .navbar-inverse .navbar-brand:hover {
-    color: #607D8B !important;
+    color: #607D8B;
     background-color: transparent;
     transition: 0.2s;
 }
 
 .navbar-inverse .navbar-nav>li>a:focus,
 .navbar-inverse .navbar-nav>li>a:hover {
-    color: #546E7A !important;
+    color: #546E7A;
 }
 
 .sidebar {
-    background-color: #4A148C !important;
+    background-color: #4A148C;
 }
 
 .white_a {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 .nav-sidebar>li>a {
@@ -60,6 +60,6 @@ body {
 
 .nav>li>a:focus,
 .nav>li>a:hover {
-    color: #546E7A !important;
+    color: #546E7A;
     transition: 0.2s;
 }
