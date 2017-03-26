@@ -22,7 +22,9 @@
     "angular-mocks": "1.5.x",
     "angular-resource": "1.5.x",
     "angular-route": "1.5.x",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "Ionicons": "ionicons#^2.0.1",
+    "AdminLTE": "adminlte#^2.3.11"
   },
   "devDependencies": {
     "bootstrap": "3.3.7"
