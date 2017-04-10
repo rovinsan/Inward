@@ -2,11 +2,22 @@
 
 'use strict';
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-module.exports = mongoose.model('User', {
+const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        default: ''
+        default: 'Athiththan'
     }
 });
+
+const User = mongoose.model('User', UserSchema);
+
+module.exports = User;
+
+// module.exports = mongoose.model('User', {
+//     name: {
+//         type: String,
+//         default: ''
+//     }
+// });
