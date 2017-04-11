@@ -15,16 +15,16 @@ const path = require('path');
 const app = express();
 const port = process.env.port || 3000;
 
-mongoose.Promise = global.Promise;
-const db = require('./config/db.config');
-mongoose.connect(db.url, (err) => {
-    if (err) {
-        console.error(err);
-        process.exit(1);
-    }
-});
+// mongoose.Promise = global.Promise;
+// const db = require('./config/db.config');
+// mongoose.connect(db.url, (err) => {
+//     if (err) {
+//         console.error(err);
+//         process.exit(1);
+//     }
+// });
 
-const UserModel = require('./app/models/user.model');
+// const UserModel = require('./app/models/user.model');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
