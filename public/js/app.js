@@ -2,4 +2,4 @@
 
 'use strict';
 
-angular.module('code19App', ['ngRoute', 'appRoutes', 'home.controller', 'user.controller', 'user.service']);
+angular.module('inwardApp', ['ngRoute', 'appRoutes', 'app.controller', 'app.service', 'user.controller', 'user.service']);

@@ -1,0 +1,67 @@
+doctype html
+html
+    head    
+        base(href='/')
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="description", content="")
+        meta(name="author", content="")
+        
+        title Inward - Dashboard
+        
+        link(rel='stylesheet', href="../libs/bootstrap/dist/css/bootstrap.min.css")
+        link(rel='stylesheet', href="../libs/font-awesome/css/font-awesome.min.css")
+        link(rel='stylesheet', href="../css/bootstrap.dashboard.css")        
+        link(rel='stylesheet', href="../css/style.css")
+        
+        script(src="../libs/angular/angular.min.js")
+        script(src="../libs/angular-route/angular-route.min.js")
+        
+        link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Roboto")
+        
+    body(ng-app="inwardApp", ng-controller="AppController")
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            div.container-fluid
+                div.navbar-header
+                    button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#sidebar")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    
+                    a.navbar-brand(href="/")
+                        span(style="position: relative;top: -40%;") code19
+                    
+                    button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar", style="float: left;")
+                        i.fa.fa-angle-down(aria-hidden="true")
+                
+                div#navbar.navbar-collapse.collapse
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href="/") Dashboard
+                        li
+                            a(href="/") Users
+                
+        div.container-fluid
+            div.row
+                div#sidebar.col-sm-3.col-md-2.sidebar
+                    ul.nav.nav-sidebar
+                        li.active
+                            a(href="#") Overview 
+                                span.sr-only (Current)
+                        li
+                            a.white_a(href="/") Summa
+                div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+                    block content
+        
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
+        script(src="../libs/jquery/dist/jquery.min.js")
+        script(src="../libs/bootstrap/dist/js/bootstrap.min.js")
+        
+        script(src="../controllers/app.controller.js")
+        script(src="../controllers/user.controller.js")
+        script(src="../services/user.service.js")
+        script(src="../services/app.service.js")
+        script(src="../js/appRoutes.js")
+        script(src="../js/app.js")

@@ -1,7 +1,9 @@
-// public/controllers/user.controller.js
+// public/controller/user.controller.js
 
 'use strict';
 
-angular.module('user.controller', []).controller('UserController', function($scope) {
-    $scope.tagline = 'user.controller';
-});
+angular.module('user.controller', []).controller('UserController', ['$scope', function($scope) {
+
+    $scope.tagline = "This is from User Controller";
+
+}]);

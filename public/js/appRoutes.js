@@ -3,13 +3,13 @@
 'use strict';
 
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+
     $routeProvider
         .when('/', {
-            templateUrl: '../views/partials/user.html',
-            controller: 'HomeController'
+            controller: 'AppController'
         })
-        .when('/users', {
-            template: `<div>Template Podala</div>`,
+        .when('/user', {
+            templateUrl: 'partials/user.jade',
             controller: 'UserController'
         });
 

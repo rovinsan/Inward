@@ -1,16 +1,21 @@
-// public/services/user.service.js
+// public/service/user.service.js
 
 'use strict';
 
-angular.module('user.service', []).factory('User', ['$http', function($http) {
+angular.module('user.service', []).factory('UserService', ['$http', '$q', function($http, $q) {
+
     return {
-        get: function() {
-            return $http.get('/api/users');
+
+        getUser: function() {
+            var deffered = $q.defer();
+            $http.get('/api/users/').then(function(results) {
+                deffered.resolve(results.data);
+            }, function(error) {
+                deffered.reject(error);
+            });
+            return deffered.promise;
         }
 
-        // create: function(userData) {
-        //     return $http.post('/api/users', userData);
-        // },
+    };
 
-    }
 }]);
