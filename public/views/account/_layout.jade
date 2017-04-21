@@ -1,0 +1,35 @@
+doctype html
+html
+    head    
+        base(href='/')
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="description", content="")
+        meta(name="author", content="")
+        
+        title Inward - Login
+        
+        link(rel='stylesheet', href="../libs/bootstrap/dist/css/bootstrap.min.css")
+        link(rel='stylesheet', href="../libs/font-awesome/css/font-awesome.min.css")
+        link(rel='stylesheet', href="../css/bootstrap.dashboard.css")        
+        link(rel='stylesheet', href="../css/style.css")
+        
+        script(src="../libs/angular/angular.min.js")
+        script(src="../libs/angular-route/angular-route.min.js")
+        
+        link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Roboto")
+        
+    body(ng-app="inwardApp", ng-controller="AppController")
+        block content
+        
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
+        script(src="../libs/jquery/dist/jquery.min.js")
+        script(src="../libs/bootstrap/dist/js/bootstrap.min.js")
+        
+        script(src="../controllers/app.controller.js")
+        script(src="../controllers/user.controller.js")
+        script(src="../services/user.service.js")
+        script(src="../services/app.service.js")
+        script(src="../js/appRoutes.js")
+        script(src="../js/app.js")

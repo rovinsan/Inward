@@ -3,9 +3,7 @@
 'use strict';
 
 angular.module('user.service', []).factory('UserService', ['$http', '$q', function($http, $q) {
-
     return {
-
         getUser: function() {
             var deffered = $q.defer();
             $http.get('/api/users/').then(function(results) {
@@ -15,7 +13,5 @@ angular.module('user.service', []).factory('UserService', ['$http', '$q', functi
             });
             return deffered.promise;
         }
-
     };
-
 }]);

@@ -8,9 +8,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         .when('/', {
             controller: 'AppController'
         })
-        .when('/user', {
-            templateUrl: 'partials/user.jade',
-            controller: 'UserController'
+        .when('/login', {
+            templateUrl: 'account/login.jade',
+            controller: 'AppController'
         });
 
     $locationProvider.html5Mode(true);
