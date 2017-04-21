@@ -9,8 +9,15 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'AppController'
         })
         .when('/login', {
-            templateUrl: 'account/login.jade',
+            templateUrl: 'template/dashboard',
             controller: 'AppController'
+        })
+        .when('/summa', {
+            templateUrl: 'template/summa',
+            controller: 'AppController'
+        })
+        .otherwise({
+            redirectTo: '/'
         });
 
     $locationProvider.html5Mode(true);

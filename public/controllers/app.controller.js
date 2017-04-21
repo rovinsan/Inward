@@ -2,16 +2,6 @@
 
 'use strict';
 
-angular.module('app.controller', []).controller('AppController', ['$scope', 'AppService', function($scope, AppService) {
-
+angular.module('app.controller', []).controller('AppController', ['$scope', '$rootScope', '$http', '$location', 'AppService', function($scope, $rootScope, $http, $location, AppService) {
     $scope.tagline = "This is from App Controller";
-
-    $scope.getUser = function() {
-        AppService.getUser().then(function(results) {
-            $scope.results = results;
-        }, function(err) {
-            console.error(err);
-        });
-    };
-
 }]);
