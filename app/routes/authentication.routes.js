@@ -13,6 +13,10 @@ module.exports = function(app, passport) {
         res.send(200);
     });
 
+    app.post('/auth/signup', passport.authenticate('local-signup'), function(req, res) {
+        res.redirect('/');
+    });
+
     app.get("/auth/loggedin", function(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
     });
