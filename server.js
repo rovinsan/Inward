@@ -60,3 +60,6 @@ app.listen(port, function(err) {
 });
 
 exports = module.exports = app;
+
+//git remote add upstream https://github.com/Athiththan/inward.git
+//git pull upstream master
