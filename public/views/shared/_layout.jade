@@ -41,19 +41,21 @@ html
                         li
                             a(href="/") Dashboard
                         li
-                            a(href="/") Users
+                            if(user)
+                                a(href="#") #{user}
                 
         div.container-fluid
             div.row
                 div#sidebar.col-sm-3.col-md-2.sidebar
                     ul.nav.nav-sidebar
                         li.active
-                            a(href="#") Overview 
+                            a(href="/")
+                                i.fa-dashboard Dashboard
                                 span.sr-only (Current)
                         li
-                            a.white_a(href="/") Summa
+                            a.white_a(href="/summa") Summa
                 div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-                    block content
+                    div(ng-view)
         
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
         script(src="../libs/jquery/dist/jquery.min.js")

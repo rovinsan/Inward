@@ -6,9 +6,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
     $routeProvider
         .when('/', {
-            controller: 'AppController'
-        })
-        .when('/login', {
             templateUrl: 'template/dashboard',
             controller: 'AppController'
         })

@@ -5,7 +5,7 @@
 module.exports = function(app, passport) {
 
     app.post('/auth/login', passport.authenticate('local-login'), function(req, res) {
-        res.redirect('/dashboard');
+        res.redirect('/_layout');
     });
 
     app.post("/logout", function(req, res) {
