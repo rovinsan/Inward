@@ -4,6 +4,8 @@ block content
     .container
         h1 Signup Page
         br
+        if(message.length > 0)
+            .alert.alert-danger #{message}
         form(role="form", action="/auth/signup", method="POST")
             .form-group
                 input.form-control(type="text", name="email", placeholder="Enter Email")

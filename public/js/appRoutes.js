@@ -5,15 +5,15 @@
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
     $routeProvider
-        .when('/', {
+        .when('/', { // root of Dashboard
             templateUrl: 'template/dashboard',
             controller: 'AppController'
         })
-        .when('/summa', {
+        .when('/summa', { // routing to another jade template for ng-view partial render
             templateUrl: 'template/summa',
             controller: 'AppController'
         })
-        .otherwise({
+        .otherwise({ // otherwise redirection
             redirectTo: '/'
         });
 
