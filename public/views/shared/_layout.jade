@@ -42,7 +42,8 @@ html
                             a(href="/") Dashboard
                         li
                             if(user)
-                                a(href="#") #{user}
+                                - var username = JSON.stringify(user.local.email)
+                                a(href="#", ng-init="$root.loggedinUser = ") {{$root.loggedinUser}}
                 
         div.container-fluid
             div.row
