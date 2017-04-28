@@ -2,20 +2,24 @@
 
 'use strict';
 
-angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+angular.module('appRoutes', []).config([
+    '$routeProvider',
+    '$locationProvider',
+    function($routeProvider, $locationProvider) {
 
-    $routeProvider
-        .when('/', { // root of Dashboard
-            templateUrl: 'template/dashboard',
-            controller: 'AppController'
-        })
-        .when('/summa', { // routing to another jade template for ng-view partial render
-            templateUrl: 'template/summa',
-            controller: 'AppController'
-        })
-        .otherwise({ // otherwise redirection
-            redirectTo: '/'
-        });
+        $routeProvider
+            .when('/', { // root of Dashboard
+                templateUrl: 'template/dashboard',
+                controller: 'AppController'
+            })
+            .when('/summa', { // routing to another jade template for ng-view partial render
+                templateUrl: 'template/summa',
+                controller: 'AppController'
+            })
+            .otherwise({ // otherwise redirection
+                redirectTo: '/'
+            });
 
-    $locationProvider.html5Mode(true);
-}]);
+        $locationProvider.html5Mode(true);
+    }
+]);
