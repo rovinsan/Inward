@@ -5,7 +5,9 @@
 angular.module('inwardApp', [
     'ngRoute',
     'appRoutes',
-    'app.controller'
+    'app.controller',
+    'patient.controller',
+    'patient.service'
 ]).run(['$rootScope', function($rootScope) {
     $rootScope.loggedinUser = '';
 }]);

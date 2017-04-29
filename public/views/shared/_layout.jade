@@ -43,7 +43,7 @@ html
                         li
                             if(user)
                                 - var username = JSON.stringify(user.local.email)
-                                a(href="#", ng-init="$root.loggedinUser = ") {{$root.loggedinUser}}
+                                a(href="#", ng-init="$root.loggedinUser = #{username}") {{$root.loggedinUser}}
                 
         div.container-fluid
             div.row
@@ -55,6 +55,8 @@ html
                                 span.sr-only (Current)
                         li
                             a.white_a(href="/summa") Summa
+                        li
+                            a.white_a(href="/patient") Patient
                 div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
                     div(ng-view)
         
@@ -65,3 +67,5 @@ html
         script(src="../js/appRoutes.js")
         script(src="../js/app.js")
         script(src="../controllers/app.controller.js")
+        script(src="../controllers/patient.controller.js")
+        script(src="../services/patient.service.js")

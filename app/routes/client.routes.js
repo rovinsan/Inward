@@ -8,17 +8,16 @@ module.exports = function(app) {
 
     // rendering _layout.jade if only user logged in
     app.get('/_layout', isLoggedIn, (req, res) => {
-        res.render('shared/_layout.jade', { user: req.user.local.email });
+        res.render('shared/_layout.jade', { user: req.user });
+    });
+
+    app.get('/template/:folder/:partial', isLoggedIn, (req, res) => {
+        res.render(req.params.folder + '/' + req.params.partial + '.jade');
     });
 
     // rendering dashboard.jade
-    app.get('/template/dashboard', isLoggedIn, (req, res) => {
-        res.render('dashboard.jade');
-    });
-
-    // rendering templates
-    app.get('/template/summa', isLoggedIn, (req, res) => {
-        res.render('summa.jade');
+    app.get('/template/:partial', isLoggedIn, (req, res) => {
+        res.render(req.params.partial + '.jade');
     });
 
     app.get('/signup', (req, res) => {
