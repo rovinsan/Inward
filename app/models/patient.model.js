@@ -2,9 +2,9 @@
 
 'use strict';
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var patientSchema = mongoose.Schema({
+const patientSchema = mongoose.Schema({
     name: String,
     bht: String
 });

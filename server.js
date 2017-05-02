@@ -3,25 +3,26 @@
 'use strict';
 
 // requires
-var path = require('path');
-var express = require('express');
-var methodOverride = require('method-override');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var passport = require('passport');
-var flash = require('connect-flash');
-var expressSession = require('express-session');
-var morgan = require('morgan');
-var mongoose = require('mongoose');
+const path = require('path');
+const express = require('express');
+const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
+const flash = require('connect-flash');
+const expressSession = require('express-session');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
 
-var configDb = require('./config/db.config.js');
+const configDb = require('./config/db.config.js');
 mongoose.connect(configDb.url);
 
-var app = express();
-var port = process.env.port || 3000;
+const app = express();
+const port = process.env.port || 3000;
 
-var clientRoute = require('./app/routes/client.routes');
-var serverRoute = require('./app/routes/server.routes');
+const clientRoute = require('./app/routes/client.routes');
+const serverRoute = require('./app/routes/server.routes');
+const PatientRouter = require('./app/api.routes/patient.api.routes');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -42,12 +43,14 @@ app.use(flash());
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, '/public/views'));
 
+app.use('/api/patient', PatientRouter);
+
 require('./config/passport')(passport);
-require('./app/routes/server.routes')(app);
+// require('./app/routes/server.routes')(app);
 require('./app/routes/client.routes')(app);
 require('./app/routes/authentication.routes')(app, passport);
 
-app.use('/api', serverRoute);
+// app.use('/api', serverRoute);
 
 // server start
 app.listen(port, function(err) {

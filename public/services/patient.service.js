@@ -2,7 +2,7 @@
 
 'use strict';
 
-angular.module('patient.service', []).factory([
+angular.module('patient.service', []).factory('PatientService', [
     '$http',
     '$q',
     function($http, $q) {
