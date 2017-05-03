@@ -17,6 +17,15 @@ Router.get('/', (req, res) => {
     });
 });
 
+Router.get('/:bht', (req, res) => {
+    PatientModel.findOne({ 'bht': req.params.bht }).exec().then(patient => {
+        res.json(patient);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+});
+
 Router.post('/', (req, res) => {
     var newPatient = new PatientModel(req.body);
     newPatient.save().then(patient => {

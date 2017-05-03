@@ -18,6 +18,17 @@ angular.module('patient.service', []).factory('PatientService', [
                 return deferred.promise;
             },
 
+            getPatient: function(bht) {
+                var deferred = $q.defer();
+                $http.get('/api/patient/' + bht).then((results) => {
+                    deferred.resolve(results.data);
+                }, (err) => {
+                    deferred.reject(err);
+                });
+
+                return deferred.promise;
+            },
+
             addPatient: function(newPatient) {
                 var deferred = $q.defer();
                 $http({

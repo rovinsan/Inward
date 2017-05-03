@@ -1,23 +1,36 @@
-.col-md-12
-    button.btn
-        a.white_a(href="#", ng-click="partialForm='addPatientForm'") Add Patient
-.col-md-12(ng-switch="partialForm")
-    form(role="form", ng-submit="addPatient(cpatient)", ng-switch-when="addPatientForm")
+.col-md-12.padding--bottom--10px
+    button.btn.btn-success(ng-click="partialForm='addPatientForm'") 
+        | Add Patient
+
+.col-md-12.padding--top--10px
+    form(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'")
         .form-group
             input.form-control(type="text", placeholder="Enter BHT #", ng-model="cpatient.bht")
         .form-group
             input.form-control(type="text", placeholder="Enter Name", ng-model="cpatient.name")
         button.btn.btn-default(type="submit") Add
-        &nbsp;
-        button.btn(type="button", ng-click="partialForm='NULL'") Cancel
-.col-md-12
-    div.table-responsive
-        table.table.table-hover.table-striped
-            thead
+        a.btn(ng-click="partialForm='null'") Cancel
+
+.col-md-12.padding--top--10px.padding--bottom--10px                
+    .table-responsive
+        table.table
+            thead.thead-default
                 tr
+                    td #
                     td BHT
                     td Name
-            tbody
-                tr(ng-repeat="patient in rpatients")
+                    td
+            tbody(ng-repeat="patient in rpatients")
+                tr
+                    td {{$index + 1}}
                     td {{patient.bht}}
                     td {{patient.name}}
+                    td.no_padding
+                        a.btn.btn-link(href="#", ng-click="getPatient(patient.bht)")
+                            i.fa.fa-plus
+                tr(ng-show="patient.bht===dpatient.bht")
+                    td(colspan="4") 
+                        .col-md-12.padding--right--50px.text-align--right
+                            a.btn.btn-link(href="#", ng-click="dpatient.bht='null'")
+                                i.fa.fa-minus
+                        h1 Patient Details
