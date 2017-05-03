@@ -1,2 +1,23 @@
 .col-md-12
-    h1 This is Patient.index.jade
+    button.btn
+        a.white_a(href="#", ng-click="partialForm='addPatientForm'") Add Patient
+.col-md-12(ng-switch="partialForm")
+    form(role="form", ng-submit="addPatient(cpatient)", ng-switch-when="addPatientForm")
+        .form-group
+            input.form-control(type="text", placeholder="Enter BHT #", ng-model="cpatient.bht")
+        .form-group
+            input.form-control(type="text", placeholder="Enter Name", ng-model="cpatient.name")
+        button.btn.btn-default(type="submit") Add
+        &nbsp;
+        button.btn(type="button", ng-click="partialForm='NULL'") Cancel
+.col-md-12
+    div.table-responsive
+        table.table.table-hover.table-striped
+            thead
+                tr
+                    td BHT
+                    td Name
+            tbody
+                tr(ng-repeat="patient in rpatients")
+                    td {{patient.bht}}
+                    td {{patient.name}}
