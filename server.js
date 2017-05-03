@@ -14,12 +14,21 @@ const expressSession = require('express-session');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
+// Testing
+
+// Db configuration and Connection
 const configDb = require('./config/db.config.js');
 mongoose.connect(configDb.url);
+
+mongoose.Promise = global.Promise;
+
+require('./app/models/patient.model');
+require('./app/models/user.model');
 
 const app = express();
 const port = process.env.port || 3000;
 
+// route providers
 const clientRoute = require('./app/routes/client.routes');
 const serverRoute = require('./app/routes/server.routes');
 const PatientRouter = require('./app/api.routes/patient.api.routes');
