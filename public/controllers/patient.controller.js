@@ -6,22 +6,23 @@ angular.module('patient.controller', []).controller('PatientController', [
     '$scope',
     '$rootScope',
     '$http',
-    '$PatientService',
+    'PatientService',
     function($scope, $rootScope, $http, PatientService) {
-        $scope.partialForm = 'empty';
-        $scope.cpatient = { name: '', bht: '' };
+        $scope.partialForm = 'NULL';
+        $scope.cpatient = {};
 
         function initializePatients() {
             PatientService.getPatients().then((patients) => {
-                $scope.patients = patients;
+                $scope.rpatients = patients;
             }, (err) => {
                 console.log(err);
             });
         }
 
-        $scope.addPatient = function() {
-            PatientService.addPatient($scope.cpatient).then((newPatient) => {
-                $scope.patients.push(newPatient);
+        $scope.addPatient = function(ccpatient) {
+            PatientService.addPatient(ccpatient).then((newPatient) => {
+                $scope.rpatients.push(newPatient);
+                $scope.cpatient = {};
             }, (err) => {
                 console.log(err);
             });

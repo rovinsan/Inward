@@ -10,7 +10,7 @@ angular.module('patient.service', []).factory('PatientService', [
             getPatients: function() {
                 var deferred = $q.defer();
                 $http.get('/api/patient').then((results) => {
-                    deferred.resolve(results);
+                    deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
@@ -26,7 +26,7 @@ angular.module('patient.service', []).factory('PatientService', [
                     data: $.param(newPatient),
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 }).then((results) => {
-                    deferred.resolve(results);
+                    deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
