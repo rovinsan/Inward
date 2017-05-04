@@ -1,0 +1,35 @@
+engines:
+  rubocop:
+    enabled: true
+    #checks:
+    #	Rubocop/Metrics/ClassLength:
+    #  	enabled: false
+  golint:
+   	enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+    checks:
+      qualified-headings:
+        enabled: false
+      important:
+        enabled: false
+  duplication:
+    enabled: true
+    checks:
+      Similar code:
+        enabled: false
+    config:
+      languages:
+      - javascript
+      - html
+      - css
+ratings:
+  paths:
+  - app/**
+  - config/**
+  - public/**
+exclude_paths:
+- public/libs/**
+- node_modules/**
