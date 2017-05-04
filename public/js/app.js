@@ -7,7 +7,9 @@ angular.module('inwardApp', [
     'appRoutes',
     'app.controller',
     'patient.controller',
-    'patient.service'
+    'patient.service',
+    'drug.controller',
+    'drug.service'
 ]).run(['$rootScope', function($rootScope) {
     $rootScope.loggedinUser = '';
 }]);
