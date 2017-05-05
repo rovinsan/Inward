@@ -63,3 +63,55 @@ body {
     color: #546E7A;
     transition: 0.2s;
 }
+
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+    vertical-align: unset !important;
+}
+
+.no_padding {
+    padding: 0px 0px 0px 0px !important;
+}
+
+.thead-default {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: bold !important;
+    background: rgba(225, 225, 225, 0.3) !important;
+}
+
+.non_a {
+    text-decoration: none !important;
+}
+
+.white_a.non_a:hover {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.text-align--right {
+    text-align: right !important;
+}
+
+.padding--top--10px {
+    padding-top: 10px !important;
+}
+
+.padding--bottom--10px {
+    padding-bottom: 10px !important;
+}
+
+.padding--right--50px {
+    padding-right: 50px !important;
+}
+
+.no-padding--left {
+    padding-left: 0px !important;
+}
+
+.montserrat {
+    font-family: 'Montserrat', sans-serif !important;
+}

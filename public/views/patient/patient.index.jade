@@ -1,23 +1,58 @@
-.col-md-12
-    button.btn
-        a.white_a(href="#", ng-click="partialForm='addPatientForm'") Add Patient
-.col-md-12(ng-switch="partialForm")
-    form(role="form", ng-submit="addPatient(cpatient)", ng-switch-when="addPatientForm")
+.col-md-12.padding--bottom--10px
+    button.btn.btn-success(ng-click="partialForm='addPatientForm'") 
+        | Add Patient
+
+.col-md-12.padding--top--10px
+    form(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'")
         .form-group
-            input.form-control(type="text", placeholder="Enter BHT #", ng-model="cpatient.bht")
+            input.form-control(type="text", placeholder="First Name", ng-model="cpatient.Name.firstName")
         .form-group
-            input.form-control(type="text", placeholder="Enter Name", ng-model="cpatient.name")
+            input.form-control(type="text", placeholder="Last Name", ng-model="cpatient.Name.lastName")
+        .form-group
+            input.form-control(type="text", placeholder="Age", ng-model="cpatient.Age")
+        .form-group
+            input.form-control(type="text", placeholder="Sex", ng-model="cpatient.Sex")
+        .form-group
+            input.form-control(type="text", placeholder="Married Status", ng-model="cpatient.MarriedStatus")
+        .form-group
+            input.form-control(type="text", placeholder="Employement Status", ng-model="cpatient.EmployementStatus")
+        .form-group
+            input.form-control(type="text", placeholder="Address Line", ng-model="cpatient.ContactInfo.Address.AddressLine")
+        .form-group
+            input.form-control(type="text", placeholder="Zip", ng-model="cpatient.ContactInfo.Address.Zip")
+        .form-group
+            input.form-control(type="text", placeholder="City", ng-model="cpatient.ContactInfo.Address.City")
+        .form-group
+            input.form-control(type="text", placeholder="Home", ng-model="cpatient.ContactInfo.Phone.Home")
+        .form-group
+            input.form-control(type="text", placeholder="Mobile", ng-model="cpatient.ContactInfo.Phone.Mobile")
+        .form-group
+            input.form-control(type="text", placeholder="Office", ng-model="cpatient.ContactInfo.Phone.Office")
         button.btn.btn-default(type="submit") Add
-        &nbsp;
-        button.btn(type="button", ng-click="partialForm='NULL'") Cancel
-.col-md-12
-    div.table-responsive
-        table.table.table-hover.table-striped
-            thead
+        a.btn(ng-click="partialForm='null'") Cancel
+
+.col-md-12.padding--top--10px.padding--bottom--10px
+    .col-md-12.no-padding--left(ng-if="rpatients.length <= 0")
+        h4.montserrat No Patients Data Available                
+    .table-responsive(ng-if="rpatients.length>0")
+        table.table
+            thead.thead-default
                 tr
+                    td #
                     td BHT
                     td Name
-            tbody
-                tr(ng-repeat="patient in rpatients")
+                    td
+            tbody(ng-repeat="patient in rpatients")
+                tr
+                    td {{$index + 1}}
                     td {{patient.bht}}
                     td {{patient.name}}
+                    td.no_padding
+                        a.btn.btn-link(href="#", ng-click="getPatient(patient.bht)")
+                            i.fa.fa-plus
+                tr(ng-show="patient.bht===dpatient.bht")
+                    td(colspan="4") 
+                        .col-md-12.padding--right--50px.text-align--right
+                            a.btn.btn-link(href="#", ng-click="dpatient.bht='null'")
+                                i.fa.fa-minus
+                        h1 Patient Details

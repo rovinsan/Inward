@@ -1,44 +1,47 @@
-// public/services/patient.service.js
+// public/services/drug.service.js
 
 'use strict';
 
-angular.module('patient.service', []).factory('PatientService', [
+angular.module('drug.service', []).factory('DrugService', [
     '$http',
     '$q',
     function($http, $q) {
         return {
-            getPatients: function() {
+            getDrugs: function() {
                 var deferred = $q.defer();
-                $http.get('/api/patient').then((results) => {
+                $http.get('/api/drug').then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
+
                 return deferred.promise;
             },
 
-            getPatient: function(bht) {
+            getDrug: function(serial) {
                 var deferred = $q.defer();
-                $http.get('/api/patient/' + bht).then((results) => {
+                $http.get('/api/drug/' + serial).then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
+
                 return deferred.promise;
             },
 
-            addPatient: function(newPatient) {
+            addDrug: function(newDrug) {
                 var deferred = $q.defer();
                 $http({
                     method: 'POST',
-                    url: '/api/patient',
-                    data: $.param(newPatient),
+                    url: '/api/drug',
+                    data: $.param(newDrug),
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 }).then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
+
                 return deferred.promise;
             }
         }

@@ -22,9 +22,11 @@ mongoose.connect(configDb.url);
 
 mongoose.Promise = global.Promise;
 
+require('./app/models/counter.model');
 require('./app/models/patient.model');
 require('./app/models/user.model');
 require('./app/models/doctor.model');
+require('./app/models/drug.model');
 
 const app = express();
 const port = process.env.port || 3000;
@@ -34,7 +36,7 @@ const clientRoute = require('./app/routes/client.routes');
 const serverRoute = require('./app/routes/server.routes');
 const PatientRouter = require('./app/api.routes/patient.api.routes');
 const DoctorRouter = require('./app/api.routes/doctor.api.routes');
-
+const DrugRouter = require('./app/api.routes/drug.api.routes');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -57,7 +59,7 @@ app.set('views', path.join(__dirname, '/public/views'));
 
 app.use('/api/patient', PatientRouter);
 app.use('/api/doctor', DoctorRouter);
-
+app.use('/api/drug', DrugRouter);
 
 require('./config/passport')(passport);
 // require('./app/routes/server.routes')(app);
