@@ -16,6 +16,10 @@ angular.module('appRoutes', []).config([
                 templateUrl: 'template/patient/patient.index',
                 controller: 'PatientController'
             })
+            .when('/doctor', {
+                templateUrl: 'template/doctor/doctor.index',
+                controller: 'DoctorController'
+            })
             .when('/drug', {
                 templateUrl: 'template/drug/drug.index',
                 controller: 'DrugController'

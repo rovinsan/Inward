@@ -8,6 +8,8 @@ angular.module('inwardApp', [
     'app.controller',
     'patient.controller',
     'patient.service',
+    'doctor.controller',
+    'doctor.service',
     'drug.controller',
     'drug.service',
     'test.controller',

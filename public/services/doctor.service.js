@@ -1,44 +1,33 @@
-// public/services/patient.service.js
-
 'use strict';
 
-angular.module('patient.service', []).factory('PatientService', [
+angular.module('doctor.service', []).factory('DoctorService', [
     '$http',
     '$q',
     function($http, $q) {
         return {
-            getPatients: function() {
+            getdoctors: function() {
                 var deferred = $q.defer();
-                $http.get('/api/patient').then((results) => {
+                $http.get('/api/doctor').then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
+
                 return deferred.promise;
             },
-
-            getPatient: function(bht) {
-                var deferred = $q.defer();
-                $http.get('/api/patient/' + bht).then((results) => {
-                    deferred.resolve(results.data);
-                }, (err) => {
-                    deferred.reject(err);
-                });
-                return deferred.promise;
-            },
-
-            addPatient: function(newPatient) {
+            addDoctor: function(newDoctor) {
                 var deferred = $q.defer();
                 $http({
                     method: 'POST',
-                    url: '/api/patient',
-                    data: $.param(newPatient),
+                    url: '/api/doctor',
+                    data: $.param(newDoctor),
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 }).then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
+
                 return deferred.promise;
             }
         }
