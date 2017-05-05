@@ -56,19 +56,20 @@ const patientSchema = mongoose.Schema({
                 type: Number
             }
         }
+    },
+    Inward: {
+        bhtNumber: {
+            type: String,
+            unique: true
+        },
+        bedNumber: {
+            type: Number
+        },
+        admittedDateTime: {
+            type: Date,
+            default: Date.now()
+        }
     }
-    // Inward: {
-    //     bhtNumber: {
-    //         type: Number,
-    //         unique: true
-    //     },
-    //     bedNumber: {
-    //         type: Number
-    //     },
-    //     admittedDateTime: {
-    //         type: Date
-    //     }
-    // },
     // ResponsibleParty: {
     //     Name: {
     //         firstName: {
@@ -111,6 +112,12 @@ patientSchema.pre('save', function(next) {
         if (error)
             return next(error);
         doc.ID = "P-0" + counter.seq;
+        Counter.findByIdAndUpdate({ _id: 'bht' }, { $inc: { seq: 1 } }, function(error, counter2) {
+            if (error)
+                return next(error);
+            doc.Inward.bhtNumber = "0" + counter2.seq;
+            // next();
+        });
         next();
     });
 });
