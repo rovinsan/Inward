@@ -1,0 +1,38 @@
+.col-md-12.padding--bottom--10px
+    button.btn.btn-success(ng-click="partialForm='addBloodTestForm'") 
+        | Add Blood Test
+
+.col-md-12.padding--top--10px
+    form(role="form", ng-submit="addTest(ctest)", ng-show="partialForm=='addBloodTestForm'")
+        .form-group
+            input.form-control(type="text", placeholder="Enter Serial #", ng-model="ctest.patientNo")
+        button.btn.btn-default(type="submit") Add
+        a.btn(ng-click="partialForm='null'") Cancel
+        
+.col-md-12.padding--top--10px.padding--bottom--10px                
+    .table-responsive(ng-if="rtests.length > 0")
+        table.table
+            thead.thead-default
+                tr
+                    td #
+                    td PatientNo
+                    td
+            tbody(ng-repeat="test in rtests")
+                tr
+                    td {{$index + 1}}
+                    td {{test.patientNo}}                                        
+                    td.no_padding
+                        a.btn.btn-link(href="#", ng-click="gettest(test.patientNo)")
+                            i.fa.fa-plus
+                tr(ng-show="test.patientNo===dtest.PatientNo")
+                    td(colspan="6") 
+                        .col-md-12.padding--right--50px.text-align--right
+                            a.btn.btn-link(href="#", ng-click="dtest.PatientNo='null'")
+                                i.fa.fa-minus
+                        h1 Test Details
+//- .col-md12
+//-     h2 add test
+//-     form(role="form", ng-submit="addTest(ctest)")
+//-         .form-group
+//-             input.form-control(type="text", ng-model="ctest.patientNo")
+//-         button.btn.btn-default(type="submit") ADD
