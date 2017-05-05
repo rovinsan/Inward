@@ -1,8 +1,10 @@
+// app/models/test.model.js
+
 'use strict';
 
 const mongoose = require('mongoose');
-const TestSchema = mongoose.Schema({
 
+const TestSchema = mongoose.Schema({
     patientNo: String,
     bloodTest: [{
         volume: Number, //ml
@@ -70,7 +72,10 @@ const TestSchema = mongoose.Schema({
 
     // }],
     // echoCardiogramTest: [{}],
-    time: { type: Number, default: Date.now }
+    time: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model('Test', TestSchema);
