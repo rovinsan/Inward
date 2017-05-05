@@ -28,6 +28,10 @@ angular.module('appRoutes', []).config([
                 templateUrl: 'template/summa',
                 controller: 'AppController'
             })
+            .when('/test', {
+                templateUrl: 'template/test/test.index',
+                controller: 'TestController'
+            })
             .otherwise({ // otherwise redirection
                 redirectTo: '/'
             });
