@@ -16,6 +16,10 @@ angular.module('appRoutes', []).config([
                 templateUrl: 'template/patient/patient.index',
                 controller: 'PatientController'
             })
+            .when('/doctor', {
+                templateUrl: 'template/doctor/doctor.index',
+                controller: 'DoctorController'
+            })
             .when('/summa', { // routing to another jade template for ng-view partial render
                 templateUrl: 'template/summa',
                 controller: 'AppController'
