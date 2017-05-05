@@ -1,6 +1,9 @@
+// app/models/doctor.model.js
+
 'use strict';
 
 const mongoose = require('mongoose');
+
 const DoctorSchema = mongoose.Schema({
     name: String,
     gender: String,
@@ -13,7 +16,6 @@ const DoctorSchema = mongoose.Schema({
     },
     department: String,
     designation: String
-
-
 });
+
 module.exports = mongoose.model('Doctor', DoctorSchema);

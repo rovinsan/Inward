@@ -1,3 +1,5 @@
+// public/controllers/doctor.controller.js
+
 'use strict';
 angular.module('doctor.controller', []).controller('DoctorController', [
     '$scope',
@@ -5,7 +7,8 @@ angular.module('doctor.controller', []).controller('DoctorController', [
     '$http',
     'DoctorService',
     function($scope, $rootScope, $http, DoctorService) {
-        $scope.partialForm = 'empty';
+        $scope.partialForm = 'null';
+        $scope.cdoctor = {};
 
         function initializeDoctor() {
             DoctorService.getdoctors().then((doctors) => {
@@ -25,6 +28,5 @@ angular.module('doctor.controller', []).controller('DoctorController', [
         };
 
         initializeDoctor();
-
     }
 ]);

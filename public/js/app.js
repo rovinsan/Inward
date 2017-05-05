@@ -9,7 +9,7 @@ angular.module('inwardApp', [
     'patient.controller',
     'patient.service',
     'doctor.controller',
-    'doctor.service'
+    'doctor.service',
     'drug.controller',
     'drug.service'
 ]).run(['$rootScope', function($rootScope) {
