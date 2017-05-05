@@ -5,9 +5,29 @@
 .col-md-12.padding--top--10px
     form(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'")
         .form-group
-            input.form-control(type="text", placeholder="Enter BHT #", ng-model="cpatient.bht")
+            input.form-control(type="text", placeholder="First Name", ng-model="cpatient.Name.firstName")
         .form-group
-            input.form-control(type="text", placeholder="Enter Name", ng-model="cpatient.name")
+            input.form-control(type="text", placeholder="Last Name", ng-model="cpatient.Name.lastName")
+        .form-group
+            input.form-control(type="text", placeholder="Age", ng-model="cpatient.Age")
+        .form-group
+            input.form-control(type="text", placeholder="Sex", ng-model="cpatient.Sex")
+        .form-group
+            input.form-control(type="text", placeholder="Married Status", ng-model="cpatient.MarriedStatus")
+        .form-group
+            input.form-control(type="text", placeholder="Employement Status", ng-model="cpatient.EmployementStatus")
+        .form-group
+            input.form-control(type="text", placeholder="Address Line", ng-model="cpatient.ContactInfo.Address.AddressLine")
+        .form-group
+            input.form-control(type="text", placeholder="Zip", ng-model="cpatient.ContactInfo.Address.Zip")
+        .form-group
+            input.form-control(type="text", placeholder="City", ng-model="cpatient.ContactInfo.Address.City")
+        .form-group
+            input.form-control(type="text", placeholder="Home", ng-model="cpatient.ContactInfo.Phone.Home")
+        .form-group
+            input.form-control(type="text", placeholder="Mobile", ng-model="cpatient.ContactInfo.Phone.Mobile")
+        .form-group
+            input.form-control(type="text", placeholder="Office", ng-model="cpatient.ContactInfo.Phone.Office")
         button.btn.btn-default(type="submit") Add
         a.btn(ng-click="partialForm='null'") Cancel
 

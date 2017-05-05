@@ -22,6 +22,7 @@ mongoose.connect(configDb.url);
 
 mongoose.Promise = global.Promise;
 
+require('./app/models/counter.model');
 require('./app/models/patient.model');
 require('./app/models/user.model');
 require('./app/models/drug.model');
