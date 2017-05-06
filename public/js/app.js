@@ -16,4 +16,7 @@ angular.module('inwardApp', [
     'test.service'
 ]).run(['$rootScope', function($rootScope) {
     $rootScope.loggedinUser = '';
+    $rootScope.goBack = function() {
+        window.history.back();
+    };
 }]);
