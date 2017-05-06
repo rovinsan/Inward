@@ -16,7 +16,7 @@ angular.module('doctor.controller', []).controller('DoctorController', [
             }, (err) => {
                 console.log(err);
             });
-        };
+        }
 
         $scope.addDoctor = function(cdoctor) {
             DoctorService.addDoctor(cdoctor).then((newDoctor) => {

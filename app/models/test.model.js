@@ -18,7 +18,7 @@ const TestSchema = mongoose.Schema({
         plasmaGlugoseLevel: String, //Normal, PreDiabetes, Diabetes
         totalCholesterolLevel: String, //Desirable , borderlineHigh , High
         lDLCholesterolLevel: String, //Optimal, near Optimal, borderLine high, high, very high, 
-        hDLCholesterolLevel: String, // a major risk factor for heart disease <40 mg/dl,  The higher, the better 40 - 59, Consideed protective against heart disease >60
+        hDLCholesterolLevel: String // a major risk factor for heart disease <40 mg/dl,  The higher, the better 40 - 59, Consideed protective against heart disease >60
     }],
     urineTest: [{
         volume: Number, //ml
@@ -41,12 +41,12 @@ const TestSchema = mongoose.Schema({
         Additives: {
             sodiumMetaBiSulphite: Number,
             sodiumBenzoate: Number,
-            monoSodiumGlutamate: Number, // all 0-500
+            monoSodiumGlutamate: Number // all 0-500
         },
         environmentalChemicals: {
             formaldehyde: Number,
             dieselExhaustfumes: Number,
-            naturalGas: Number,
+            naturalGas: Number
         },
         pentachlorophenol: Number,
         phthalates: Number,
@@ -63,7 +63,7 @@ const TestSchema = mongoose.Schema({
         spontaneousSputumProduction: String, //yes,no, unKnown
         hivSerology: String, // positive, negotive
         redBloodCells: Number,
-        whiteBloodCells: Number,
+        whiteBloodCells: Number
     }],
     // mriScan: [{
 
