@@ -1,4 +1,4 @@
-// public/controllers/drug.controller.js
+// public/controllers/test.controller.js
 
 'use strict';
 
@@ -27,8 +27,8 @@ angular.module('test.controller', []).controller('TestController', [
             });
         };
 
-        $scope.addTest = function(cctest) {
-            TestService.addTest(cctest).then((newTest) => {
+        $scope.addTest = function(ctest) {
+            TestService.addTest(ctest).then((newTest) => {
                 $scope.rtests.push(newTest);
                 $scope.ctest = {};
             }, (err) => {

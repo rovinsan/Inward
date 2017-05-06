@@ -24,10 +24,10 @@
                     td.no_padding
                         a.btn.btn-link(href="#", ng-click="gettest(test.patientNo)")
                             i.fa.fa-plus
-                tr(ng-show="test.patientNo===dtest.PatientNo")
+                tr(ng-show="test.patientNo===dtest.patientNo")
                     td(colspan="6") 
                         .col-md-12.padding--right--50px.text-align--right
-                            a.btn.btn-link(href="#", ng-click="dtest.PatientNo='null'")
+                            a.btn.btn-link(href="#", ng-click="dtest.patientNo='null'")
                                 i.fa.fa-minus
                         h1 Test Details
 //- .col-md12

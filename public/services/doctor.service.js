@@ -1,3 +1,5 @@
+// public/services/doctor.service.js
+
 'use strict';
 
 angular.module('doctor.service', []).factory('DoctorService', [
@@ -6,7 +8,7 @@ angular.module('doctor.service', []).factory('DoctorService', [
     function($http, $q) {
         return {
             getdoctors: function() {
-                var deferred = $q.defer();
+                let deferred = $q.defer();
                 $http.get('/api/doctor').then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
@@ -15,8 +17,9 @@ angular.module('doctor.service', []).factory('DoctorService', [
 
                 return deferred.promise;
             },
+
             addDoctor: function(newDoctor) {
-                var deferred = $q.defer();
+                let deferred = $q.defer();
                 $http({
                     method: 'POST',
                     url: '/api/doctor',

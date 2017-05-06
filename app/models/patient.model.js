@@ -107,7 +107,7 @@ const patientSchema = mongoose.Schema({
 });
 
 patientSchema.pre('save', function(next) {
-    var doc = this;
+    let doc = this;
     Counter.findByIdAndUpdate({ _id: 'patient' }, { $inc: { seq: 1 } }, function(error, counter) {
         if (error)
             return next(error);

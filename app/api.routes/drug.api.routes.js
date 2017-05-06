@@ -1,4 +1,4 @@
-// app/api.routes/patient.api.routes.js
+// app/api.routes/drug.api.routes.js
 
 'use strict';
 
@@ -27,7 +27,7 @@ Router.get('/:serial', (req, res) => {
 });
 
 Router.post('/', (req, res) => {
-    var newDrug = new DrugModel(req.body);
+    let newDrug = new DrugModel(req.body);
     newDrug.save().then(drug => {
         res.json(drug);
     }).catch(err => {

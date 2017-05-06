@@ -1,3 +1,5 @@
+// public/services/test.service.js
+
 'use strict';
 
 angular.module('test.service', []).factory('TestService', [
@@ -6,7 +8,7 @@ angular.module('test.service', []).factory('TestService', [
     function($http, $q) {
         return {
             getTests: function() {
-                var deferred = $q.defer();
+                let deferred = $q.defer();
                 $http.get('/api/test').then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
@@ -17,7 +19,7 @@ angular.module('test.service', []).factory('TestService', [
             },
 
             getTest: function(patientNo) {
-                var deferred = $q.defer();
+                let deferred = $q.defer();
                 $http.get('/api/test/' + patientNo).then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
@@ -28,7 +30,7 @@ angular.module('test.service', []).factory('TestService', [
             },
 
             addTest: function(newTest) {
-                var deferred = $q.defer();
+                let deferred = $q.defer();
                 $http({
                     method: 'POST',
                     url: '/api/test',

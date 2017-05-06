@@ -27,7 +27,7 @@ Router.get('/:bht', (req, res) => {
 });
 
 Router.post('/', (req, res) => {
-    var newPatient = new PatientModel(req.body);
+    let newPatient = new PatientModel(req.body);
     newPatient.save().then(patient => {
         res.json(patient);
     }).catch(err => {
