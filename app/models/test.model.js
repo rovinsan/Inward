@@ -6,8 +6,8 @@ const TestSchema = mongoose.Schema({
     patientNo: String,
     bloodTest: [{
         volume: Number, //ml
-        collected: { type: Number, defualt: Date.now },
-        tested: { type: Number, defualt: Date.now },
+        collected: { type: Date, defualt: Date.now },
+        tested: { type: Date, defualt: Date.now },
         redBloodCells: Number, //5 to 6 million cells/mcL
         whiteBloodCells: Number, //4500 - 10000 cells/mcl
         platelets: Number, //140000 - 450000 cells/mcl
@@ -20,8 +20,8 @@ const TestSchema = mongoose.Schema({
     }],
     urineTest: [{
         volume: Number, //ml
-        collected: { type: Number, defualt: Date.now },
-        tested: { type: Number, defualt: Date.now },
+        collected: { type: Date, defualt: Date.now },
+        tested: { type: Date, defualt: Date.now },
         color: String, //clear , Pale Straw Yellow, Honey, Orange, Blue, Green, Fizzy, Transparent yellow, Dark yellow, brown , pink
         clarity: String, //clarity or cloudy
         pH: Number, // 4.5 - 8
@@ -34,9 +34,9 @@ const TestSchema = mongoose.Schema({
     }],
     stoolTest: [{
         volume: Number, //gram
-        collected: { type: Number, defualt: Date.now },
-        tested: { type: Number, defualt: Date.now },
-        Additives: {
+        collected: { type: Date, defualt: Date.now },
+        tested: { type: Date, defualt: Date.now },
+        additives: {
             sodiumMetaBiSulphite: Number,
             sodiumBenzoate: Number,
             monoSodiumGlutamate: Number, // all 0-500
@@ -53,8 +53,8 @@ const TestSchema = mongoose.Schema({
     }],
     sputumTest: [{
         volume: Number,
-        collected: { type: Number, defualt: Date.now },
-        tested: { type: Number, defualt: Date.now },
+        collected: { type: Date, defualt: Date.now },
+        tested: { type: Date, defualt: Date.now },
         race: String, // White , non-White, unKnown
         respiratorySymtoms: String, // yes, No, unKnown
         tuberculinSkinTestInduration: Number, //1-10 mm
@@ -70,7 +70,7 @@ const TestSchema = mongoose.Schema({
 
     // }],
     // echoCardiogramTest: [{}],
-    time: { type: Number, default: Date.now }
+    time: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('Test', TestSchema);
