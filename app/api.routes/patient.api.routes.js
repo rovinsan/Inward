@@ -18,7 +18,7 @@ Router.get('/', (req, res) => {
 });
 
 Router.get('/:bht', (req, res) => {
-    PatientModel.findOne({ 'bht': req.params.bht }).exec().then(patient => {
+    PatientModel.findOne({ 'Inward.bhtNumber': req.params.bht }).exec().then(patient => {
         res.json(patient);
     }).catch(err => {
         console.error(err);
