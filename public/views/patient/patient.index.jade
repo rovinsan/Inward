@@ -28,4 +28,14 @@ include patient.add.jade
                         .col-md-12.padding--right--50px.text-align--right
                             a.btn.btn-link(href="#", ng-click="dpatient.Inward.bhtNumber='null'")
                                 i.fa.fa-minus
-                        h4.montserrat {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
+                        .col-md-12
+                            h3.montserrat
+                                {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
+                            small.padding--bottom--10px
+                                b BHT : 
+                                {{dpatient.Inward.bhtNumber}} 
+                                b Bed# : 
+                                {{dpatient.Inward.bedNumber}}
+                            br
+                            span.montserrat.col-md-4 First Name : {{dpatient.Name.firstName}}
+                            span.montserrat.col-md-4 Last Name : {{dpatient.Name.lastName}}
