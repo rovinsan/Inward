@@ -131,3 +131,11 @@ body {
 .width--100 {
     width: 100% !important;
 }
+
+.background--red {
+    background-color: red !important;
+}
+
+.background--green {
+    background-color: green !important;
+}

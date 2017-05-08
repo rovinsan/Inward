@@ -36,6 +36,10 @@ angular.module('appRoutes', []).config([
                 templateUrl: 'template/test/report.index',
                 controller: 'TestController'
             })
+            .when('/ward', {
+                templateUrl: 'template/ward/ward.index',
+                controller: 'WardController'
+            })
             .otherwise({ // otherwise redirection
                 redirectTo: '/'
             });
