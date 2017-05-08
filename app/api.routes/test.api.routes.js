@@ -15,9 +15,9 @@ Router.get('/', (req, res) => {
     });
 });
 
-Router.get('/:patientNo', (req, res) => {
-    TestModel.findOne({ 'patientNo': req.params.patientNo }).exec().then(patientNo => {
-        res.json(patientNo);
+Router.get('/:id', (req, res) => {
+    TestModel.findOne({ '_id': req.params.id }).exec().then(test => {
+        res.json(test);
     }).catch(err => {
         console.error(err);
         res.sendStatus(500);
