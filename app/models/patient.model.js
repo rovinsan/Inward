@@ -112,13 +112,12 @@ patientSchema.pre('save', function(next) {
         if (error)
             return next(error);
         doc.ID = "P-0" + counter.seq;
-        Counter.findByIdAndUpdate({ _id: 'bht' }, { $inc: { seq: 1 } }, function(error, counter2) {
+        Counter.findByIdAndUpdate({ _id: 'bht' }, { $inc: { seq: 1 } }, function(error, bhtCounter) {
             if (error)
                 return next(error);
-            doc.Inward.bhtNumber = "0" + counter2.seq;
-            // next();
+            doc.Inward.bhtNumber = "BHT-" + bhtCounter.seq;
+            next();
         });
-        next();
     });
 });
 
