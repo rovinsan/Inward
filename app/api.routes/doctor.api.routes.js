@@ -9,9 +9,9 @@ const DoctorModel = mongoose.model('Doctor');
 const Router = express.Router();
 
 Router.get('/', (req, res) => {
-    DoctorModel.find().exec().then(doctors => {
+    DoctorModel.find().exec().then((doctors) => {
         res.json(doctors);
-    }).catch(err => {
+    }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
     })
@@ -19,9 +19,9 @@ Router.get('/', (req, res) => {
 
 Router.post('/', (req, res) => {
     const doctor = new DoctorModel(req.body);
-    doctor.save().then(doctor => {
+    doctor.save().then((doctor) => {
         res.json(doctor);
-    }).catch(err => {
+    }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
     });

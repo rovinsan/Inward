@@ -9,18 +9,18 @@ const Router = express.Router();
 const DrugModel = mongoose.model('Drug');
 
 Router.get('/', (req, res) => {
-    DrugModel.find().exec().then(drugs => {
+    DrugModel.find().exec().then((drugs) => {
         res.json(drugs);
-    }).catch(err => {
+    }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
     });
 });
 
 Router.get('/:serial', (req, res) => {
-    DrugModel.findOne({ 'serial': req.params.serial }).exec().then(serial => {
-        res.json(serial);
-    }).catch(err => {
+    DrugModel.findOne({ 'serial': req.params.serial }).exec().then((drug) => {
+        res.json(drug);
+    }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
     });
@@ -28,9 +28,9 @@ Router.get('/:serial', (req, res) => {
 
 Router.post('/', (req, res) => {
     let newDrug = new DrugModel(req.body);
-    newDrug.save().then(drug => {
+    newDrug.save().then((drug) => {
         res.json(drug);
-    }).catch(err => {
+    }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
     });

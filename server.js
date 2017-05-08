@@ -28,7 +28,7 @@ require('./app/models/user.model');
 require('./app/models/doctor.model');
 require('./app/models/drug.model');
 require('./app/models/test.model');
-require('./app/models/ward.model');
+// require('./app/models/ward.model');
 
 const app = express();
 const port = process.env.port || 3000;
@@ -40,7 +40,7 @@ const PatientRouter = require('./app/api.routes/patient.api.routes');
 const DoctorRouter = require('./app/api.routes/doctor.api.routes');
 const DrugRouter = require('./app/api.routes/drug.api.routes');
 const TestRouter = require('./app/api.routes/test.api.routes');
-const WardRouter = require('./app/api.routes/ward.api.routes');
+// const WardRouter = require('./app/api.routes/ward.api.routes');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -65,7 +65,7 @@ app.use('/api/patient', PatientRouter);
 app.use('/api/doctor', DoctorRouter);
 app.use('/api/drug', DrugRouter);
 app.use('/api/test', TestRouter);
-app.use('/api/ward', WardRouter);
+// app.use('/api/ward', WardRouter);
 
 require('./config/passport')(passport);
 // require('./app/routes/server.routes')(app);

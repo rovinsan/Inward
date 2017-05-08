@@ -13,9 +13,7 @@ angular.module('inwardApp', [
     'drug.controller',
     'drug.service',
     'test.controller',
-    'test.service',
-    'ward.controller',
-    'ward.service'
+    'test.service'
 ]).run(['$rootScope', function($rootScope) {
     $rootScope.loggedinUser = '';
     $rootScope.goBack = function() {
