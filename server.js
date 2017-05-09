@@ -61,11 +61,11 @@ app.use(flash());
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, '/public/views'));
 
-app.use('/api/patient', PatientRouter);
-app.use('/api/doctor', DoctorRouter);
-app.use('/api/drug', DrugRouter);
-app.use('/api/test', TestRouter);
-app.use('/api/ward', WardRouter);
+app.use('/api/patients', PatientRouter);
+app.use('/api/doctors', DoctorRouter);
+app.use('/api/drugs', DrugRouter);
+app.use('/api/tests', TestRouter);
+app.use('/api/wards', WardRouter);
 
 require('./config/passport')(passport);
 // require('./app/routes/server.routes')(app);

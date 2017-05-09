@@ -9,9 +9,9 @@ const mongoose = require('mongoose');
 const WardModel = mongoose.model('Ward');
 
 Router.get('/', (req, res) => {
-    WardModel.find().exec().then(wardBeds => {
+    WardModel.find().exec().then((wardBeds) => {
         res.json(wardBeds);
-    }).catch(err => {
+    }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
     });
@@ -19,9 +19,9 @@ Router.get('/', (req, res) => {
 
 Router.post('/', (req, res) => {
     let newWardBed = new WardModel();
-    newWardBed.save().then(wardBed => {
+    newWardBed.save().then((wardBed) => {
         res.json(wardBed);
-    }).catch(err => {
+    }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
     });
