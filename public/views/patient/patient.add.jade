@@ -1,67 +1,81 @@
-.col-md-12.padding--top--10px
-    form(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'")
-        .form-group.col-md-12
-            .form-group.col-md-12
-                h5.montserrat Details
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="First Name", ng-model="cpatient.Name.firstName")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Last Name", ng-model="cpatient.Name.lastName")
-            .form-group.col-md-1
-                input.form-control.border--none(type="text", placeholder="Age", ng-model="cpatient.Age")
-        .form-group.form-inline.col-md-6
-            .form-group.col-md-4
-                h5.montserrat Sex
-                div.btn-group
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.Sex", value="Male")
-                        span.montserrat.light.size-12  Male
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.Sex", value="Female")
-                        span.montserrat.light.size-12  Female
-            .form-group.col-md-4
-                h5.montserrat Status
-                div.btn-group(data-toggle="buttons")
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.MarriedStatus", value="Single")
-                        span.montserrat.light.size-12  Single
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.MarriedStatus", value="Married")
-                        span.montserrat.light.size-12  Married
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.MarriedStatus", value="Divorced")
-                        span.montserrat.light.size-12  Divorced
-            .form-group.col-md-4
-                h5.montserrat Emp Status
-                div.btn-group(data-toggle="buttons")
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.EmployementStatus", value="Working")
-                        span.montserrat.light.size-12  Working
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.EmployementStatus", value="Retired")
-                        span.montserrat.light.size-12  Retired
-        .form-group.col-md-6
-            .form-group.col-md-12
-                h5.montserrat Contact
-            .form-group.col-md-12
-                input.form-control(type="text", placeholder="Address Line", ng-model="cpatient.ContactInfo.Address.AddressLine")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Zip", ng-model="cpatient.ContactInfo.Address.Zip")
-            .form-group.col-md-8
-                input.form-control(type="text", placeholder="City", ng-model="cpatient.ContactInfo.Address.City")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Home", ng-model="cpatient.ContactInfo.Phone.Home")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Mobile", ng-model="cpatient.ContactInfo.Phone.Mobile")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Office", ng-model="cpatient.ContactInfo.Phone.Office")
-        .form-group.col-md-6
-            .form-group.col-md-12
-                h5.montserrat Ward Admission
-            .form-group.col-md-12
-                input.form-control(type="number", placeholder="Bed Number", ng-model="cpatient.Inward.bedNumber")
-        .form-group.col-md-12
-            .form-group
-                button.btn.btn-default(type="submit") Add
-            .form-group
-                a.btn(ng-click="partialForm='null'") Cancel
+//- link(rel='stylesheet', href="../../css/multi-step.css")
+
+.col-md-12.form-box--shadow
+    form.border-top--2px(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'")
+        span.col-md-12.text-align--right.padding--top--10px.form-group(ng-click="partialForm='null'")
+            label.btn.btn-default.btn-circle
+                i.fa.fa-times
+        .card.step-progress.form-group.col-md-12.padding--top--10px
+            .step-slider.col-md-12
+                .step-slider-item._50(data-id="personal")
+                .step-slider-item._50(data-id="wardAdmission")
+            .step-content.col-md-12
+                .step-content-body#personal
+                    h5.montserrat.text-align--left.col-md-12 Personal Details
+                    .form-group.col-md-2.col-sm-12.col-xs-12
+                        input.form-control(type="text", placeholder="Mr.")
+                    .form-group.col-md-4.col-sm-12.col-xs-12
+                        input.form-control(type="text", placeholder="First Name", ng-model="cpatient.Name.firstName", required)
+                    .form-group.col-md-4.col-sm-12.col-xs-12
+                        input.form-control(type="text", placeholder="Last Name", ng-model="cpatient.Name.lastName", required)
+                    .form-group.col-md-2.col-sm-6.col-xs-12
+                        input.form-control(type="text", placeholder="Age", ng-model="cpatient.Age", pattern="^(0?[1-9]|[1-9][0-9])$")
+                    .form-group.col-md-6.col-sm-12.col-xs-12.no_padding
+                        .form-group.col-md-12.col-sm-12.col-xs-12
+                            label.col-md-12.col-sm-12.col-xs-12.label-title Gender
+                            label.no-padding--left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.Sex", value="Male")
+                                span.montserrat.light.size-12  Male
+                            label.no-padding--left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.Sex", value="Female")
+                                span.montserrat.light.size-12  Female
+                        .form-group.col-md-12.col-sm-12.col-xs-12
+                            label.col-md-12.col-sm-12.col-xs-12.label-title Status
+                            label.no-padding--left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.MarriedStatus", value="Single")
+                                span.montserrat.light.size-12  Single
+                            label.no-padding--left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.MarriedStatus", value="Married")
+                                span.montserrat.light.size-12  Married
+                            label.no-padding--left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.MarriedStatus", value="Divorced")
+                                span.montserrat.light.size-12  Divorced
+                        .form-group.col-md-12.col-sm-12.col-xs-12
+                            label.col-md-12.col-sm-12.col-xs-12.label-title Employement Status
+                            label.no-padding--left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.EmployementStatus", value="Working")
+                                span.montserrat.light.size-12  Working
+                            label.no-padding--left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.EmployementStatus", value="Retired")
+                                span.montserrat.light.size-12  Retired
+                            label.no-padding--left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.EmployementStatus", value="None")
+                                span.montserrat.light.size-12  None
+                    .form-group.col-md-6.col-sm-12.col-xs-12.no_padding.padding--top--30px
+                        label.col.md-12.col-sm-12.col-xs-12.label-title.padding--left-15px Address | Contact Info
+                        .form-group.col-md-12
+                            input.form-control(type="text", placeholder="Address Line", ng-model="cpatient.ContactInfo.Address.AddressLine", required)
+                        .form-group.col-md-4
+                            input.form-control(type="text", placeholder="Zip", ng-model="cpatient.ContactInfo.Address.Zip", required)
+                        .form-group.col-md-8
+                            input.form-control(type="text", placeholder="City", ng-model="cpatient.ContactInfo.Address.City", required)
+                        .form-group.col-md-4.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="Home", ng-model="cpatient.ContactInfo.Phone.Home", required)
+                        .form-group.col-md-4.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="Mobile", ng-model="cpatient.ContactInfo.Phone.Mobile", required)
+                        .form-group.col-md-4.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="Office", ng-model="cpatient.ContactInfo.Phone.Office")
+                .step-content-body.out#wardAdmission
+                    h5.montserrat.text-align--left.col-md-12 Ward Admission
+                    .form-group.col-md-6.col-sm-12.col-xs-12
+                        input.form-control(type="number", placeholder="Bed Number", ng-model="cpatient.Inward.bedNumber")
+                .step-content-body.out#stepLast Completed
+                .step-content-foot.col-md-12
+                    label.active.margin-right-left-5px(name="prev")  
+                        i.fa.fa-chevron-left
+                        |  Previous
+                    label.active.margin-right-left-5px(name="next")
+                        | Next  
+                        i.fa.fa-chevron-right
+                    button.btn.btn-default.active.out(type="submit", name="finish") Add
+                    //- label.active.out(type="button", name="finish") Finish

@@ -1,10 +1,12 @@
 .col-md-12.padding--bottom--10px
-    button.btn.btn-success(ng-click="partialForm='addPatientForm'") 
-        | Add Patient
+    span
+        button.btn.btn-default.btn-circle(ng-click="partialForm='addPatientForm'")
+            i.fa.fa-plus
+        span.montserrat  Patient
 
 include patient.add.jade
 
-.col-md-12.padding--top--10px.padding--bottom--10px
+.col-md-12.padding--top--10px.padding--bottom--10px.padding--top--10px
     .col-md-12.no-padding--left(ng-if="rpatients.length <= 0")
         h4.montserrat No Patients Data Available                
     .table-responsive(ng-if="rpatients.length>0")
@@ -13,29 +15,19 @@ include patient.add.jade
                 tr
                     td #
                     td BHT
+                    td Patient ID
                     td Name
                     td
             tbody(ng-repeat="patient in rpatients")
                 tr
                     td {{$index + 1}}
                     td {{patient.Inward.bhtNumber}}
+                    td {{patient.ID}}
                     td {{patient.Name.firstName}}
                     td.no_padding
-                        a.btn.btn-link(href="#", ng-click="getPatient(patient.Inward.bhtNumber)")
-                            i.fa.fa-plus
+                        span
+                            button.btn.btn-default.btn-circle(ng-click="getPatient(patient.Inward.bhtNumber)")
+                                i.fa.fa-plus
                 tr(ng-show="patient.Inward.bhtNumber==dpatient.Inward.bhtNumber")
-                    td(colspan="4") 
-                        .col-md-12.padding--right--50px.text-align--right
-                            a.btn.btn-link(href="#", ng-click="dpatient.Inward.bhtNumber='null'")
-                                i.fa.fa-minus
-                        .col-md-12
-                            h3.montserrat
-                                {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
-                            small.padding--bottom--10px
-                                b BHT : 
-                                {{dpatient.Inward.bhtNumber}} 
-                                b Bed# : 
-                                {{dpatient.Inward.bedNumber}}
-                            br
-                            span.montserrat.col-md-4 First Name : {{dpatient.Name.firstName}}
-                            span.montserrat.col-md-4 Last Name : {{dpatient.Name.lastName}}
+                    td(colspan="5") 
+                        include patient.info.jade
