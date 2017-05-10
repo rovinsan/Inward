@@ -3,6 +3,8 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'angular-loading-bar',
+    'ngAnimate',
     'ngRoute',
     'appRoutes',
     'app.controller',

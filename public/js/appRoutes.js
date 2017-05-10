@@ -2,11 +2,12 @@
 
 'use strict';
 
-angular.module('appRoutes', []).config([
+angular.module('appRoutes', ['angular-loading-bar']).config([
     '$routeProvider',
     '$locationProvider',
-    function($routeProvider, $locationProvider) {
-
+    'cfpLoadingBarProvider',
+    function($routeProvider, $locationProvider, cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = false;
         $routeProvider
             .when('/', { // root of Dashboard
                 templateUrl: 'template/dashboard',

@@ -10,15 +10,19 @@ html
         
         title Inward - Login
         
+        link(rel='stylesheet', href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700")
+        link(rel='stylesheet', href="//fonts.googleapis.com/css?family=Montserrat:300,400,500,700")
+        link(rel='stylesheet', href="//fonts.googleapis.com/icon?family=Material+Icons")
+
         link(rel='stylesheet', href="../libs/bootstrap/dist/css/bootstrap.min.css")
         link(rel='stylesheet', href="../libs/font-awesome/css/font-awesome.min.css")
         link(rel='stylesheet', href="../css/bootstrap.dashboard.css")        
         link(rel='stylesheet', href="../css/style.css")
+        link(rel='stylesheet', href="../css/loading-bar.css", media="all")
         
         script(src="../libs/angular/angular.min.js")
         script(src="../libs/angular-route/angular-route.min.js")
-        
-        link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Roboto")
+        script(src="../libs/angular-animate/angular-animate.js")       
         
     body(ng-app="inwardApp", ng-controller="AppController")
         block content
@@ -26,6 +30,7 @@ html
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
         script(src="../libs/jquery/dist/jquery.min.js")
         script(src="../libs/bootstrap/dist/js/bootstrap.min.js")
+        script(src="../libs/angular-loading-bar/build/loading-bar.min.js")
         
         script(src="../js/appRoutes.js")
         script(src="../js/app.js")
@@ -39,4 +44,4 @@ html
         script(src="../controllers/test.controller.js")
         script(src="../services/test.service.js")
         script(src="../controllers/ward.controller.js")
-        script(src="../services/ward.service.js")        
+        script(src="../services/ward.service.js")       
