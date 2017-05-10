@@ -3,6 +3,7 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'ui.bootstrap.datetimepicker',
     'angular-loading-bar',
     'ngAnimate',
     'ngRoute',
