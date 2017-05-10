@@ -28,6 +28,7 @@ require('./app/models/user.model');
 require('./app/models/doctor.model');
 require('./app/models/drug.model');
 require('./app/models/test.model');
+require('./app/models/ward.model');
 
 const app = express();
 const port = process.env.port || 3000;
@@ -39,6 +40,7 @@ const PatientRouter = require('./app/api.routes/patient.api.routes');
 const DoctorRouter = require('./app/api.routes/doctor.api.routes');
 const DrugRouter = require('./app/api.routes/drug.api.routes');
 const TestRouter = require('./app/api.routes/test.api.routes');
+const WardRouter = require('./app/api.routes/ward.api.routes');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -47,6 +49,8 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(path.join(__dirname, '/public')));
+app.use('/node', express.static(__dirname + '/node_modules'));
+app.use('/bower', express.static(__dirname + '/public/libs'));
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 // session creation and passport initialize
@@ -59,10 +63,11 @@ app.use(flash());
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, '/public/views'));
 
-app.use('/api/patient', PatientRouter);
-app.use('/api/doctor', DoctorRouter);
-app.use('/api/drug', DrugRouter);
-app.use('/api/test', TestRouter);
+app.use('/api/patients', PatientRouter);
+app.use('/api/doctors', DoctorRouter);
+app.use('/api/drugs', DrugRouter);
+app.use('/api/tests', TestRouter);
+app.use('/api/wards', WardRouter);
 
 require('./config/passport')(passport);
 // require('./app/routes/server.routes')(app);

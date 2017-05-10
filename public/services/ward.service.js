@@ -1,36 +1,34 @@
-// public/services/doctor.service.js
+// public/services/ward.service.js
 
 'use strict';
 
-angular.module('doctor.service', []).factory('DoctorService', [
+angular.module('ward.service', []).factory('WardService', [
     '$http',
     '$q',
     function($http, $q) {
         return {
-            getdoctors: function() {
+            getWardBeds: function() {
                 let deferred = $q.defer();
-                $http.get('/api/doctors').then((results) => {
+                $http.get('/api/wards').then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
-
                 return deferred.promise;
             },
 
-            addDoctor: function(newDoctor) {
+            addWardBed: function() {
                 let deferred = $q.defer();
                 $http({
                     method: 'POST',
-                    url: '/api/doctors',
-                    data: $.param(newDoctor),
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    url: '/api/wards',
+                    // data: $.param(),
+                    // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 }).then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
                     deferred.reject(err);
                 });
-
                 return deferred.promise;
             }
         }

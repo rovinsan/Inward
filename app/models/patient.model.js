@@ -109,16 +109,17 @@ const patientSchema = mongoose.Schema({
 patientSchema.pre('save', function(next) {
     let doc = this;
     Counter.findByIdAndUpdate({ _id: 'patient' }, { $inc: { seq: 1 } }, function(error, counter) {
-        if (error)
+        if (error) {
             return next(error);
+        }
         doc.ID = "P-0" + counter.seq;
-        Counter.findByIdAndUpdate({ _id: 'bht' }, { $inc: { seq: 1 } }, function(error, counter2) {
-            if (error)
+        Counter.findByIdAndUpdate({ _id: 'bht' }, { $inc: { seq: 1 } }, function(error, bhtCounter) {
+            if (error) {
                 return next(error);
-            doc.Inward.bhtNumber = "0" + counter2.seq;
-            // next();
+            }
+            doc.Inward.bhtNumber = "BHT-" + bhtCounter.seq;
+            next();
         });
-        next();
     });
 });
 

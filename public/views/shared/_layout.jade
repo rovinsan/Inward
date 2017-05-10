@@ -10,13 +10,16 @@ html
         
         title Inward - Dashboard
         
-        link(rel='stylesheet', href="../libs/bootstrap/dist/css/bootstrap.min.css")
-        link(rel='stylesheet', href="../libs/font-awesome/css/font-awesome.min.css")
+        link(rel='stylesheet', href="bower/bootstrap/dist/css/bootstrap.min.css")
+        link(rel='stylesheet', href="bower/font-awesome/css/font-awesome.min.css")
+        link(rel='stylesheet', href="node/angular-bootstrap-datetimepicker/src/css/datetimepicker.css")
         link(rel='stylesheet', href="../css/bootstrap.dashboard.css")        
         link(rel='stylesheet', href="../css/style.css")
-        
-        script(src="../libs/angular/angular.min.js")
-        script(src="../libs/angular-route/angular-route.min.js")
+        link(rel='stylesheet', href="../css/loading-bar.css", media="all")
+
+        script(src="bower/angular/angular.min.js")
+        script(src="bower/angular-route/angular-route.min.js")
+        script(src="bower/angular-animate/angular-animate.js")
         
         link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Roboto")
         link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Montserrat")
@@ -32,7 +35,8 @@ html
                         span.icon-bar
                     
                     a.navbar-brand(href="/")
-                        span(style="position: relative;top: -40%;") code19
+                        span.montserrat(style="font-weight: 700 !important;") code19 
+                        span.montserrat(style="font-weight: lighter !important;color: #F44336 !important;") | Inward
                     
                     button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar", style="float: left;")
                         i.fa.fa-angle-down(aria-hidden="true")
@@ -40,22 +44,21 @@ html
                 div#navbar.navbar-collapse.collapse
                     ul.nav.navbar-nav.navbar-right
                         li
-                            a(href="/") Dashboard
-                        li
                             if(user)
                                 - var username = JSON.stringify(user.local.email)
-                                a(href="#", ng-init="$root.loggedinUser = #{username}") {{$root.loggedinUser}}
+                                a(href="#", ng-init="$root.loggedinUser = #{username}")
+                                    i.fa.fa-user-circle-o
+                                    span.montserrat.size-10px   {{$root.loggedinUser | uppercase}}
                 
         div.container-fluid
             div.row
                 div#sidebar.col-sm-3.col-md-2.sidebar
                     ul.nav.nav-sidebar
-                        li.active
-                            a(href="/")
-                                i.fa-dashboard Dashboard
-                                span.sr-only (Current)
+                        li(style="text-align: center; padding-bottom: 30px; padding-top: 30px;border-bottom: 2px solid #673AB7;")
+                            i.fa.fa-stethoscope(style="font-size: 30px;color: white;padding-bottom: 10px;")
+                            span.col-md-12.col-sm-12.col-xs-12(style="font-family: Roboto; font-size: 10px;color: white;") {{$root.loggedinUser | uppercase }}
                         li
-                            a.white_a(href="/summa") Summa
+                            a.white_a(href="/") Dashboard
                         li
                             a.white_a(href="/patient") Patient
                         li
@@ -65,13 +68,19 @@ html
                         li
                             a.white_a(href="/test") Test
                         li
-                            a.white_a(href="/report") Report    
+                            a.white_a(href="/report") Report
+                        li
+                            a.white_a(href="/ward") Ward  
                 div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
                     div(ng-view)
         
-        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
-        script(src="../libs/jquery/dist/jquery.min.js")
-        script(src="../libs/bootstrap/dist/js/bootstrap.min.js")
+        script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+        script(src="bower/jquery/dist/jquery.min.js")
+        script(src="bower/bootstrap/dist/js/bootstrap.min.js")
+        script(src="bower/angular-loading-bar/build/loading-bar.min.js")
+        script(src="bower/moment/min/moment-with-locales.min.js")
+        script(src="node/angular-bootstrap-datetimepicker/src/js/datetimepicker.js")
+        script(src="node/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js")
         
         script(src="../js/appRoutes.js")
         script(src="../js/app.js")
@@ -84,3 +93,5 @@ html
         script(src="../services/drug.service.js")
         script(src="../controllers/test.controller.js")
         script(src="../services/test.service.js")
+        script(src="../controllers/ward.controller.js")
+        script(src="../services/ward.service.js")

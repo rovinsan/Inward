@@ -1,0 +1,9 @@
+.col-md-12.padding--top--10px
+    button.btn.btn-default(ng-click="addWardBed()") Add Bed
+
+.col-md-12.padding--top--10px(ng-if="wardBeds.length>0")
+    h2.montserrat Bed Allocation
+    .col-md-6
+        .col-md-1(ng-repeat="wardBed in wardBeds")
+            .col-md-12.background--red.no_padding(ng-if="wardBed.patient.ID != 'null'") {{wardBed.bedNumber}} ~ {{wardBed.patient.ID}}
+            .col-md-12.background--green.no_padding(ng-if="wardBed.patient.ID == 'null'") {{wardBed.bedNumber}} ~ {{wardBed.patient.ID}}

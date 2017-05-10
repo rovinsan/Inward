@@ -3,6 +3,9 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'ui.bootstrap.datetimepicker',
+    'angular-loading-bar',
+    'ngAnimate',
     'ngRoute',
     'appRoutes',
     'app.controller',
@@ -13,7 +16,9 @@ angular.module('inwardApp', [
     'drug.controller',
     'drug.service',
     'test.controller',
-    'test.service'
+    'test.service',
+    'ward.controller',
+    'ward.service'
 ]).run(['$rootScope', function($rootScope) {
     $rootScope.loggedinUser = '';
     $rootScope.goBack = function() {

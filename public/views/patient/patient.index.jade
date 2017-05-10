@@ -1,77 +1,13 @@
-.col-md-12.padding--bottom--10px
-    button.btn.btn-success(ng-click="partialForm='addPatientForm'") 
-        | Add Patient
+.col-md-12.padding-bottom--10px
+    span
+        button.btn.btn-default.btn-circle(ng-click="partialForm='addPatientForm'")
+            i.fa.fa-plus
+        span.montserrat  Patient
 
-.col-md-12.padding--top--10px
-    form(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'")
-        .form-group.col-md-12
-            .form-group.col-md-12
-                h5.montserrat Details
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="First Name", ng-model="cpatient.Name.firstName")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Last Name", ng-model="cpatient.Name.lastName")
-            .form-group.col-md-1
-                input.form-control.border--none(type="text", placeholder="Age", ng-model="cpatient.Age")
-        .form-group.form-inline.col-md-6
-            .form-group.col-md-4
-                h5.montserrat Sex
-                div.btn-group
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.Sex", value="Male")
-                        span.montserrat.light.size-12  Male
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.Sex", value="Female")
-                        span.montserrat.light.size-12  Female
-            .form-group.col-md-4
-                h5.montserrat Status
-                div.btn-group(data-toggle="buttons")
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.MarriedStatus", value="Single")
-                        span.montserrat.light.size-12  Single
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.MarriedStatus", value="Married")
-                        span.montserrat.light.size-12  Married
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.MarriedStatus", value="Divorced")
-                        span.montserrat.light.size-12  Divorced
-            .form-group.col-md-4
-                h5.montserrat Emp Status
-                div.btn-group(data-toggle="buttons")
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.EmployementStatus", value="Working")
-                        span.montserrat.light.size-12  Working
-                    label.no-padding--left.width--100
-                        input(type="radio", ng-model="cpatient.EmployementStatus", value="Retired")
-                        span.montserrat.light.size-12  Retired
-        .form-group.col-md-6
-            .form-group.col-md-12
-                h5.montserrat Contact
-            .form-group.col-md-12
-                input.form-control(type="text", placeholder="Address Line", ng-model="cpatient.ContactInfo.Address.AddressLine")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Zip", ng-model="cpatient.ContactInfo.Address.Zip")
-            .form-group.col-md-8
-                input.form-control(type="text", placeholder="City", ng-model="cpatient.ContactInfo.Address.City")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Home", ng-model="cpatient.ContactInfo.Phone.Home")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Mobile", ng-model="cpatient.ContactInfo.Phone.Mobile")
-            .form-group.col-md-4
-                input.form-control(type="text", placeholder="Office", ng-model="cpatient.ContactInfo.Phone.Office")
-        .form-group.col-md-6
-            .form-group.col-md-12
-                h5.montserrat Ward Admission
-            .form-group.col-md-12
-                input.form-control(type="number", placeholder="Address Line", ng-model="cpatient.Inward.bedNumber")
-        .form-group.col-md-12
-            .form-group
-                button.btn.btn-default(type="submit") Add
-            .form-group
-                a.btn(ng-click="partialForm='null'") Cancel
+include patient.add.jade
 
-.col-md-12.padding--top--10px.padding--bottom--10px
-    .col-md-12.no-padding--left(ng-if="rpatients.length <= 0")
+.col-md-12.padding--top--10px.padding-bottom--10px.padding-top--10px
+    .col-md-12.no-padding-left(ng-if="rpatients.length <= 0")
         h4.montserrat No Patients Data Available                
     .table-responsive(ng-if="rpatients.length>0")
         table.table
@@ -79,19 +15,19 @@
                 tr
                     td #
                     td BHT
+                    td Patient ID
                     td Name
                     td
             tbody(ng-repeat="patient in rpatients")
                 tr
                     td {{$index + 1}}
                     td {{patient.Inward.bhtNumber}}
+                    td {{patient.ID}}
                     td {{patient.Name.firstName}}
                     td.no_padding
-                        a.btn.btn-link(href="#", ng-click="getPatient(patient.Inward.bhtNumber)")
-                            i.fa.fa-plus
-                tr(ng-show="patient.Inward.bhtNumber===dpatient.Inward.bhtNumber")
-                    td(colspan="4") 
-                        .col-md-12.padding--right--50px.text-align--right
-                            a.btn.btn-link(href="#", ng-click="dpatient.Inward.bhtNumber='null'")
-                                i.fa.fa-minus
-                        h4.montserrat {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
+                        span
+                            button.btn.btn-default.btn-circle(ng-click="getPatient(patient.Inward.bhtNumber)")
+                                i.fa.fa-plus
+                tr(ng-show="patient.Inward.bhtNumber==dpatient.Inward.bhtNumber")
+                    td.form-background.padding-bottom--30px(colspan="5", style="border-left: 4px solid #F44336;")
+                        include patient.info.jade
