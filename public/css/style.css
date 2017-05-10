@@ -96,23 +96,23 @@ body {
     text-align: right !important;
 }
 
-.padding--top--10px {
+.padding-top--10px {
     padding-top: 10px !important;
 }
 
-.padding--top--30px {
+.padding-top--30px {
     padding-top: 30px !important;
 }
 
-.padding--bottom--10px {
+.padding-bottom--10px {
     padding-bottom: 10px !important;
 }
 
-.padding--right--50px {
+.padding-right--50px {
     padding-right: 50px !important;
 }
 
-.no-padding--left {
+.no-padding-left {
     padding-left: 0px !important;
 }
 
@@ -378,7 +378,7 @@ span.montserrat {
     border-color: red !important;
 }
 
-.margin-right-left-5px {
+.margin-right-left--5px {
     margin-right: 5px !important;
     margin-left: 5px !important;
 }
@@ -389,10 +389,37 @@ span.montserrat {
     text-align: left !important;
 }
 
-.padding--left-15px {
+.padding-left--15px {
     padding-left: 15px !important;
+}
+
+.padding-top--15px {
+    padding-top: 15px !important;
 }
 
 .form-box--shadow {
     box-shadow: 0px 0px 12px #e1e1e1;
+}
+
+.form-background {
+    background: rgba(225, 225, 225, 0.2) !important;
+}
+
+.border-bottom--2px {
+    border-bottom: 2px solid #e1e1e1;
+}
+
+.text-align--center {
+    text-align: center !important;
+}
+
+span.padding--2px {
+    padding-top: 5px !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.padding-bottom--30px {
+    padding-bottom: 30px !important;
 }

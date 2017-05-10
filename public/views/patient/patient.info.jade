@@ -1,14 +1,47 @@
-span.col-md-12.text-align--right.padding--top--10px
+span.col-md-12.text-align--right.padding-top--10px
     button.btn.btn-default.btn-circle(ng-click="dpatient.Inward.bhtNumber='null'")
         i.fa.fa-times
 .col-md-12
-    h3.montserrat
-        | {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
-    small.padding--bottom--10px
-        b BHT : 
-        | {{dpatient.Inward.bhtNumber}} 
-        b Bed# : 
-        | {{dpatient.Inward.bedNumber}}
+    .col-md-12.col-sm-12.col-xs-12.border-bottom--2px.no_padding
+        h4.col-md-6.col-sm-12-col-xs-12.montserrat.text-align--center.no_padding
+            i.fa.fa-user-circle-o(style="color: #673AB7;")
+            | &nbsp;&nbsp; {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
+        span.col-md-6.col-sm-12.col-xs-12.padding-top--15px.montserrat
+            small.col-md-4.col-sm-4.col-xs-12.text-align--center
+                b BHT # : 
+                | &nbsp; {{dpatient.Inward.bhtNumber}}
+            small.col-md-4.col-sm-4.col-xs-12.text-align--center
+                i.fa.fa-bed
+                b &nbsp; Bed # :
+                | &nbsp; {{dpatient.Inward.bedNumber}}
+            small.col-md-4.col-sm-4.col-xs-12.text-align--center
+                | &nbsp; {{dpatient.Inward.admittedDateTime | date}}
     br
-    span.montserrat.col-md-4 First Name : {{dpatient.Name.firstName}}
-    span.montserrat.col-md-4 Last Name : {{dpatient.Name.lastName}}
+    .col-md-12.col-sm-12.col-xs-12.padding-top--10px
+        .col-md-12.col-sm-12.col-xs-12(style="padding-top: 15px 0px 15px 15px !important;")
+            span.col-md-3.col-sm-6.col-xs-12.padding--2px
+                | Name : 
+                b {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
+            span.col-md-1.col-sm-3.col-xs-12.padding--2px 
+                i.fa(ng-class="(dpatient.Sex == 'Male') ? 'fa-mars' : 'fa-venus'")
+                | &nbsp; {{dpatient.Sex}}
+            span.col-md-2.col-sm-3.col-xs-12.padding--2px Age : {{dpatient.Age}}
+            span.col-md-2.col-sm-6.col-xs-12.padding--2px Status : {{dpatient.MarriedStatus}}
+            span.col-md-3.col-sm-6.col-xs-12.padding--2px Employement : {{dpatient.EmployementStatus}}
+        .col-md-4.col-sm-12.col-xs-12(style="padding: 15px 0px 15px 0px !important;")
+            span.col-md-12.col-sm-12.col-xs-12.montserrat(style="padding: 5px 0px 5px 15px !important;")
+                i.fa.fa-address-card-o
+                b &nbsp; Address
+            span.col.md-6.col-sm-12.col-xs-12 {{dpatient.ContactInfo.Address.AddressLine}}, {{dpatient.ContactInfo.Address.Zip}}
+            span.col.md-2.col-sm-12.col-xs-12 City : {{dpatient.ContactInfo.Address.City}}
+            span.col.md-4.col-sm-12.col-xs-12 Country : {{dpatient.ContactInfo.Address.City}}
+        .col-md-12.no_padding(style="padding: 5px 15px 5px 15px !important;")
+            span.col.md-4.col-sm-4.col-xs-12.padding--2px
+                i.fa.fa-home 
+                | &nbsp; Home &nbsp;&nbsp;: {{dpatient.ContactInfo.Phone.Home}}
+            span.col.md-4.col-sm-4.col-xs-12.padding--2px 
+                i.fa.fa-mobile-phone
+                | &nbsp;&nbsp;&nbsp; Mobile &nbsp;: {{dpatient.ContactInfo.Phone.Mobile}}
+            span.col.md-4.col-sm-4.col-xs-12.padding--2px
+                i.fa.fa-briefcase
+                | &nbsp; Office &nbsp;&nbsp;: {{dpatient.ContactInfo.Phone.Office}}
