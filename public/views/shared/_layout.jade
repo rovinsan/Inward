@@ -20,6 +20,7 @@ html
         script(src="bower/angular/angular.min.js")
         script(src="bower/angular-route/angular-route.min.js")
         script(src="bower/angular-animate/angular-animate.js")
+        script(src="bower/AngularSlideables/angularSlideables.js")
         
         link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Roboto")
         link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Montserrat")
@@ -52,7 +53,7 @@ html
                 
         div.container-fluid
             div.row
-                div#sidebar.col-sm-3.col-md-2.sidebar
+                div#sidebar.col-md-2.col-sm-3.col-xs-12.sidebar
                     ul.nav.nav-sidebar
                         li(style="text-align: center; padding-bottom: 30px; padding-top: 30px;border-bottom: 2px solid #673AB7;")
                             i.fa.fa-stethoscope(style="font-size: 30px;color: white;padding-bottom: 10px;")
@@ -71,7 +72,7 @@ html
                             a.white_a(href="/report") Report
                         li
                             a.white_a(href="/ward") Ward  
-                div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+                div.col-md-10.col-md-offset-2.col-sm-9.col-sm-offset-3.col-xs-12.main
                     div(ng-view)
         
         script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')

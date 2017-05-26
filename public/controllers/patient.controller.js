@@ -24,13 +24,13 @@ angular.module('patient.controller', []).controller('PatientController', [
                     return;
                 }
                 if (step == (stepItem.length - 2)) {
-                    instance.addClass('out');
-                    instance.siblings('button[name="finish"]').removeClass('out');
+                    instance.addClass('out'); //Last form | no Next Option
+                    instance.siblings('button[name="finish"]').removeClass('out'); //Display Submit Button
                 }
                 $(stepItem[step]).addClass('active');
-                $('.step-content-body').addClass('out');
-                $('#' + stepItem[step + 1].dataset.id).removeClass('out');
-                $('.step-content .step-content-foot label[name="prev"]').removeClass('out');
+                $('.step-content-body').addClass('out'); //Hide first Form
+                $('#' + stepItem[step + 1].dataset.id).removeClass('out'); //Display second Form
+                $('.step-content .step-content-foot label[name="prev"]').removeClass('out'); //Show Previous Button
                 step++;
             });
 
@@ -49,11 +49,15 @@ angular.module('patient.controller', []).controller('PatientController', [
                 var instance = $(this);
                 $(stepItem[step]).removeClass('active');
                 if (step == (stepItem.length - 1)) {
-                    instance.siblings('label[name="next"]').removeClass('out');
-                    instance.siblings('button[name="finish"]').addClass('out');
+                    instance.siblings('button[name="finish"]').addClass('out'); //Submit Button Hide
+                    instance.siblings('label[name="next"]').removeClass('out'); //Next Button Display
+                    // instance.siblings('button[name="finish"]').addClass('out');
                 }
-                $('.step-content-body').addClass('out');
-                $('#' + stepItem[step].dataset.id).removeClass('out');
+                $('.step-content-body').addClass('out'); //Hide second Form
+                $('#' + stepItem[step - 1].dataset.id).removeClass('out'); //Display First Form
+                if ((step - 1) == 0) {
+                    $('.step-content .step-content-foot label[name="prev"]').addClass('out');
+                }
                 if (step <= 0) {
                     return;
                 }

@@ -29,5 +29,5 @@ include patient.add.jade
                             button.btn.btn-default.btn-circle(ng-click="getPatient(patient.Inward.bhtNumber)")
                                 i.fa.fa-plus
                 tr(ng-show="patient.Inward.bhtNumber==dpatient.Inward.bhtNumber")
-                    td.form-background.padding-bottom--30px(colspan="5", style="border-left: 4px solid #F44336;")
+                    td.padding-bottom--30px(colspan="5", style="border-left: 4px solid #F44336;")
                         include patient.info.jade

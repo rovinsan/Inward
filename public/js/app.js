@@ -4,6 +4,7 @@
 
 angular.module('inwardApp', [
     'ui.bootstrap.datetimepicker',
+    'angularSlideables',
     'angular-loading-bar',
     'ngAnimate',
     'ngRoute',
