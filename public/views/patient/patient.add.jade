@@ -1,7 +1,7 @@
 //- link(rel='stylesheet', href="../../css/multi-step.css")
 
 .col-md-12.col-sm-12.col-xs-12(name="addPatientForm")
-    form.col-md-12.col-sm-12.col-xs-12.padding--20px.border-top--2px(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'")
+    form.col-md-12.col-sm-12.col-xs-12.padding--20px.border-top--2px(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'", name="addPatientForm")
         span.col-md-12.col-sm-12.col-xs-12.text-align--right.padding-top--10px.form-group(ng-click="partialForm='null'", name="closePatientForm")
             label.btn.btn-default.btn-circle
                 i.fa.fa-times
@@ -25,32 +25,32 @@
                             label.col-md-12.col-sm-12.col-xs-12.label-title Gender
                             label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.Sex", value="Male")
-                                span.montserrat.light.size-12  Male
+                                span.roboto  Male
                             label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.Sex", value="Female")
-                                span.montserrat.light.size-12  Female
+                                span.roboto  Female
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-12.col-sm-12.col-xs-12.label-title Status
                             label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.MarriedStatus", value="Single")
-                                span.montserrat.light.size-12  Single
+                                span.roboto  Single
                             label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.MarriedStatus", value="Married")
-                                span.montserrat.light.size-12  Married
+                                span.roboto  Married
                             label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.MarriedStatus", value="Divorced")
-                                span.montserrat.light.size-12  Divorced
+                                span.roboto  Divorced
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-12.col-sm-12.col-xs-12.label-title Employement Status
                             label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.EmployementStatus", value="Working")
-                                span.montserrat.light.size-12  Working
+                                span.roboto  Working
                             label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.EmployementStatus", value="Retired")
-                                span.montserrat.light.size-12  Retired
+                                span.roboto  Retired
                             label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.EmployementStatus", value="None")
-                                span.montserrat.light.size-12  None
+                                span.roboto  None
                     .form-group.col-md-6.col-sm-12.col-xs-12.no_padding.padding-top--30px
                         label.col.md-12.col-sm-12.col-xs-12.label-title(style="padding-left: 15px !important;") Address | Contact Info
                         .form-group.col-md-12.col-sm-12.col-xs-12
@@ -70,6 +70,7 @@
                     .form-group.col-md-6.col-sm-12.col-xs-12
                         input.form-control(type="number", placeholder="Bed Number", ng-model="cpatient.Inward.bedNumber")
                 .step-content-body.out#stepLast Completed
+                .step-content-foot.col-md-12.col-sm-12.col-xs-12.divider
                 .step-content-foot.col-md-12.col-sm-12.col-xs-12
                     label.btn.btn-warning.float--left(name="prev")  
                         i.fa.fa-chevron-left

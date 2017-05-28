@@ -182,7 +182,7 @@ body {
     padding-left: 30px;
     box-shadow: 1px 5px 10px 1px #e1e1e1;
     /*#333*/
-    border-bottom: 6px solid #357ebd;
+    /*border-bottom: 6px solid #357ebd;*/
 }
 
 .size-10px {
@@ -302,7 +302,8 @@ span.montserrat {
     width: 10px;
     height: 10px;
     position: absolute;
-    top: -6px;
+    /*top: -6px;*/
+    top: -4px;
     right: 0;
     background-color: #FAFAFA;
     border: 1px solid #E0E0E0;
@@ -318,7 +319,8 @@ span.montserrat {
     top: 0;
     left: 0;
     width: 0%;
-    height: 1px;
+    /*height: 1px;*/
+    height: 3px;
     background-color: #B0BEC5;
     z-index: 1;
     -webkit-transition: all 0.5s ease-out;
@@ -326,11 +328,14 @@ span.montserrat {
 
 .step-progress .step-slider .step-slider-item.active:before {
     width: 100%;
-    background-color: #FF8F00;
+    /*background-color: #FF8F00;*/
+    background-color: #CDDC39;
 }
 
 .step-progress .step-slider .step-slider-item.active:after {
-    border-color: #FF8F00;
+    /*border-color: #FF8F00;*/
+    border-color: #CDDC39;
+    background-color: #CDDC39;
 }
 
 .step-content {
@@ -417,9 +422,11 @@ span.montserrat {
 }
 
 .label-title {
-    font-size: 12px !important;
+    font-size: 16px !important;
+    /*12px*/
     padding-left: 0px !important;
     text-align: left !important;
+    font-weight: normal !important;
 }
 
 .padding-left--15px {
@@ -508,4 +515,46 @@ i.material-icons {
     background: #4caf50 !important;
     color: white !important;
     border: #4caf50 !important;
+}
+
+.gradient-border {
+    padding: 4px !important;
+}
+
+.gradient-border~div {
+    box-shadow: none !important;
+}
+
+input[type="radio"] {
+    vertical-align: middle !important;
+}
+
+span.roboto {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+}
+
+div[name="addPatientForm"] {
+    color: white !important;
+    /*background: linear-gradient(to right, rgb(253, 116, 108), rgb(255, 144, 104));*/
+    background: linear-gradient(to right, rgb(235, 51, 73), rgb(244, 92, 67));
+    transition: 0.5s;
+}
+
+
+/*.ng-invalid--background {
+    transition: 0.5s ease;
+    background: linear-gradient(to right, rgb(229, 57, 53), rgb(227, 93, 91)) !important;
+    linear-gradient(to right, rgb(228, 58, 21), rgb(230, 82, 69))
+}
+
+.ng-valid--background {
+    transition: 0.5s ease;
+    background: linear-gradient(to right, rgb(253, 116, 108), rgb(255, 144, 104)) !important;
+}*/
+
+.divider {
+    background: white !important;
+    margin-bottom: 20px !important;
 }

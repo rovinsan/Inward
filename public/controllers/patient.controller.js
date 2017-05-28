@@ -10,6 +10,7 @@ angular.module('patient.controller', []).controller('PatientController', [
     function($scope, $rootScope, $http, PatientService) {
 
         $(function() {
+
             $('button[name="addPatientForm"]').on('click', function() {
                 let instance = $(this);
                 $('div[name="addPatientForm"]').addClass('margin-top--10px');
