@@ -24,6 +24,7 @@ html
         
         link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Roboto")
         link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Montserrat")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")      
         
     body(ng-app="inwardApp", ng-controller="AppController")
         nav.navbar.navbar-inverse.navbar-fixed-top
@@ -59,7 +60,9 @@ html
                             i.fa.fa-stethoscope(style="font-size: 30px;color: white;padding-bottom: 10px;")
                             span.col-md-12.col-sm-12.col-xs-12(style="font-family: Roboto; font-size: 10px;color: white;") {{$root.loggedinUser | uppercase }}
                         li
-                            a.white_a(href="/") Dashboard
+                            a.white_a(href="/")
+                                i.material-icons apps
+                                | Dashboard
                         li
                             a.white_a(href="/patient") Patient
                         li

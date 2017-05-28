@@ -10,8 +10,22 @@ angular.module('patient.controller', []).controller('PatientController', [
     function($scope, $rootScope, $http, PatientService) {
 
         $(function() {
-            var step = 0;
-            var stepItem = $('.step-progress .step-slider .step-slider-item');
+            $('button[name="addPatientForm"]').on('click', function() {
+                let instance = $(this);
+                $('div[name="addPatientForm"]').addClass('margin-top--10px');
+                $('div[name="addPatientForm"]').addClass('margin-bottom--30px');
+                $('div[name="addPatientForm"]').addClass('card');
+            });
+
+            $('span[name="closePatientForm"]').on('click', function() {
+                let instance = $(this);
+                $('div[name="addPatientForm"]').removeClass('margin-top--10px');
+                $('div[name="addPatientForm"]').removeClass('margin-bottom--30px');
+                $('div[name="addPatientForm"]').removeClass('card');
+            });
+
+            let step = 0;
+            let stepItem = $('.step-progress .step-slider .step-slider-item');
 
             if (step == 0) {
                 $('.step-content .step-content-foot label[name="prev"]').addClass('out');
@@ -19,7 +33,7 @@ angular.module('patient.controller', []).controller('PatientController', [
 
             // Step Next
             $('.step-content .step-content-foot label[name="next"]').on('click', function() {
-                var instance = $(this);
+                let instance = $(this);
                 if (stepItem.length - 1 < step) {
                     return;
                 }
@@ -46,7 +60,7 @@ angular.module('patient.controller', []).controller('PatientController', [
 
             // Step Previous
             $('.step-content .step-content-foot label[name="prev"]').on('click', function() {
-                var instance = $(this);
+                let instance = $(this);
                 $(stepItem[step]).removeClass('active');
                 if (step == (stepItem.length - 1)) {
                     instance.siblings('button[name="finish"]').addClass('out'); //Submit Button Hide
