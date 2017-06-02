@@ -66,12 +66,14 @@ angular.module('patient.controller', []).controller('PatientController', [
                 if (step == (stepItem.length - 1)) {
                     instance.siblings('button[name="finish"]').addClass('out'); //Submit Button Hide
                     instance.siblings('label[name="next"]').removeClass('out'); //Next Button Display
+                    $(stepItem[step - 1]).removeClass('active');
                     // instance.siblings('button[name="finish"]').addClass('out');
                 }
                 $('.step-content-body').addClass('out'); //Hide second Form
                 $('#' + stepItem[step - 1].dataset.id).removeClass('out'); //Display First Form
                 if ((step - 1) == 0) {
                     $('.step-content .step-content-foot label[name="prev"]').addClass('out');
+                    $(stepItem[step - 1]).removeClass('active');
                 }
                 if (step <= 0) {
                     return;

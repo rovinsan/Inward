@@ -17,17 +17,12 @@ include patient.add.jade
                     td BHT
                     td Patient ID
                     td Name
-                    td
             tbody(ng-repeat="patient in rpatients")
-                tr
+                tr.pointer(ng-click="getPatient(patient.Inward.bhtNumber)")
                     td {{$index + 1}}
                     td {{patient.Inward.bhtNumber}}
                     td {{patient.ID}}
                     td {{patient.Name.firstName}}
-                    td.no_padding
-                        span
-                            button.btn.btn-default.btn-circle(ng-click="getPatient(patient.Inward.bhtNumber)")
-                                i.fa.fa-plus
                 tr(ng-show="patient.Inward.bhtNumber==dpatient.Inward.bhtNumber")
                     td.padding-bottom--30px(colspan="5", style="border-left: 4px solid #F44336;")
                         include patient.info.jade
