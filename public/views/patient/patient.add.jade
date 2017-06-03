@@ -7,8 +7,9 @@
                 i.fa.fa-times
         .step-progress.form-group.col-md-12.col-sm-12.col-xs-12.padding-top--10px
             .step-slider.col-md-12.col-sm-12.col-xs-12
-                .step-slider-item._50(data-id="personal")
-                .step-slider-item._50(data-id="wardAdmission")
+                .step-slider-item._30(data-id="personal")
+                .step-slider-item._30(data-id="responsible")
+                .step-slider-item._30(data-id="wardAdmission")
             .step-content.col-md-12.col-sm-12.col-xs-12
                 .step-content-body#personal
                     h5.montserrat.text-align--left.col-md-12.col-sm-12.col-xs-12 Personal Details
@@ -65,6 +66,62 @@
                             input.form-control(type="text", placeholder="Mobile", ng-model="cpatient.ContactInfo.Phone.Mobile", required)
                         .form-group.col-md-4.col-sm-12.col-xs-12
                             input.form-control(type="text", placeholder="Office", ng-model="cpatient.ContactInfo.Phone.Office")
+            .step-content.col-md-12.col-sm-12.col-xs-12
+                .step-content-body.out#responsible
+                    h5.montserrat.text-align--left.col-md-12.col-sm-12.col-xs-12 Guardian Details
+                    .form-group.col-md-2.col-sm-12.col-xs-12
+                        input.form-control(type="text", placeholder="Mr.")
+                    .form-group.col-md-4.col-sm-12.col-xs-12
+                        input.form-control(type="text", placeholder="First Name", ng-model="cpatient.ResponsibleParty.Name.firstName", required)
+                    .form-group.col-md-4.col-sm-12.col-xs-12
+                        input.form-control(type="text", placeholder="Last Name", ng-model="cpatient.ResponsibleParty.Name.lastName", required)
+                    .form-group.col-md-2.col-sm-6.col-xs-12
+                        input.form-control(type="text", placeholder="Age", ng-model="cpatient.ResponsibleParty.Age", pattern="^(0?[1-9]|[1-9][0-9])$")
+                    .form-group.col-md-6.col-sm-12.col-xs-12.no_padding
+                        .form-group.col-md-12.col-sm-12.col-xs-12
+                            label.col-md-12.col-sm-12.col-xs-12.label-title Gender
+                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.ResponsibleParty.Sex", value="Male")
+                                span.roboto  Male
+                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.ResponsibleParty.Sex", value="Female")
+                                span.roboto  Female
+                        .form-group.col-md-12.col-sm-12.col-xs-12
+                            label.col-md-12.col-sm-12.col-xs-12.label-title Status
+                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.ResponsibleParty.MarriedStatus", value="Single")
+                                span.roboto  Single
+                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.ResponsibleParty.MarriedStatus", value="Married")
+                                span.roboto  Married
+                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.ResponsibleParty.MarriedStatus", value="Divorced")
+                                span.roboto  Divorced
+                        .form-group.col-md-12.col-sm-12.col-xs-12
+                            label.col-md-12.col-sm-12.col-xs-12.label-title Employement Status
+                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.ResponsibleParty.EmployementStatus", value="Working")
+                                span.roboto  Working
+                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.ResponsibleParty.EmployementStatus", value="Retired")
+                                span.roboto  Retired
+                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                                input(type="radio", ng-model="cpatient.ResponsibleParty.EmployementStatus", value="None")
+                                span.roboto  None
+                    .form-group.col-md-6.col-sm-12.col-xs-12.no_padding.padding-top--30px
+                        label.col.md-12.col-sm-12.col-xs-12.label-title(style="padding-left: 15px !important;") Address | Contact Info
+                        .form-group.col-md-12.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="Address Line", ng-model="cpatient.ResponsibleParty.ContactInfo.Address.AddressLine", required)
+                        .form-group.col-md-4.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="Zip", ng-model="cpatient.ResponsibleParty.ContactInfo.Address.Zip", required)
+                        .form-group.col-md-8.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="City", ng-model="cpatient.ResponsibleParty.ContactInfo.Address.City", required)
+                        .form-group.col-md-4.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="Home", ng-model="cpatient.ResponsibleParty.ContactInfo.Phone.Home", required)
+                        .form-group.col-md-4.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="Mobile", ng-model="cpatient.ResponsibleParty.ContactInfo.Phone.Mobile", required)
+                        .form-group.col-md-4.col-sm-12.col-xs-12
+                            input.form-control(type="text", placeholder="Office", ng-model="cpatient.ResponsibleParty.ContactInfo.Phone.Office")
                 .step-content-body.out#wardAdmission
                     h5.montserrat.text-align--left.col-md-12.col-sm-12.col-xs-12 Ward Admission
                     .form-group.col-md-6.col-sm-12.col-xs-12

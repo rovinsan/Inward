@@ -69,41 +69,55 @@ const patientSchema = mongoose.Schema({
             type: Date,
             default: Date.now()
         }
+    },
+    ResponsibleParty: {
+        Name: {
+            firstName: {
+                type: String
+            },
+            lastName: {
+                type: String
+            }
+        },
+        Age: {
+            type: Number,
+            required: true
+        },
+        Sex: {
+            type: String,
+            required: true
+        },
+        MarriedStatus: {
+            type: String
+        },
+        EmployementStatus: {
+            type: String
+        },
+        ContactInfo: {
+            Address: {
+                AddressLine: {
+                    type: String
+                },
+                Zip: {
+                    type: Number
+                },
+                City: {
+                    type: String
+                }
+            },
+            Phone: {
+                Home: {
+                    type: Number
+                },
+                Mobile: {
+                    type: Number
+                },
+                Office: {
+                    type: Number
+                }
+            }
+        }
     }
-    // ResponsibleParty: {
-    //     Name: {
-    //         firstName: {
-    //             type: String
-    //         },
-    //         lastName: {
-    //             type: String
-    //         }
-    //     },
-    //     ContactInfo: {
-    //         Address: {
-    //             AddressLine: {
-    //                 type: String
-    //             },
-    //             Zip: {
-    //                 type: Number
-    //             },
-    //             City: {
-    //                 type: String
-    //             }
-    //         },
-    //         Phone: {
-    //             Home: {
-    //                 type: Number
-    //             },
-    //             Mobile: {
-    //                 type: Number
-    //             },
-    //             Office: {
-    //                 type: Number
-    //             }
-    //         }
-    //     }
-    // }
 });
 
 patientSchema.pre('save', function(next) {
