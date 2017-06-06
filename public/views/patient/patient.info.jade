@@ -4,38 +4,32 @@ span.col-md-12.col-sm-12.col-xs-12.text-align--right.partial-close
 .col-md-12.col-sm-12.col-xs-12.card
     .row
         .col-md-12.col-sm-12.col-xs-12.card-top
-            i.fa.fa-user-circle-o
             h4.col-md-12.col-sm-12-col-xs-12.montserrat
                 | {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
             span.col-md-12.col-sm-12.col-xs-12.montserrat
-                small.col-md-4.col-sm-4.col-xs-12.no-padding(style="padding-top: 2px !important;")
+                small.col-md-3.col-sm-3.col-xs-12.no-padding(style="padding-top: 2px !important;")
                     b BHT # : 
                     | &nbsp; {{dpatient.Inward.bhtNumber}}
-                small.col-md-4.col-sm-4.col-xs-12.no-padding(style="padding-top: 2px !important;")
-                    i.fa.fa-bed
-                    b &nbsp; Bed # :
+                small.col-md-3.col-sm-3.col-xs-12.no-padding(style="padding-top: 2px !important;")
+                    b Ward # :
+                    | &nbsp; Ward #
+                small.col-md-3.col-sm-3.col-xs-12.no-padding(style="padding-top: 2px !important;")
+                    b Bed # :
                     | &nbsp; {{dpatient.Inward.bedNumber}}
-                small.col-md-4.col-sm-4.col-xs-12.no-padding(style="padding-top: 2px !important;")
-                    | &nbsp; {{dpatient.Inward.admittedDateTime | date}}
-        br
+                small.col-md-3.col-sm-3.col-xs-12.no-padding(style="padding-top: 2px !important;")
+                    | {{dpatient.Inward.admittedDateTime | date}}
         .col-md-12.col-sm-12.col-xs-12.card-bottom
             .col-md-12.col-sm-12.col-xs-12(style="padding-top: 15px 0px 15px 15px !important;")
                 span.col-md-6.col-sm-6.col-xs-12.padding--2px
-                    | Name : 
-                    b {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
-                span.col-md-6.col-sm-12.col-xs-12.padding--2px 
+                    b {{dpatient.Name.firstName}} {{dpatient.Name.lastName}} &nbsp; | &nbsp; 
                     i.fa(ng-class="(dpatient.Sex == 'Male') ? 'fa-mars' : 'fa-venus'")
-                    | &nbsp; {{dpatient.Sex}}
+                    | &nbsp; {{dpatient.Sex}} &nbsp; | &nbsp;
+                    | {{dpatient.MarriedStatus}} &nbsp; | &nbsp; {{dpatient.EmployementStatus}}
                 span.col-md-6.col-sm-6.col-xs-12.padding--2px Age : {{dpatient.Age}}
-                span.col-md-6.col-sm-6.col-xs-12.padding--2px Status : {{dpatient.MarriedStatus}}
-                span.col-md-6.col-sm-6.col-xs-12.padding--2px Employement : {{dpatient.EmployementStatus}}
             .col-md-12.col-sm-12.col-xs-12(style="padding: 15px 0px 15px 0px !important;")
                 span.col-md-12.col-sm-12.col-xs-12.montserrat(style="padding: 5px 0px 5px 15px !important;")
-                    i.fa.fa-address-card-o
                     b &nbsp; Address
-                span.col.md-6.col-sm-12.col-xs-12 {{dpatient.ContactInfo.Address.AddressLine}}, {{dpatient.ContactInfo.Address.Zip}}
-                span.col.md-2.col-sm-12.col-xs-12 City : {{dpatient.ContactInfo.Address.City}}
-                span.col.md-4.col-sm-12.col-xs-12 Country : {{dpatient.ContactInfo.Address.City}}
+                span.col.md-12.col-sm-12.col-xs-12 {{dpatient.ContactInfo.Address.AddressLine}}, {{dpatient.ContactInfo.Address.Zip}} | City : {{dpatient.ContactInfo.Address.City}} | Country : {{dpatient.ContactInfo.Address.City}}
             .col-md-12.col-sm-12.col-xs-12.no_padding(style="padding: 5px 15px 5px 15px !important;")
                 span.col.md-4.col-sm-4.col-xs-12.padding--2px
                     i.fa.fa-home 
@@ -46,3 +40,5 @@ span.col-md-12.col-sm-12.col-xs-12.text-align--right.partial-close
                 span.col.md-4.col-sm-4.col-xs-12.padding--2px
                     i.fa.fa-briefcase
                     | &nbsp; Office &nbsp;&nbsp;: {{dpatient.ContactInfo.Phone.Office}}
+            .col-md-12.col-sm-12.col-xs-12
+                a(href="#") Open BHT

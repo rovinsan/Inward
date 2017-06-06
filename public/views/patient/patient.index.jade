@@ -13,16 +13,22 @@ include patient.add.jade
         table.table
             thead.thead-default
                 tr
-                    td #
                     td BHT
                     td Patient ID
-                    td Name
+                    td Patient Name
+                    td Ward #
+                    td Bed #
+                    td Admitted Date
+                    td 
             tbody(ng-repeat="patient in rpatients")
                 tr.pointer(ng-click="getPatient(patient.Inward.bhtNumber)")
-                    td {{$index + 1}}
                     td {{patient.Inward.bhtNumber}}
                     td {{patient.ID}}
                     td {{patient.Name.firstName}}
+                    td Ward #
+                    td {{patient.Inward.bedNumber}}
+                    td {{patient.Inward.admittedDateTime | date:'yyyy-MM-dd HH:mm'}}
+                    td VIEW
                 tr(ng-show="patient.Inward.bhtNumber==dpatient.Inward.bhtNumber")
-                    td.padding-bottom--30px(colspan="5", style="border-left: 4px solid #F44336;")
+                    td.padding-bottom--30px(colspan="7", style="background: rgba(158, 158, 158, 0.1);")
                         include patient.info.jade

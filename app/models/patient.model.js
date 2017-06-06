@@ -11,6 +11,10 @@ const patientSchema = mongoose.Schema({
         unique: true
     },
     Name: {
+        title: {
+            type: String,
+            required: true
+        },
         firstName: {
             type: String,
             required: true
@@ -19,9 +23,12 @@ const patientSchema = mongoose.Schema({
             type: String
         }
     },
-    Age: {
-        type: Number,
+    DOB: {
+        type: Date,
         required: true
+    },
+    Age: {
+        type: Number
     },
     Sex: {
         type: String,
@@ -36,21 +43,26 @@ const patientSchema = mongoose.Schema({
     ContactInfo: {
         Address: {
             AddressLine: {
-                type: String
+                type: String,
+                required: true
             },
             Zip: {
                 type: Number
+                    // required: true
             },
             City: {
-                type: String
+                type: String,
+                required: true
             }
         },
         Phone: {
             Home: {
-                type: Number
+                type: Number,
+                required: true
             },
             Mobile: {
-                type: Number
+                type: Number,
+                required: true
             },
             Office: {
                 type: Number
@@ -68,10 +80,25 @@ const patientSchema = mongoose.Schema({
         admittedDateTime: {
             type: Date,
             default: Date.now()
-        }
+        },
+        history: [{
+            bhtNumber: {
+                type: String
+            },
+            bedNumber: {
+                type: Number
+            },
+            admittedDateTime: {
+                type: Date
+            }
+        }]
     },
     ResponsibleParty: {
         Name: {
+            title: {
+                type: String,
+                required: true
+            },
             firstName: {
                 type: String
             },
@@ -96,21 +123,25 @@ const patientSchema = mongoose.Schema({
         ContactInfo: {
             Address: {
                 AddressLine: {
-                    type: String
+                    type: String,
+                    required: true
                 },
                 Zip: {
                     type: Number
                 },
                 City: {
-                    type: String
+                    type: String,
+                    required: true
                 }
             },
             Phone: {
                 Home: {
-                    type: Number
+                    type: Number,
+                    required: true
                 },
                 Mobile: {
-                    type: Number
+                    type: Number,
+                    required: true
                 },
                 Office: {
                     type: Number
@@ -122,6 +153,7 @@ const patientSchema = mongoose.Schema({
 
 patientSchema.pre('save', function(next) {
     let doc = this;
+    let h = new Object();
     Counter.findByIdAndUpdate({ _id: 'patient' }, { $inc: { seq: 1 } }, function(error, counter) {
         if (error) {
             return next(error);
@@ -132,6 +164,10 @@ patientSchema.pre('save', function(next) {
                 return next(error);
             }
             doc.Inward.bhtNumber = "BHT-" + bhtCounter.seq;
+            h["bhtNumber"] = doc.Inward.bhtNumber;
+            h["bedNumber"] = doc.Inward.bedNumber;
+            h["admittedDateTime"] = doc.Inward.admittedDateTime;
+            doc.Inward.history.push(h);
             next();
         });
     });

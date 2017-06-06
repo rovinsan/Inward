@@ -84,6 +84,7 @@ angular.module('patient.controller', []).controller('PatientController', [
 
         $scope.partialForm = 'null';
         $scope.cpatient = {};
+        $scope.titles = ["Master", "Mr.", "Miss.", "Mrs."];
 
         function initializePatients() {
             PatientService.getPatients().then((patients) => {
@@ -109,6 +110,10 @@ angular.module('patient.controller', []).controller('PatientController', [
                 console.log(err);
             });
         };
+
+        $scope.clearAll = function() {
+            $scope.cpatient = {};
+        }
 
         initializePatients();
     }

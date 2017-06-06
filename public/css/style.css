@@ -95,6 +95,10 @@ body {
     padding: 0px 0px 0px 0px !important;
 }
 
+.no_margin {
+    margin: 0px 0px 0px 0px !important;
+}
+
 .thead-default {
     font-family: 'Montserrat', sans-serif !important;
     font-weight: bold !important;
@@ -506,7 +510,7 @@ span.padding--2px {
     /*background: #F44336;
     color: white;*/
     /*padding: 20px !important;*/
-    padding-top: 20px !important;
+    /*padding-top: 20px !important;*/
     padding-bottom: 20px !important;
     /*display: flex;
     flex-direction: column;*/

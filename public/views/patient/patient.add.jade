@@ -1,8 +1,8 @@
 //- link(rel='stylesheet', href="../../css/multi-step.css")
 
 .col-md-12.col-sm-12.col-xs-12(name="addPatientForm")
-    form.col-md-12.col-sm-12.col-xs-12.padding--20px.border-top--2px(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'", name="addPatientForm")
-        span.col-md-12.col-sm-12.col-xs-12.text-align--right.padding-top--10px.form-group(ng-click="partialForm='null'", name="closePatientForm")
+    form.col-md-12.col-sm-12.col-xs-12.border-top--2px(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'", name="addPatientForm")
+        span.col-md-12.col-sm-12.col-xs-12.text-align--right.padding-top--10px.form-group(ng-click="partialForm='null';clearAll();", name="closePatientForm")
             label.btn.btn-default.btn-circle
                 i.fa.fa-times
         .step-progress.form-group.col-md-12.col-sm-12.col-xs-12.padding-top--10px
@@ -14,45 +14,55 @@
                 .step-content-body#personal
                     h5.montserrat.text-align--left.col-md-12.col-sm-12.col-xs-12 Personal Details
                     .form-group.col-md-2.col-sm-12.col-xs-12
-                        input.form-control(type="text", placeholder="Mr.")
-                    .form-group.col-md-4.col-sm-12.col-xs-12
+                        select.form-control(ng-model="cpatient.Name.title", required)
+                            option(ng-repeat="t in titles") {{t}}
+                    .form-group.col-md-3.col-sm-12.col-xs-12
                         input.form-control(type="text", placeholder="First Name", ng-model="cpatient.Name.firstName", required)
-                    .form-group.col-md-4.col-sm-12.col-xs-12
+                    .form-group.col-md-3.col-sm-12.col-xs-12
                         input.form-control(type="text", placeholder="Last Name", ng-model="cpatient.Name.lastName", required)
-                    .form-group.col-md-2.col-sm-6.col-xs-12
-                        input.form-control(type="text", placeholder="Age", ng-model="cpatient.Age", pattern="^(0?[1-9]|[1-9][0-9])$")
-                    .form-group.col-md-6.col-sm-12.col-xs-12.no_padding
+                    .form-group.col-md-4.col-sm-6.col-xs-12
+                        div.dropdown
+                            a.dropdown-toggle#dLabel(role="button" data-toggle="dropdown" data-target=".dropdown" href="#")
+                                div.input-group
+                                    input.form-control#date(type="text", name="date", ng-model="cpatient.DOB", placeholder="Date of Birth")
+                                    span.input-group-addon
+                                        i.glyphicon.glyphicon-calendar
+                            ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                                datetimepicker(ng-model="cpatient.DOB", data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }")
+                    .form-group.col-md-12.col-sm-12.col-xs-12.no_padding
+                        hr
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-12.col-sm-12.col-xs-12.label-title Gender
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.Sex", value="Male")
                                 span.roboto  Male
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.Sex", value="Female")
                                 span.roboto  Female
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-12.col-sm-12.col-xs-12.label-title Status
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.MarriedStatus", value="Single")
                                 span.roboto  Single
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.MarriedStatus", value="Married")
                                 span.roboto  Married
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.MarriedStatus", value="Divorced")
                                 span.roboto  Divorced
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-12.col-sm-12.col-xs-12.label-title Employement Status
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.EmployementStatus", value="Working")
                                 span.roboto  Working
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.EmployementStatus", value="Retired")
                                 span.roboto  Retired
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.EmployementStatus", value="None")
                                 span.roboto  None
-                    .form-group.col-md-6.col-sm-12.col-xs-12.no_padding.padding-top--30px
+                    .form-group.col-md-12.col-sm-12.col-xs-12.no_padding
+                        hr
                         label.col.md-12.col-sm-12.col-xs-12.label-title(style="padding-left: 15px !important;") Address | Contact Info
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             input.form-control(type="text", placeholder="Address Line", ng-model="cpatient.ContactInfo.Address.AddressLine", required)
@@ -70,45 +80,48 @@
                 .step-content-body.out#responsible
                     h5.montserrat.text-align--left.col-md-12.col-sm-12.col-xs-12 Guardian Details
                     .form-group.col-md-2.col-sm-12.col-xs-12
-                        input.form-control(type="text", placeholder="Mr.")
+                        select.form-control(ng-model="cpatient.Name.title", required)
+                            option(ng-repeat="t in titles") {{t}}
                     .form-group.col-md-4.col-sm-12.col-xs-12
                         input.form-control(type="text", placeholder="First Name", ng-model="cpatient.ResponsibleParty.Name.firstName", required)
                     .form-group.col-md-4.col-sm-12.col-xs-12
                         input.form-control(type="text", placeholder="Last Name", ng-model="cpatient.ResponsibleParty.Name.lastName", required)
                     .form-group.col-md-2.col-sm-6.col-xs-12
                         input.form-control(type="text", placeholder="Age", ng-model="cpatient.ResponsibleParty.Age", pattern="^(0?[1-9]|[1-9][0-9])$")
-                    .form-group.col-md-6.col-sm-12.col-xs-12.no_padding
+                    .form-group.col-md-12.col-sm-12.col-xs-12.no_padding.no_margin
+                        hr
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-12.col-sm-12.col-xs-12.label-title Gender
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.ResponsibleParty.Sex", value="Male")
                                 span.roboto  Male
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.ResponsibleParty.Sex", value="Female")
                                 span.roboto  Female
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-12.col-sm-12.col-xs-12.label-title Status
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.ResponsibleParty.MarriedStatus", value="Single")
                                 span.roboto  Single
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.ResponsibleParty.MarriedStatus", value="Married")
                                 span.roboto  Married
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.ResponsibleParty.MarriedStatus", value="Divorced")
                                 span.roboto  Divorced
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-12.col-sm-12.col-xs-12.label-title Employement Status
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.ResponsibleParty.EmployementStatus", value="Working")
                                 span.roboto  Working
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.ResponsibleParty.EmployementStatus", value="Retired")
                                 span.roboto  Retired
-                            label.no-padding-left.col-md-4.col-sm-6.col-xs-6.text-align--left
+                            label.no-padding-left.col-md-2.col-sm-6.col-xs-6.text-align--left
                                 input(type="radio", ng-model="cpatient.ResponsibleParty.EmployementStatus", value="None")
                                 span.roboto  None
-                    .form-group.col-md-6.col-sm-12.col-xs-12.no_padding.padding-top--30px
+                    .form-group.col-md-12.col-sm-12.col-xs-12.no_padding
+                        hr
                         label.col.md-12.col-sm-12.col-xs-12.label-title(style="padding-left: 15px !important;") Address | Contact Info
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             input.form-control(type="text", placeholder="Address Line", ng-model="cpatient.ResponsibleParty.ContactInfo.Address.AddressLine", required)
