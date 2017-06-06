@@ -3,6 +3,10 @@
         button.btn.btn-default.btn-circle.btn-green(ng-click="partialForm='addPatientForm'", name="addPatientForm")
             i.fa.fa-plus
         span.montserrat  Patient
+    span
+        button.btn.btn-default.btn-circle.btn-green(ng-click="", name="transferPatientForm")
+            i.fa.fa-plus
+        span.montserrat  Transfer Patient
 
 include patient.add.jade
 
@@ -21,7 +25,7 @@ include patient.add.jade
                     td Admitted Date
                     td 
             tbody(ng-repeat="patient in rpatients")
-                tr.pointer(ng-click="getPatient(patient.Inward.bhtNumber)")
+                tr.pointer(ng-click="getPatient(patient.Inward.bhtNumber)", ng-class-odd="'odd'" ng-class-even="'even'")
                     td {{patient.Inward.bhtNumber}}
                     td {{patient.ID}}
                     td {{patient.Name.firstName}}

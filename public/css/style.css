@@ -616,3 +616,7 @@ div[name="addPatientForm"] {
     background: white !important;
     margin-bottom: 20px !important;
 }
+
+.even {
+    background: rgba(225, 225, 225, 0.25) !important;
+}

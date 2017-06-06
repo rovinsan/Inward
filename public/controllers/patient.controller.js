@@ -113,7 +113,7 @@ angular.module('patient.controller', []).controller('PatientController', [
 
         $scope.clearAll = function() {
             $scope.cpatient = {};
-        }
+        };
 
         initializePatients();
     }

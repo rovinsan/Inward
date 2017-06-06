@@ -25,10 +25,10 @@ span.col-md-12.col-sm-12.col-xs-12.text-align--right.partial-close
                     i.fa(ng-class="(dpatient.Sex == 'Male') ? 'fa-mars' : 'fa-venus'")
                     | &nbsp; {{dpatient.Sex}} &nbsp; | &nbsp;
                     | {{dpatient.MarriedStatus}} &nbsp; | &nbsp; {{dpatient.EmployementStatus}}
-                span.col-md-6.col-sm-6.col-xs-12.padding--2px Age : {{dpatient.Age}}
+                span.col-md-6.col-sm-6.col-xs-12.padding--2px Age : {{ dpatient.DOB | date: 'yyyy-MM-dd' }}
             .col-md-12.col-sm-12.col-xs-12(style="padding: 15px 0px 15px 0px !important;")
                 span.col-md-12.col-sm-12.col-xs-12.montserrat(style="padding: 5px 0px 5px 15px !important;")
-                    b &nbsp; Address
+                    b Address
                 span.col.md-12.col-sm-12.col-xs-12 {{dpatient.ContactInfo.Address.AddressLine}}, {{dpatient.ContactInfo.Address.Zip}} | City : {{dpatient.ContactInfo.Address.City}} | Country : {{dpatient.ContactInfo.Address.City}}
             .col-md-12.col-sm-12.col-xs-12.no_padding(style="padding: 5px 15px 5px 15px !important;")
                 span.col.md-4.col-sm-4.col-xs-12.padding--2px
