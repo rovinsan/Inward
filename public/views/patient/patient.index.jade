@@ -1,9 +1,9 @@
 .col-md-12.col-sm-12.col-xs-12.padding-bottom--10px
-    span
+    span.padding-right--20px
         button.btn.btn-default.btn-circle.btn-green(ng-click="partialForm='addPatientForm'", name="addPatientForm")
             i.fa.fa-plus
         span.montserrat  Patient
-    span
+    span.padding-right--20px
         button.btn.btn-default.btn-circle.btn-green(ng-click="", name="transferPatientForm")
             i.fa.fa-plus
         span.montserrat  Transfer Patient
@@ -34,5 +34,5 @@ include patient.add.jade
                     td {{patient.Inward.admittedDateTime | date:'yyyy-MM-dd HH:mm'}}
                     td VIEW
                 tr(ng-show="patient.Inward.bhtNumber==dpatient.Inward.bhtNumber")
-                    td.padding-bottom--30px(colspan="7", style="background: rgba(158, 158, 158, 0.1);")
+                    td.padding-bottom--30px(colspan="7", style="background:#f9f9f9;")
                         include patient.info.jade

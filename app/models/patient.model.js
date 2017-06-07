@@ -153,7 +153,6 @@ const patientSchema = mongoose.Schema({
 
 patientSchema.pre('save', function(next) {
     let doc = this;
-    let h = new Object();
     Counter.findByIdAndUpdate({ _id: 'patient' }, { $inc: { seq: 1 } }, function(error, counter) {
         if (error) {
             return next(error);
@@ -164,9 +163,11 @@ patientSchema.pre('save', function(next) {
                 return next(error);
             }
             doc.Inward.bhtNumber = "BHT-" + bhtCounter.seq;
-            h["bhtNumber"] = doc.Inward.bhtNumber;
-            h["bedNumber"] = doc.Inward.bedNumber;
-            h["admittedDateTime"] = doc.Inward.admittedDateTime;
+            let h = {
+                "bhtNumber": doc.Inward.bhtNumber,
+                "bedNumber": doc.Inward.bedNumber,
+                "admittedDateTime": doc.Inward.admittedDateTime
+            };
             doc.Inward.history.push(h);
             next();
         });
