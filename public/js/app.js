@@ -11,6 +11,7 @@ angular.module('inwardApp', [
     'appRoutes',
     'app.controller',
     'patient.controller',
+    'patient.archive.controller',
     'patient.service',
     'doctor.controller',
     'doctor.service',
