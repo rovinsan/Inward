@@ -150,6 +150,10 @@ body {
     margin-top: 10px !important;
 }
 
+.margin-bottom--10px {
+    margin-bottom: 10px !important;
+}
+
 .margin-bottom--30px {
     margin-bottom: 30px !important;
 }
@@ -214,6 +218,7 @@ body {
 }
 
 hr {
+    width: 100% !important;
     border-top: 2px solid #e1e1e1 !important;
 }
 
@@ -474,6 +479,10 @@ span.montserrat {
     padding-left: 15px !important;
 }
 
+.padding-top--2px {
+    padding-top: 2px !important;
+}
+
 .padding-top--15px {
     padding-top: 15px !important;
 }
@@ -648,4 +657,43 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
     background-color: #F90;
     background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+}
+
+
+/**
+    Archive Card Design
+*/
+
+.archive {
+    margin: 10px !important;
+    padding: 20px !important;
+    /*margin-bottom: 20px !important;*/
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.archive-body {
+    font-size: 12px !important;
+    padding: 15px !important;
+    padding-top: 0px !important;
+}
+
+.archive-heading {
+    font-size: 14px !important;
+    padding-bottom: 10px !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.archive-title {
+    padding-bottom: 10px !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.padding {
+    padding: 0px !important;
+    padding-top: 2px !important;
+}
+
+.gap {
+    padding: 0px !important;
+    margin-bottom: 10px !important;
 }
