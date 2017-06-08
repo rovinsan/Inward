@@ -1,6 +1,7 @@
 .col-md-12.col-sm-12.col-xs-12
     .row
-        .col-md-4.col-sm-12.col-xs-12.archive
+        .col-md-4.col-sm-12.col-xs-12.loader.archive(ng-show="loading")
+        .col-md-4.col-sm-12.col-xs-12.archive(ng-class="loading ? 'div-loading' : 'div-loaded'")
             h4.col-md-12.col-sm-12-col-xs-12.archive-title
                 | {{dpatient.Name.firstName}} {{dpatient.Name.lastName}}
             hr
@@ -24,7 +25,8 @@
                     b Admitted : 
                     | &nbsp; {{dpatient.Inward.admittedDateTime | date}}
     .row
-        .col-md-4.col-sm-12.col-xs-12.archive
+        .col-md-4.col-sm-12.col-xs-12.loader.archive(ng-show="loading")
+        .col-md-4.col-sm-12.col-xs-12.archive(ng-class="loading ? 'div-loading' : 'div-loaded'")
             h4.col-md-12.col-sm-12-col-xs-12.archive-heading
                 | Personal Details
             hr
@@ -55,7 +57,8 @@
                     span.col.md-12.col-sm-12.col-xs-12.padding
                         i.fa.fa-briefcase
                         | &nbsp; Office &nbsp;&nbsp;: {{dpatient.ContactInfo.Phone.Office}}
-        .col-md-4.col-sm-12.col-xs-12.archive
+        .col-md-4.col-sm-12.col-xs-12.loader.archive(ng-show="loading")
+        .col-md-4.col-sm-12.col-xs-12.archive(ng-class="loading ? 'div-loading' : 'div-loaded'")
             h4.col-md-12.col-sm-12-col-xs-12.archive-heading
                 | Guardian Details
             hr
