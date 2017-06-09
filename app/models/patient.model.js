@@ -53,6 +53,10 @@ const patientSchema = mongoose.Schema({
             City: {
                 type: String,
                 required: true
+            },
+            Country: {
+                type: String,
+                required: true
             }
         },
         Phone: {
@@ -130,6 +134,10 @@ const patientSchema = mongoose.Schema({
                     type: Number
                 },
                 City: {
+                    type: String,
+                    required: true
+                },
+                Country: {
                     type: String,
                     required: true
                 }
