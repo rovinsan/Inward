@@ -10,29 +10,32 @@
 
 include patient.add.jade
 
-.col-md-12.col-sm-12.col-xs-12.padding--top--10px.padding-bottom--10px.padding-top--10px
+.col-md-12.col-sm-12.col-xs-12.padding--top--10px.padding-bottom--10px.padding-top--10px(ng-show="tableLoading")
+  include ./../../shared/table-laoding.jade  
+.col-md-12.col-sm-12.col-xs-12.padding--top--10px.padding-bottom--10px.padding-top--10px(ng-class="tableLoading ? 'table-loading' : 'table-loaded'")
     .col-md-12.col-sm-12.col-xs-12.no-padding-left(ng-if="rpatients.length <= 0")
         h4.montserrat No Patients Data Available                
     .table-responsive(ng-if="rpatients.length>0")
-        table.table
-            thead.thead-default
+        table.table.table-striped.table-hover
+            thead
                 tr
-                    td BHT
-                    td Patient ID
-                    td Patient Name
-                    td Ward #
-                    td Bed #
-                    td Admitted Date
-                    td 
-            tbody(ng-repeat="patient in rpatients")
-                tr.pointer(ng-click="getPatient(patient.Inward.bhtNumber)", ng-class-odd="'odd'" ng-class-even="'even'")
+                    th BHT
+                    th Patient ID
+                    th Patient Name
+                    th Ward #
+                    th Bed #
+                    th Admitted Date
+                    th
+            tbody
+                tr.pointer(ng-repeat-start="patient in rpatients", ng-init="patient.expanded = false", ng-click="patient.expanded = !patient.expanded")
                     td {{patient.Inward.bhtNumber}}
                     td {{patient.ID}}
                     td {{patient.Name.firstName}}
                     td Ward #
                     td {{patient.Inward.bedNumber}}
                     td {{patient.Inward.admittedDateTime | date:'yyyy-MM-dd HH:mm'}}
-                    td VIEW
-                tr(ng-show="patient.Inward.bhtNumber==dpatient.Inward.bhtNumber")
-                    td.padding-bottom--30px(colspan="7", style="background:#f9f9f9;")
+                    td 
+                        small(ng-bind="patient.expanded ? 'Close' : 'View'")
+                tr.no_hover(ng-if="patient.expanded" ng-repeat-end)
+                    td.padding-top--20px(colspan="7")
                         include patient.info.jade

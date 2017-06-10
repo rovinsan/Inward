@@ -3,6 +3,7 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'vAccordion',
     'ui.bootstrap.datetimepicker',
     'angularSlideables',
     'angular-loading-bar',

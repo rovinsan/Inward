@@ -84,13 +84,18 @@ angular.module('patient.controller', []).controller('PatientController', [
 
         $scope.partialForm = 'null';
         $scope.cpatient = {};
+        $scope.dpatient = {};
         $scope.titles = ["Master", "Mr.", "Miss.", "Mrs."];
+
+        $scope.tableLoading = true;
 
         function initializePatients() {
             PatientService.getPatients().then((patients) => {
                 $scope.rpatients = patients;
             }, (err) => {
                 console.log(err);
+            }).finally(() => {
+                $scope.tableLoading = false;
             });
         }
 
