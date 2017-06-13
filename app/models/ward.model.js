@@ -6,13 +6,20 @@ const mongoose = require('mongoose');
 const Counter = mongoose.model('Counter');
 
 const wardSchema = mongoose.Schema({
+    wardNumber: {
+        type: String,
+        unique: true,
+        required: true
+    },
     bedNumber: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     addedDate: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        required: true
     },
     patient: {
         ID: {
@@ -33,7 +40,14 @@ wardSchema.pre('save', function(next) {
             return next(error);
         }
         doc.bedNumber = "WB-" + counter.seq;
-        next();
+
+        Counter.findByIdAndUpdate({ _id: 'ward' }, { $inc: { seq: 1 } }, function(error, counter) {
+            if (error) {
+                return next(error);
+            }
+            doc.bedNumber = "W-" + counter.seq;
+            next();
+        });
     });
 });
 
