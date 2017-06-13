@@ -21,7 +21,8 @@ angular.module('inwardApp', [
     'test.controller',
     'test.service',
     'ward.controller',
-    'ward.service'
+    'ward.service',
+    'startFrom.filter'
 ]).run(['$rootScope', function($rootScope) {
     $rootScope.loggedinUser = '';
     $rootScope.goBack = function() {
