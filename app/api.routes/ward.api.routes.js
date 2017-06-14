@@ -7,21 +7,47 @@ const Router = express.Router();
 
 const mongoose = require('mongoose');
 const WardModel = mongoose.model('Ward');
+const BedModel = mongoose.model('Bed');
 
 Router.get('/', (req, res) => {
-    WardModel.find().exec().then((wardBeds) => {
-        res.json(wardBeds);
+    WardModel.find().exec().then((wards) => {
+        res.json(wards);
     }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
     });
 });
 
+Router.get('/:id/beds', (req, res) => {
+    WardModel.findOne({ 'wardNumber': req.params.id }).populate('beds').exec().then((wardBeds) => {
+        res.json(wardBeds);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+});
+
 Router.post('/', (req, res) => {
-    let newWardBed = new WardModel();
-    newWardBed.save().then((wardBed) => {
-        res.json(wardBed);
+    let newWard = new WardModel(req.body);
+    newWard.save().then((ward) => {
+        res.json(ward);
     }).catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+});
+
+Router.post('/:id/beds', (req, res) => {
+    let newBed = new BedModel(req.body);
+    const wardNumber = req.params.id;
+    newBed.ward = wardNumber;
+    newBed.save().then(bed => {
+        return WardModel.findOneAndUpdate({ 'wardNumber': wardNumber }, { $push: { "beds": bed._id } });
+    }).then(() => {
+        return WardModel.findOne({ 'wardNumber': req.params.id }).populate('beds').exec();
+    }).then(wardBeds => {
+        res.json(wardBeds);
+    }).catch(err => {
         console.error(err);
         res.sendStatus(500);
     });

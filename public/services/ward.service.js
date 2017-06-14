@@ -7,7 +7,22 @@ angular.module('ward.service', []).factory('WardService', [
     '$q',
     function($http, $q) {
         return {
-            getWardBeds: function() {
+            addWard: function(newWard) {
+                let deferred = $q.defer();
+                $http({
+                    method: 'POST',
+                    url: '/api/wards',
+                    data: $.param(newWard),
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }).then((results) => {
+                    deferred.resolve(results.data);
+                }, (err) => {
+                    deferred.reject(err);
+                });
+                return deferred.promise;
+            },
+
+            getWards: function() {
                 let deferred = $q.defer();
                 $http.get('/api/wards').then((results) => {
                     deferred.resolve(results.data);
@@ -17,13 +32,21 @@ angular.module('ward.service', []).factory('WardService', [
                 return deferred.promise;
             },
 
-            addWardBed: function() {
+            getWardBeds: function(wardNumber) {
+                let deferred = $q.defer();
+                $http.get('/api/wards/' + wardNumber + '/beds').then((results) => {
+                    deferred.resolve(results.data);
+                }, (err) => {
+                    deferred.reject(err);
+                });
+                return deferred.promise;
+            },
+
+            addWardBed: function(wardNumber) {
                 let deferred = $q.defer();
                 $http({
                     method: 'POST',
-                    url: '/api/wards',
-                    // data: $.param(),
-                    // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    url: '/api/wards/' + wardNumber + '/beds'
                 }).then((results) => {
                     deferred.resolve(results.data);
                 }, (err) => {
