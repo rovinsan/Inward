@@ -53,6 +53,16 @@ angular.module('ward.service', []).factory('WardService', [
                     deferred.reject(err);
                 });
                 return deferred.promise;
+            },
+
+            getGreenBeds: function(wardNumber) {
+                let deferred = $q.defer();
+                $http.get('/api/wards/' + wardNumber + '/beds?filter=green').then((results) => {
+                    deferred.resolve(results.data);
+                }, (err) => {
+                    deferred.reject(err);
+                });
+                return deferred.promise;
             }
         }
     }

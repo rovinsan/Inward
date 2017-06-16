@@ -19,12 +19,26 @@ Router.get('/', (req, res) => {
 });
 
 Router.get('/:id/beds', (req, res) => {
-    WardModel.findOne({ 'wardNumber': req.params.id }).populate('beds').exec().then((wardBeds) => {
-        res.json(wardBeds);
-    }).catch(err => {
-        console.error(err);
-        res.sendStatus(500);
-    });
+
+    switch (req.query.filter) {
+        case "green":
+            WardModel.findOne({ 'wardNumber': req.params.id })
+                .populate({ path: 'beds', match: { 'patient.ID': 'null' } }).exec().then((greenBeds) => {
+                    res.json(greenBeds);
+                }).catch((err) => {
+                    console.error(err);
+                    res.sendStatus(500);
+                });
+            break;
+        default:
+            WardModel.findOne({ 'wardNumber': req.params.id }).populate('beds').exec().then((wardBeds) => {
+                res.json(wardBeds);
+            }).catch((err) => {
+                console.error(err);
+                res.sendStatus(500);
+            });
+            break;
+    }
 });
 
 Router.post('/', (req, res) => {
