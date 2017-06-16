@@ -3,6 +3,7 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'htmlToPdfSave',
     'vAccordion',
     'ui.bootstrap.datetimepicker',
     'angularSlideables',

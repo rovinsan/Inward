@@ -953,3 +953,22 @@ i.fa.fa-heartbeat.bed.color--red {
 i.fa.fa-heart.bed.color--green {
     color: #1bc98e !important;
 }
+
+.pdf-header {
+    padding: 0px !important;
+    margin-bottom: 40px !important;
+}
+
+.pdf-name {
+    padding: 0px !important;
+    letter-spacing: 1px;
+}
+
+.pdf-name>i {
+    font-size: 14px !important;
+}
+
+.pdf-span-sm {
+    padding: 0px !important;
+    font-size: 12px !important;
+}
