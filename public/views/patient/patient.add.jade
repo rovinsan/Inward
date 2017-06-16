@@ -1,5 +1,3 @@
-//- link(rel='stylesheet', href="../../css/multi-step.css")
-
 .col-md-12.col-sm-12.col-xs-12(name="addPatientForm")
     form.col-md-12.col-sm-12.col-xs-12.border-top--2px(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'", name="addPatientForm")
         span.col-md-12.col-sm-12.col-xs-12.text-align--right.padding-top--10px.form-group(ng-click="partialForm='null';clearAll();", name="closePatientForm")
@@ -37,7 +35,7 @@
                         div.dropdown
                             a.dropdown-toggle#dLabel(role="button" data-toggle="dropdown" data-target=".dropdown" href="#")
                                 div.input-group
-                                    input.form-control.input-sm#date(type="text", name="date", ng-model="cpatient.DOB", placeholder="Date of Birth")
+                                    input.form-control.input-sm#date(type="text", name="date", ng-model="cpatient.DOB", placeholder="Date of Birth", required)
                                     span.input-group-addon
                                         i.glyphicon.glyphicon-calendar
                             ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
@@ -213,9 +211,16 @@
                         | Ward Admission
                     .form-group.col-md-6.col-sm-12.col-xs-12
                         label.content-label 
-                            | Bed Number
+                            | Ward Selection
                             span.red *
-                        input.form-control(type="number", placeholder="Bed Number", ng-model="cpatient.Inward.bedNumber")
+                        select.form-control.input-sm(placeholder="Ward Selection", ng-model="cpatient.Inward.wardNumber", ng-change="getGreenBeds(cpatient.Inward.wardNumber)", required)
+                            option(ng-repeat="w in availableWards", value="{{w.wardNumber}}") {{w.name}}
+                    .form-group.col-md-6.col-sm-12.col-xs-12
+                        label.content-label 
+                            | Bed Selection
+                            span.red *
+                        select.form-control.input-sm(placeholder="Bed Selection", ng-model="cpatient.Inward.bedNumber", ng-disabled="availableBedsDisabled", required)
+                            option(ng-repeat="b in availableBeds.beds", value="{{b.bedNumber}}") {{b.bedNumber}}
                 .step-content-body.out#stepLast Completed
                 .step-content-foot.col-md-12.col-sm-12.col-xs-12
                     label.btn.btn-warning.float--left(name="prev")  
@@ -225,4 +230,3 @@
                         | Next  
                         i.fa.fa-chevron-right
                     button.btn.btn-success.active.out(type="submit", name="finish") Add
-                    //- label.active.out(type="button", name="finish") Finish

@@ -9,6 +9,7 @@ angular.module('patient.archive.controller', []).controller('PatientArchiveContr
     function($scope, $routeParams, PatientService) {
         $scope.dpatient = {};
         $scope.loading = true;
+        $scope.archivePDF = false;
 
         function initializePatientArchive() {
             PatientService.getPatient($routeParams.bht).then((patientArchive) => {

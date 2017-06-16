@@ -78,8 +78,13 @@ const patientSchema = mongoose.Schema({
             type: String,
             unique: true
         },
+        wardNumber: {
+            type: String,
+            required: true
+        },
         bedNumber: {
-            type: Number
+            type: String,
+            required: true
         },
         admittedDateTime: {
             type: Date,
@@ -89,8 +94,11 @@ const patientSchema = mongoose.Schema({
             bhtNumber: {
                 type: String
             },
+            wardNumber: {
+                type: String
+            },
             bedNumber: {
-                type: Number
+                type: String
             },
             admittedDateTime: {
                 type: Date
@@ -173,6 +181,7 @@ patientSchema.pre('save', function(next) {
             doc.Inward.bhtNumber = "BHT-" + bhtCounter.seq;
             let h = {
                 "bhtNumber": doc.Inward.bhtNumber,
+                "wardNumber": doc.Inward.wardNumber,
                 "bedNumber": doc.Inward.bedNumber,
                 "admittedDateTime": doc.Inward.admittedDateTime
             };

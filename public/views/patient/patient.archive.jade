@@ -1,3 +1,11 @@
+.col-md-12.col-sm-12.col-xs-12.margin-bottom--10px
+    span.col-md-2.col-sm-4.col-xs-12.top-selection
+        button.btn.btn-default(ng-click="archivePDF=true")
+            i.fa.fa-file-pdf-o
+        span.top-selection--inner  PDF
+
+include patient.archive.pdf.jade
+
 .col-md-12.col-sm-12.col-xs-12
     .row
         .col-md-4.col-sm-12.col-xs-12.loader.archive(ng-show="loading")

@@ -7,7 +7,8 @@ angular.module('patient.controller', []).controller('PatientController', [
     '$rootScope',
     '$http',
     'PatientService',
-    function($scope, $rootScope, $http, PatientService) {
+    'WardService',
+    function($scope, $rootScope, $http, PatientService, WardService) {
 
         $(function() {
 
@@ -96,15 +97,25 @@ angular.module('patient.controller', []).controller('PatientController', [
         $scope.dpatient = {};
         $scope.titles = ["Master", "Mr.", "Miss.", "Mrs."];
 
+        $scope.availableBeds = {};
+        $scope.availableWards = {};
+        $scope.availableBedsDisabled = true;
+
         $scope.tableLoading = true;
 
-        function initializePatients() {
+        function initializeDocument() {
             PatientService.getPatients().then((patients) => {
                 $scope.rpatients = patients;
             }, (err) => {
                 console.log(err);
             }).finally(() => {
                 $scope.tableLoading = false;
+            });
+
+            WardService.getWards().then((wards) => {
+                $scope.availableWards = wards;
+            }, (err) => {
+                console.error(err);
             });
         }
 
@@ -125,6 +136,15 @@ angular.module('patient.controller', []).controller('PatientController', [
             });
         };
 
+        $scope.getGreenBeds = function(wardNumber) {
+            WardService.getGreenBeds(wardNumber).then((greenBeds) => {
+                $scope.availableBeds = greenBeds;
+                $scope.availableBedsDisabled = false;
+            }, (err) => {
+                console.error(err);
+            });
+        };
+
         $scope.numberOfPages = function() {
             return Math.ceil($scope.rpatients.length / $scope.pageSize);
         };
@@ -137,6 +157,6 @@ angular.module('patient.controller', []).controller('PatientController', [
             $scope.cpatient = {};
         };
 
-        initializePatients();
+        initializeDocument();
     }
 ]);
