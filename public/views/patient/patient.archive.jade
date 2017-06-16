@@ -32,6 +32,8 @@ include patient.archive.pdf.jade
                 small.col-md-12.col-sm-12.col-xs-12.padding
                     b Admitted : 
                     | &nbsp; {{dpatient.Inward.admittedDateTime | date}}
+        .col-md-3.col-md-offset-1.col-sm-6.col-sm-offset-3.col-xs-12.archive(style="box-shadow: none !important;")
+            canvas.chart.chart-doughnut#doughnut(chart-data="data", chart-labels="labels", chart-colors="colors", chart-options="options")
     .row
         .col-md-4.col-sm-12.col-xs-12.loader.archive(ng-show="loading")
         .col-md-4.col-sm-12.col-xs-12.archive(ng-class="loading ? 'div-loading' : 'div-loaded'")

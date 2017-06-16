@@ -3,6 +3,7 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'chart.js',
     'htmlToPdfSave',
     'vAccordion',
     'ui.bootstrap.datetimepicker',

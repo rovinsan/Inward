@@ -21,6 +21,22 @@ angular.module('patient.archive.controller', []).controller('PatientArchiveContr
             });
         }
 
+        $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+        $scope.data = [300, 500, 100];
+        $scope.colors = ['#F44336', '#2196F3', '#673AB7'];
+        $scope.options = {
+            responsive: true,
+            cutoutPercentage: 75,
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 20,
+                    top: 20,
+                    bottom: 20
+                }
+            },
+        }
+
         initializePatientArchive();
     }
 ]);
