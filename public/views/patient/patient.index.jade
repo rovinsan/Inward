@@ -57,7 +57,7 @@ include patient.add.jade
                         td {{patient.Inward.bhtNumber}}
                         td {{patient.ID}}
                         td {{patient.Name.firstName}}
-                        td Ward #
+                        td {{patient.Inward.wardNumber}}
                         td {{patient.Inward.bedNumber}}
                         td {{patient.Inward.admittedDateTime | date:'yyyy-MM-dd HH:mm'}}
                         td 

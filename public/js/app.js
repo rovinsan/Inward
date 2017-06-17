@@ -3,6 +3,7 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'angular-svg-round-progressbar',
     'chart.js',
     'htmlToPdfSave',
     'vAccordion',

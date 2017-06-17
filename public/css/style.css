@@ -699,7 +699,13 @@ body::-webkit-scrollbar-thumb,
 .archive {
     margin: 10px !important;
     padding: 20px !important;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    /*box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);*/
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.16), 0 1px 6px rgba(0, 0, 0, 0.23);
+}
+
+.archive-shadow--0 {
+    margin: 10px !important;
+    padding: 20px !important;
 }
 
 .archive-body {
@@ -898,6 +904,11 @@ span.btn.fa.fa-search {
     padding: 10px !important;
     float: none !important;
     border: none !important;
+}
+
+.vcenter {
+    display: flex;
+    align-items: center;
 }
 
 .dropdown-menu>li>span {

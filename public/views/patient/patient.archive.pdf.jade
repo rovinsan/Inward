@@ -1,9 +1,9 @@
 .col-md-12.col-sm-12.col-xs-12.margin-bottom--30px.padding-bottom--30px(ng-show="archivePDF", style="border-bottom: 1px solid #e1e1e1;")
     .col-md-12.col-sm-12.col-xs-12.margin-bottom--10px
-        span.col-md-2.col-sm-12.col-xs-12.top-selection.float-right.text-align--right(ng-click="archivePDF=false")
+        span.col-md-2.col-sm-6.col-xs-6.top-selection.float-right.text-align--right(ng-click="archivePDF=false", style="padding-right: 0px !important;")
             label.btn.btn-default.btn-circle
                 i.fa.fa-times
-        span.col-md-2.col-sm-4.col-xs-12.top-selection
+        span.col-md-2.col-sm-6.col-xs-6.top-selection
             button.btn(pdf-save-button="patientArchive" pdf-name="{{dpatient.ID}}__{{dpatient.Name.firstName}}_{{dpatient.Name.lastName}}.pdf")
                 i.fa.fa-print
             span.top-selection--inner  Print

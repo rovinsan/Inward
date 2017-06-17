@@ -35,7 +35,9 @@ angular.module('patient.archive.controller', []).controller('PatientArchiveContr
                     bottom: 20
                 }
             },
-        }
+        };
+
+        $scope.current = 75;
 
         initializePatientArchive();
     }

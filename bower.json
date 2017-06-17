@@ -31,13 +31,16 @@
     "AngularSlideables": "*",
     "v-accordion": "^1.6.0",
     "angular-save-html-to-pdf": "*",
-    "angular-chart.js": "^1.1.1"
+    "angular-chart.js": "^1.1.1",
+    "progressbar.js": "^1.0.1",
+    "angular-svg-round-progressbar": "0.4.8"
   },
   "devDependencies": {
     "bootstrap": "3.3.7"
   },
   "resolutions": {
     "bootstrap": "3.3.7",
-    "jquery": "^1.12"
+    "jquery": "^1.12",
+    "angular-svg-round-progressbar": "0.4.8"
   }
 }
