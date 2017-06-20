@@ -28,5 +28,11 @@ angular.module('doctor.controller', []).controller('DoctorController', [
         };
 
         initializeDoctor();
+
+        // $scope.setSelected = function() {
+        //     $scope.selected = this.cdoctor;
+        //     console.log($scope.selected);
+        //     console.log("sucess");
+        // };
     }
 ]);
