@@ -3,6 +3,7 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'mwl.calendar',
     'angular-svg-round-progressbar',
     'chart.js',
     'htmlToPdfSave',
@@ -26,9 +27,12 @@ angular.module('inwardApp', [
     'ward.controller',
     'ward.service',
     'startFrom.filter'
-]).run(['$rootScope', function($rootScope) {
+]).run(['$rootScope', '$route', function($rootScope, $route) {
     $rootScope.loggedinUser = '';
     $rootScope.goBack = function() {
         window.history.back();
+    };
+    $rootScope.refresh = function() {
+        $route.reload();
     };
 }]);
