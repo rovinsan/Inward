@@ -3,6 +3,11 @@
 'use strict';
 
 angular.module('inwardApp', [
+    'mwl.calendar',
+    'angular-svg-round-progressbar',
+    'chart.js',
+    'htmlToPdfSave',
+    'vAccordion',
     'ui.bootstrap.datetimepicker',
     'angularSlideables',
     'angular-loading-bar',
@@ -11,6 +16,7 @@ angular.module('inwardApp', [
     'appRoutes',
     'app.controller',
     'patient.controller',
+    'patient.archive.controller',
     'patient.service',
     'doctor.controller',
     'doctor.service',
@@ -19,10 +25,14 @@ angular.module('inwardApp', [
     'test.controller',
     'test.service',
     'ward.controller',
-    'ward.service'
-]).run(['$rootScope', function($rootScope) {
+    'ward.service',
+    'startFrom.filter'
+]).run(['$rootScope', '$route', function($rootScope, $route) {
     $rootScope.loggedinUser = '';
     $rootScope.goBack = function() {
         window.history.back();
+    };
+    $rootScope.refresh = function() {
+        $route.reload();
     };
 }]);

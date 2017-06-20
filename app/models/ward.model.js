@@ -6,33 +6,32 @@ const mongoose = require('mongoose');
 const Counter = mongoose.model('Counter');
 
 const wardSchema = mongoose.Schema({
-    bedNumber: {
+    wardNumber: {
         type: String,
         unique: true
     },
+    name: {
+        type: String,
+        required: true
+    },
     addedDate: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        required: true
     },
-    patient: {
-        ID: {
-            type: String,
-            default: 'null'
-        },
-        date: {
-            type: Date,
-            default: Date.now()
-        }
-    }
+    beds: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bed'
+    }]
 });
 
 wardSchema.pre('save', function(next) {
     let doc = this;
-    Counter.findByIdAndUpdate({ _id: 'wardBed' }, { $inc: { seq: 1 } }, function(error, counter) {
+    Counter.findByIdAndUpdate({ _id: 'ward' }, { $inc: { seq: 1 } }, function(error, counter) {
         if (error) {
             return next(error);
         }
-        doc.bedNumber = "WB-" + counter.seq;
+        doc.wardNumber = "WARD-" + counter.seq;
         next();
     });
 });

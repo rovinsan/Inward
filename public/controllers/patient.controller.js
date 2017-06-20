@@ -7,7 +7,8 @@ angular.module('patient.controller', []).controller('PatientController', [
     '$rootScope',
     '$http',
     'PatientService',
-    function($scope, $rootScope, $http, PatientService) {
+    'WardService',
+    function($scope, $rootScope, $http, PatientService, WardService) {
 
         $(function() {
 
@@ -82,14 +83,39 @@ angular.module('patient.controller', []).controller('PatientController', [
             });
         });
 
+        $scope.sortType = 'bht';
+        $scope.sortReverse = false;
+        $scope.searchPatient = '';
+
+        $scope.currentPage = 0;
+        $scope.pageSize = 20;
+        $scope.q = '';
+        $scope.paginationSize = [1, 5, 10, 15, 20];
+
         $scope.partialForm = 'null';
         $scope.cpatient = {};
+        $scope.dpatient = {};
+        $scope.titles = ["Master", "Mr.", "Miss.", "Mrs."];
 
-        function initializePatients() {
+        $scope.availableBeds = {};
+        $scope.availableWards = {};
+        $scope.availableBedsDisabled = true;
+
+        $scope.tableLoading = true;
+
+        function initializeDocument() {
             PatientService.getPatients().then((patients) => {
                 $scope.rpatients = patients;
             }, (err) => {
                 console.log(err);
+            }).finally(() => {
+                $scope.tableLoading = false;
+            });
+
+            WardService.getWards().then((wards) => {
+                $scope.availableWards = wards;
+            }, (err) => {
+                console.error(err);
             });
         }
 
@@ -110,6 +136,27 @@ angular.module('patient.controller', []).controller('PatientController', [
             });
         };
 
-        initializePatients();
+        $scope.getGreenBeds = function(wardNumber) {
+            WardService.getGreenBeds(wardNumber).then((greenBeds) => {
+                $scope.availableBeds = greenBeds;
+                $scope.availableBedsDisabled = false;
+            }, (err) => {
+                console.error(err);
+            });
+        };
+
+        $scope.numberOfPages = function() {
+            return Math.ceil($scope.rpatients.length / $scope.pageSize);
+        };
+
+        $scope.pagination = function(size) {
+            $scope.pageSize = parseInt(size);
+        };
+
+        $scope.clearAll = function() {
+            $scope.cpatient = {};
+        };
+
+        initializeDocument();
     }
 ]);

@@ -33,6 +33,31 @@ include doctor.add.jade
 
 
 
-        
-
-
+    //-
+    br
+    h2 Add Doctors
+    form(role="form", ng-submit="addDoctor(cdoctor)")
+        .form-group
+            input.form-control(type="text", placeholder="Name", ng-model="cdoctor.name")
+        .form-group
+            span Male
+            &nbsp; &nbsp; &nbsp;
+            input(type="radio", value="Male", ng-model="cdoctor.gender")
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            span Female
+            &nbsp; &nbsp; &nbsp;
+            input(type="radio", value="Female", ng-model="cdoctor.gender")
+        .from-group
+            input.form-control(type="text", placeholder="Address", ng-model="cdoctor.address")
+        &nbsp;
+        .form-group
+            input.form-control(type="number", placeholder="Phone", ng-model="cdoctor.phone")
+        .form-group
+            input.form-control(type="text", placeholder="Department", ng-model="cdoctor.department")
+        .form-group
+            input.form-control(type="text", placeholder="Designation", ng-model="cdoctor.designation")
+        button.btn.btn-default(type="submit") Add
+.col-md-10.col-md-offset-1.col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1
+    mwl-calendar(view="calendarView", view-date="viewDate", events="events", view-title="calendarTitle", on-event-click="eventClicked(calendarEvent)", 
+        on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd",cell-is-open="true")

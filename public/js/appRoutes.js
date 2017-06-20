@@ -17,6 +17,14 @@ angular.module('appRoutes', ['angular-loading-bar']).config([
                 templateUrl: 'template/patient/patient.index',
                 controller: 'PatientController'
             })
+            .when('/patient/archive/:bht', {
+                templateUrl: 'template/patient/patient.archive',
+                controller: 'PatientArchiveController'
+            })
+            .when('/patient/archive/:bht/pdf', {
+                templateUrl: 'template/patient/patient.archive.pdf',
+                controller: 'PatientArchiveController'
+            })
             .when('/doctor', {
                 templateUrl: 'template/doctor/doctor.index',
                 controller: 'DoctorController'
