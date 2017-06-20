@@ -43,6 +43,7 @@
     "resolutions": {
         "bootstrap": "3.3.7",
         "jquery": "1.12",
-        "angular-svg-round-progressbar": "0.4.8"
+        "angular-svg-round-progressbar": "0.4.8",
+        "angular": "1.5.x"
     }
 }
