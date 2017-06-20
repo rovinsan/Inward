@@ -3,6 +3,10 @@
         button.btn.btn-default(ng-click="archivePDF=true")
             i.fa.fa-file-pdf-o
         span.top-selection--inner  PDF
+    span.col-md-2.col-sm-4.col-xs-12.top-selection
+        button.btn.btn-default(ng-click="$parent.refresh();")
+            i.fa.fa-refresh
+        span.top-selection--inner  Refresh
 
 include patient.archive.pdf.jade
 
@@ -32,8 +36,8 @@ include patient.archive.pdf.jade
                 small.col-md-12.col-sm-12.col-xs-12.padding
                     b Admitted : 
                     | &nbsp; {{dpatient.Inward.admittedDateTime | date}}
-        //- Progress Bar Percentage Graph
-        .col-md-7.col-sm-12.col-xs-12.archive-shadow--0(style="padding-left: 40px !important;")
+        .col-md-7.col-sm-12.col-xs-12.loader.archive-shadow--0(ng-show="loading")
+        .col-md-7.col-sm-12.col-xs-12.archive-shadow--0(style="padding-left: 40px !important;", ng-class="loading ? 'div-loading' : 'div-loaded'")
             .row.col-md-12.col-sm-12.col-xs-12
                 .col-md-1.col-sm-2.col-xs-2.no_padding
                     round-progress(max="100", current="current", color="#7E57C2", bgcolor="#eaeaea", radius="100", stroke="20", clockwise="true", responsive="true", duration="800", animation="easeInOutQuart", animation-delay="0")
