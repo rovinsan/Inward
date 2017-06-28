@@ -5,9 +5,10 @@
                 i.fa.fa-times
         .step-progress.form-group.col-md-12.col-sm-12.col-xs-12.padding-top--10px
             .step-slider.col-md-12.col-sm-12.col-xs-12
-                .step-slider-item._30(data-id="personal")
-                .step-slider-item._30(data-id="responsible")
-                .step-slider-item._30(data-id="wardAdmission")
+                .step-slider-item._25(data-id="personal")
+                .step-slider-item._25(data-id="disease")
+                .step-slider-item._25(data-id="responsible")
+                .step-slider-item._25(data-id="wardAdmission")
             .step-content.col-md-12.col-sm-12.col-xs-12
                 .step-content-body#personal
                     h5.col-md-12.col-sm-12.col-xs-12.content-heading 
@@ -111,6 +112,19 @@
                             label.content-label 
                                 | Office Number
                             input.form-control.input-sm(type="text", placeholder="Office", ng-model="cpatient.ContactInfo.Phone.Office")
+                .step-content-body.out#disease
+                    h5.col-md-12.col-sm-12.col-xs-12.content-heading 
+                        | Disease
+                    .form-group.col-md-6.col-sm-12.col-xs-12
+                        label.content-label 
+                            | Disease Selection
+                            span.red *
+                        select.form-control.input-sm(placeholder="Disease Selection", ng-model="cpatient.Inward.disease.diseaseType", required)
+                            option(ng-repeat="d in diseaseList", value="{{d}}") {{d}}
+                    .form-group.col-md-6.col-sm-12.col-xs-12
+                        label.content-label 
+                            | Explanation
+                        input.form-control.input-sm(type="text", placeholder="Explanation", ng-model="cpatient.Inward.disease.diseaseType.explanation")
                 .step-content-body.out#responsible
                     h5.col-md-12.col-sm-12.col-xs-12.content-heading 
                         | Guardian Details

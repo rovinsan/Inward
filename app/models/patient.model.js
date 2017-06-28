@@ -90,6 +90,15 @@ const patientSchema = mongoose.Schema({
             type: Date,
             default: Date.now()
         },
+        disease: {
+            diseaseType: {
+                type: String,
+                required: true
+            },
+            explanation: {
+                type: String
+            }
+        },
         history: [{
             bhtNumber: {
                 type: String
@@ -102,7 +111,16 @@ const patientSchema = mongoose.Schema({
             },
             admittedDateTime: {
                 type: Date
-            }
+            },
+            disease: {
+                diseaseType: {
+                    type: String,
+                    required: true
+                },
+                explanation: {
+                    type: String
+                }
+            },
         }]
     },
     ResponsibleParty: {
@@ -179,11 +197,16 @@ patientSchema.pre('save', function(next) {
                 return next(error);
             }
             doc.Inward.bhtNumber = "BHT-" + bhtCounter.seq;
+            let d = {
+                "diseaseType": doc.Inward.disease.diseaseType,
+                "explanation": doc.Inward.disease.explanation
+            };
             let h = {
                 "bhtNumber": doc.Inward.bhtNumber,
                 "wardNumber": doc.Inward.wardNumber,
                 "bedNumber": doc.Inward.bedNumber,
-                "admittedDateTime": doc.Inward.admittedDateTime
+                "admittedDateTime": doc.Inward.admittedDateTime,
+                "disease": d
             };
             doc.Inward.history.push(h);
             next();

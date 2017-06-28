@@ -7,7 +7,7 @@
             i.fa.fa-plus
         span.top-selection--inner  Patient
     span.col-md-2.col-sm-4.col-xs-12.top-selection
-        button.btn.btn-default.btn-circle.btn-green(ng-click="", name="transferPatientForm")
+        button.btn.btn-default.btn-circle.btn-green(ng-click="partialForm='addTransferForm'", name="addTransferForm")
             i.fa.fa-plus
         span.top-selection--inner Transfer Patient
     span.col-md-2.col-sm-4.col-xs-12.no_padding.margin-bottom--10px
@@ -25,6 +25,7 @@
                 span.btn.fa.fa-search
 
 include patient.add.jade
+include patient.transfer.jade
 
 .col-md-12.col-sm-12.col-xs-12.padding--top--10px.padding-bottom--10px.padding-top--10px(ng-show="tableLoading")
   include ./../shared/table-laoding.jade  

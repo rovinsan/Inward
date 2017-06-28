@@ -8,7 +8,8 @@ angular.module('patient.controller', []).controller('PatientController', [
     '$http',
     'PatientService',
     'WardService',
-    function($scope, $rootScope, $http, PatientService, WardService) {
+    '$window',
+    function($scope, $rootScope, $http, PatientService, WardService, $window) {
 
         $(function() {
 
@@ -24,6 +25,27 @@ angular.module('patient.controller', []).controller('PatientController', [
                 $('div[name="addPatientForm"]').removeClass('margin-top--10px');
                 $('div[name="addPatientForm"]').removeClass('margin-bottom--30px');
                 $('div[name="addPatientForm"]').removeClass('card');
+
+                for (var i = step; i > 0; i--) {
+                    let instance = $('.step-content .step-content-foot label[name="prev"]');
+                    $(stepItem[step]).removeClass('active');
+                    if (step == (stepItem.length - 1)) {
+                        instance.siblings('button[name="finish"]').addClass('out'); //Submit Button Hide
+                        instance.siblings('label[name="next"]').removeClass('out'); //Next Button Display
+                        $(stepItem[step - 1]).removeClass('active');
+                        // instance.siblings('button[name="finish"]').addClass('out');
+                    }
+                    $('.step-content-body').addClass('out'); //Hide second Form
+                    $('#' + stepItem[step - 1].dataset.id).removeClass('out'); //Display First Form
+                    if ((step - 1) == 0) {
+                        $('.step-content .step-content-foot label[name="prev"]').addClass('out');
+                        $(stepItem[step - 1]).removeClass('active');
+                    }
+                    if (step <= 0) {
+                        return;
+                    }
+                    step--;
+                }
             });
 
             let step = 0;
@@ -47,6 +69,7 @@ angular.module('patient.controller', []).controller('PatientController', [
                 $('.step-content-body').addClass('out'); //Hide first Form
                 $('#' + stepItem[step + 1].dataset.id).removeClass('out'); //Display second Form
                 $('.step-content .step-content-foot label[name="prev"]').removeClass('out'); //Show Previous Button
+                $window.scrollTo(0, 0);
                 step++;
             });
 
@@ -58,6 +81,7 @@ angular.module('patient.controller', []).controller('PatientController', [
                 $(stepItem[stepItem.length - 1]).addClass('active');
                 $('.step-content-body').addClass('out');
                 $('#stepLast').removeClass('out');
+                $window.scrollTo(0, 0);
             });
 
             // Step Previous
@@ -80,6 +104,7 @@ angular.module('patient.controller', []).controller('PatientController', [
                     return;
                 }
                 step--;
+                $window.scrollTo(0, 0);
             });
         });
 
@@ -95,7 +120,10 @@ angular.module('patient.controller', []).controller('PatientController', [
         $scope.partialForm = 'null';
         $scope.cpatient = {};
         $scope.dpatient = {};
+        $scope.tpatient = {};
         $scope.titles = ["Master", "Mr.", "Miss.", "Mrs."];
+
+        $scope.diseaseList = ["Dengue", "Maleriya", "Fever", "HIV", "AIDS", "Cancer"]
 
         $scope.availableBeds = {};
         $scope.availableWards = {};
@@ -145,6 +173,10 @@ angular.module('patient.controller', []).controller('PatientController', [
             });
         };
 
+        $scope.transferPatient = function() {
+
+        };
+
         $scope.numberOfPages = function() {
             return Math.ceil($scope.rpatients.length / $scope.pageSize);
         };
@@ -155,6 +187,19 @@ angular.module('patient.controller', []).controller('PatientController', [
 
         $scope.clearAll = function() {
             $scope.cpatient = {};
+            $scope.tpatient = {};
+        };
+
+        //Tab Functions
+
+        $scope.tab = 1;
+
+        $scope.tabSet = function(newTab) {
+            $scope.tab = newTab;
+        };
+
+        $scope.tabIsSet = function(tabNumber) {
+            return ($scope.tab === tabNumber);
         };
 
         initializeDocument();

@@ -378,7 +378,7 @@ span.montserrat {
     height: 2px;
     position: relative;
     float: left;
-    background-color: #9e9e9e;
+    background-color: #e1e1e1;
 }
 
 .step-progress .step-slider .step-slider-item._50 {
@@ -386,7 +386,7 @@ span.montserrat {
     height: 2px;
     position: relative;
     float: left;
-    background-color: #9e9e9e;
+    background-color: #e1e1e1;
 }
 
 .step-progress .step-slider .step-slider-item._30 {
@@ -982,4 +982,13 @@ i.fa.fa-heart.bed.color--green {
 .pdf-span-sm {
     padding: 0px !important;
     font-size: 12px !important;
+}
+
+.activeTab {
+    background-color: #e1e1e1 !important;
+}
+
+.nav-tabs>li {
+    padding: 10px !important;
+    cursor: pointer !important;
 }
