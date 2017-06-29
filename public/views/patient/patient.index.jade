@@ -10,6 +10,10 @@
         button.btn.btn-default.btn-circle.btn-green(ng-click="partialForm='addTransferForm'", name="addTransferForm")
             i.fa.fa-plus
         span.top-selection--inner Transfer Patient
+    span.col-md-2.col-sm-4.col-xs-12.top-selection(style="padding: 0px !important; margin-right:20px !important;")
+        button.btn.btn-default.btn-circle.btn-green(ng-click="partialForm='addDischargeForm'", name="addDischargeForm")
+            i.fa.fa-plus
+        span.top-selection--inner Discharge Patient
     span.col-md-2.col-sm-4.col-xs-12.no_padding.margin-bottom--10px
         div.btn-group(style="width: 100%;")
             button.btn.btn-default.btn-sm.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;")
@@ -23,15 +27,21 @@
             input.form-control.input-sm(type="text" placeholder="Search.." ng-model="searchPatient")
             span.input-group-btn
                 span.btn.fa.fa-search
+    span.col-md-2.col-sm-4.col-xs-12.top-selection
+        button.btn.btn-default.btn-circle.btn-green(ng-click="partialForm='addAllergyForm'", name="addAllergyForm")
+            i.fa.fa-plus
+        span.top-selection--inner Allergy
 
 include patient.add.jade
 include patient.transfer.jade
+include patient.discharge.jade
+include patient.allergy.jade
 
 .col-md-12.col-sm-12.col-xs-12.padding--top--10px.padding-bottom--10px.padding-top--10px(ng-show="tableLoading")
   include ./../shared/table-laoding.jade  
 .col-md-12.col-sm-12.col-xs-12.padding--top--10px.padding-bottom--10px.padding-top--10px(ng-class="tableLoading ? 'table-loading' : 'table-loaded'")
     .col-md-12.col-sm-12.col-xs-12.no-padding-left(ng-if="rpatients.length <= 0")
-        h4.montserrat No Patients Data Available                
+        h4.montserrat None Available                
     .col-md-12.col-sm-12.col-xs-12.no_padding(ng-if="rpatients.length>0")
         .table-responsive
             table.table.table-striped.table-hover
@@ -54,7 +64,7 @@ include patient.transfer.jade
                             span.fa.fa-caret-up(ng-show="sortType == 'admittedDate' && sortReverse")
                         th
                 tbody
-                    tr.pointer(ng-repeat-start="patient in rpatients | orderBy:sortBy:sortReverse | filter:searchPatient | StartFromFilter:currentPage*pageSize | limitTo:pageSize ", ng-init="patient.expanded = false", ng-click="patient.expanded = !patient.expanded")
+                    tr.pointer(ng-repeat-start="patient in rpatients | orderBy:sortBy:sortReverse | filter:searchPatient | StartFromFilter:currentPage*pageSize | limitTo:pageSize ", ng-init="patient.expanded = false", ng-click="patient.expanded = !patient.expanded", ng-class="(patient.discharged == 'True') ? 'discharged' : ''")
                         td {{patient.Inward.bhtNumber}}
                         td {{patient.ID}}
                         td {{patient.Name.firstName}}

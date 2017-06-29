@@ -108,6 +108,16 @@ angular.module('patient.controller', []).controller('PatientController', [
             });
         });
 
+        /**
+         * 
+         * Create Patient : cpatient
+         * Detail Patient : dpatient
+         * Discharge Patient : dcpatient
+         * Read Patient : rpatient
+         * Transfer Patient : tpatient
+         * 
+         */
+
         $scope.sortType = 'bht';
         $scope.sortReverse = false;
         $scope.searchPatient = '';
@@ -121,6 +131,8 @@ angular.module('patient.controller', []).controller('PatientController', [
         $scope.cpatient = {};
         $scope.dpatient = {};
         $scope.tpatient = {};
+        $scope.dcpatient = {};
+        $scope.allergy = {};
         $scope.titles = ["Master", "Mr.", "Miss.", "Mrs."];
 
         $scope.diseaseList = ["Dengue", "Maleriya", "Fever", "HIV", "AIDS", "Cancer"]
@@ -128,6 +140,7 @@ angular.module('patient.controller', []).controller('PatientController', [
         $scope.availableBeds = {};
         $scope.availableWards = {};
         $scope.availableBedsDisabled = true;
+        $scope.selected = { transfer: '', discharge: '', allergy: '' };
 
         $scope.tableLoading = true;
 
@@ -173,10 +186,6 @@ angular.module('patient.controller', []).controller('PatientController', [
             });
         };
 
-        $scope.transferPatient = function() {
-
-        };
-
         $scope.numberOfPages = function() {
             return Math.ceil($scope.rpatients.length / $scope.pageSize);
         };
@@ -188,19 +197,56 @@ angular.module('patient.controller', []).controller('PatientController', [
         $scope.clearAll = function() {
             $scope.cpatient = {};
             $scope.tpatient = {};
+            $scope.selected = { transfer: '', discharge: '', allergy: '' };
+        };
+
+        $scope.iTransferPatient = function() {
+            $scope.tpatient.patientID = $scope.selected.transfer.ID;
+            PatientService.iTransferPatient($scope.tpatient).then(results => {
+                $rootScope.growl("success", 'Patient ' + $scope.tpatient.patientID + ' Transfered Successfully');
+                $scope.clearAll();
+            }, err => {
+                console.log(err);
+                $rootScope.growl("error", 'Something went wrong');
+            });
+        };
+
+        $scope.eTransferPatient = function() {
+            $scope.tpatient.patientID = $scope.selected.transfer.ID;
+            PatientService.eTransferPatient($scope.tpatient).then(results => {
+                $rootScope.growl("success", 'Patient ' + $scope.tpatient.patientID + ' Transfered Successfully');
+                $scope.clearAll();
+            }, err => {
+                console.log(err);
+                $rootScope.growl("error", 'Something went wrong');
+            });
+        };
+
+        $scope.dischargePatient = function() {
+            $scope.dcpatient.patientID = $scope.selected.discharge.ID;
+            PatientService.dischargePatient($scope.dcpatient).then(results => {
+                $rootScope.growl("success", 'Requested for Patient ' + $scope.dcpatient.patientID + ' Discharge');
+                $scope.clearAll();
+            }, (err) => {
+                console.log(err);
+                $rootScope.growl("error", 'Something went wrong');
+            });
+        };
+
+        $scope.addAllergy = function() {
+            $scope.allergy.patientID = $scope.selected.allergy.ID;
+            PatientService.addAllergy($scope.allergy).then(results => {
+                $rootScope.growl("success", 'Allergy added to Patient ' + '');
+            }, err => {
+                console.error(err);
+                $rootScope.growl("error", 'Something went wrong');
+            });
         };
 
         //Tab Functions
-
         $scope.tab = 1;
-
-        $scope.tabSet = function(newTab) {
-            $scope.tab = newTab;
-        };
-
-        $scope.tabIsSet = function(tabNumber) {
-            return ($scope.tab === tabNumber);
-        };
+        $scope.tabSet = function(newTab) { $scope.tab = newTab; };
+        $scope.tabIsSet = function(tabNumber) { return ($scope.tab === tabNumber); };
 
         initializeDocument();
     }

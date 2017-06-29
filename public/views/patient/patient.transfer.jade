@@ -1,7 +1,7 @@
-.col-md-12.col-sm-12.col-xs-12.margin-bottom--30px.card(name="addTransferForm")
+.col-md-12.col-sm-12.col-xs-12.margin-bottom--10px(name="addTransferForm")
     div.col-md-12.col-sm-12.col-xs-12(ng-show="partialForm=='addTransferForm'", name="addTransferForm")
-        span.col-md-12.col-sm-12.col-xs-12.text-align--right.padding-top--10px.form-group(ng-click="partialForm='null';clearAll();", name="closeTransferForm")
-            label.btn.btn-default.btn-circle
+        span.col-md-12.col-sm-12.col-xs-12.text-align--right.margin-bottom--10px(ng-click="partialForm='null';clearAll();", name="closeTransferForm")
+            label.btn.btn-default.btn-circle.close-btn
                 i.fa.fa-times
         ul.nav.nav-tabs.form-group.col-md-12.col-sm-12.col-xs-12
             li(ng-class="tabIsSet(1) ? 'activeTab' : 'tab'")
@@ -16,8 +16,13 @@
                         label.content-label 
                             | Patient ID
                             span.red *
-                        select.form-control.input-sm(ng-model="tpatient.patientID", required)
-                            option(ng-repeat="t in titles") {{t}}
+                        ui-select(ng-model="selected.transfer", ng-required="true", theme="bootstrap" ng-disabled="archiveController")
+                            ui-select-match(placeholder="Patient ID")
+                                span(ng-bind="$select.selected.ID")
+                            ui-select-choices(repeat="item in (rpatients | filter: $select.search) track by item.ID")
+                                span(ng-bind="item.ID")
+                            ui-select-no-choice
+                                | We couldn't find one
                 h5.col-md-12.col-sm-12.col-xs-12.content-heading 
                         | Transfer Ward Selection
                     .form-group.col-md-6.col-sm-12.col-xs-12
@@ -67,8 +72,13 @@
                         label.content-label 
                             | Patient ID
                             span.red *
-                        select.form-control.input-sm(ng-model="tpatient.patientID", required)
-                            option(ng-repeat="t in titles") {{t}}
+                        ui-select(ng-model="selected.transfer", ng-required="true", theme="bootstrap" ng-disabled="archiveController")
+                            ui-select-match(placeholder="Patient ID")
+                                span(ng-bind="$select.selected.ID")
+                            ui-select-choices(repeat="item in (rpatients | filter: $select.search) track by item.ID")
+                                span(ng-bind="item.ID")
+                            ui-select-no-choice
+                                | We couldn't find one
                 h5.col-md-12.col-sm-12.col-xs-12.content-heading 
                         | Transfer
                     .form-group.col-md-6.col-sm-12.col-xs-12
