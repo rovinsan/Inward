@@ -2,7 +2,7 @@
             form(role="form", ng-submit="addDoctor(cdoctor)", ng-show="partialForm=='addDoctorsForm'")
                 .form-group.col-md-12
                     .form.group.col-md-2
-                        h5.montserrat Title
+                        h5.montserrat Title 
                         div.btn-group
                             label.no-padding--left.width--100
                                 input(type="radio", ng-model="cdoctor.Name.Title", value="Mr")
@@ -20,10 +20,10 @@
                             //-     span.montserrat.light.size-12  Mrs.
                     .form-group.col-md-4
                         div.form--box
-                            input.form-control(type="text", placeholder="First Name", ng-model="cdoctor.Name.Firstname")
+                            input.form-control.input-sm(type="text", placeholder="First Name", ng-model="cdoctor.Name.Firstname", required)
                     .form-group.col-md-4
                         div.form--box
-                            input.form-control(type="text", placeholder="Last Name", ng-model="cdoctor.Name.Lastname")
+                            input.form-control.input-sm(type="text", placeholder="Last Name", ng-model="cdoctor.Name.Lastname", required)
                 .form-group.col-md-12
                     .form.group.col-md-2
                         h5.montserrat Health Care Professional
@@ -118,20 +118,22 @@
                     .form.group.col-md-6
                         h5.montserrat Billing Address
                         div.form-box
-                            input.form-control(type="text", ng-model="cdoctor.ContactInfo.Address.AddressLine", placeholder="Address")
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Address.AddressLine", placeholder="Address" , required)
                     .form.group.col-md-4
                         div.grp--padding
-                            input.form-control(type="text", ng-model="cdoctor.ContactInfo.Address.City", placeholder="City")
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Address.City", placeholder="City", required)
                     .form-group.col-md-2
                         div.grp--padding
-                            input.form-control(type="text", ng-model="cdoctor.ContactInfo.Address.Zip", placeholder="Zip")
-                    .form-group.col-md-1
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Address.Zip", placeholder="Zip")
                     .form-group.col-md-4
                         div.form-contact-box
-                            input.form-control(type="text", ng-model="cdoctor.ContactInfo.Address.State", placeholder="State")
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Address.State", placeholder="State" ,required)
+                     .form-group.col-md-4
+                        div.form-contact-box
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Address.State", placeholder="State" ,required)
                     .form-group.col-md-4
                         div.form-contact-box
-                            input.form-control(type="text", ng-model="cdoctor.ContactInfo.Phone.Mobile", placeholder="Phone")
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Phone.Mobile", placeholder="Phone" ,required)
                 .form-group.col-md-12
                     .form.group.col-md-2
                         h5.montserrat General
@@ -144,20 +146,21 @@
                                 span.montserrat.light.size-12  Female
                     .form-group.col-md-2
                         div.grp--padding--general
-                            input.form-control(type="text", ng-model="cdoctor.Age", placeholder="Age")
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.Age", placeholder="Age" ,required)
                     .form-group.col-md-2
                         div.grp--padding--general
-                            input.form-control(type="text", ng-model="cdoctor.Status", placeholder="Status")
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.Status", placeholder="Status")
                     .form-group.col-md-3
                         div.grp--padding--general
-                            input.form-control(type="text", ng-model="cdoctor.Department", placeholder="Department")
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.Department", placeholder="Department")
                     .form-group.col-md-3
                         div.grp--padding--general
-                            input.form-control(type="text", ng-model="cdoctor.Designation", placeholder="Designation")
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.Designation", placeholder="Designation")
                 .form-group.col-md-12
                     .form-group-add
                         button.btn.btn-add-doctor(type="submit") Add 
-                    .form-group-add
-                        button.btn.btn-Cancel(ng-click="partialForm='null'")
-                            i.fa.fa-times
+                        a.btn(ng-click="partialForm='null'") Cancel
+                //- .form-group
+                //-     button.btn.btn-Cancel(ng-click="partialForm='null'")
+                //-         i.fa.fa-times
                             

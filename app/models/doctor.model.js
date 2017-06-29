@@ -1,7 +1,12 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const Counter = mongoose.model('Counter');
 const DoctorSchema = mongoose.Schema({
+    ID: {
+        type: String,
+        unique: true
+    },
     Name: {
         Title: {
             type: String
@@ -63,4 +68,16 @@ const DoctorSchema = mongoose.Schema({
 
 
 });
+
+DoctorSchema.pre('save', function(next) {
+    let doc = this;
+    Counter.findByIdAndUpdate({ _id: 'doctor' }, { $inc: { seq: 1 } }, function(error, counter) {
+        if (error) {
+            return next(error);
+        }
+        doc.ID = "D-0" + counter.seq;
+        next();
+    });
+});
+
 module.exports = mongoose.model('Doctor', DoctorSchema);
