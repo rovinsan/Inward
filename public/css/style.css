@@ -378,7 +378,7 @@ span.montserrat {
     height: 2px;
     position: relative;
     float: left;
-    background-color: #9e9e9e;
+    background-color: #e1e1e1;
 }
 
 .step-progress .step-slider .step-slider-item._50 {
@@ -386,7 +386,7 @@ span.montserrat {
     height: 2px;
     position: relative;
     float: left;
-    background-color: #9e9e9e;
+    background-color: #e1e1e1;
 }
 
 .step-progress .step-slider .step-slider-item._30 {
@@ -644,7 +644,9 @@ span.radio-span {
     font-weight: normal !important;
 }
 
-div[name="addPatientForm"] {
+div[name="addPatientForm"],
+div[name="addTransferForm"],
+div[name="addDischargeForm"] {
     transition: 0.5s ease;
     -webkit-transition: 0.5s ease;
     -moz-transition: 0.5s ease;
@@ -984,110 +986,59 @@ i.fa.fa-heart.bed.color--green {
     font-size: 12px !important;
 }
 
-
-/*============================= doctor.jade =====================*/
-
-.add-form--box {
-    border-radius: 10px;
-    border: solid #e8e5e5;
+.activeTab {
+    background-color: #e1e1e1 !important;
 }
 
-.btn-width {
-    width: 150px !important;
+.nav-tabs>li {
+    padding: 10px !important;
+    cursor: pointer !important;
 }
 
-.btn-default-Add {
-    color: #f5f5f5;
-    background-color: #337ab7;
-    width: 80px;
+.datetimepicker {
+    width: 100% !important;
 }
 
-.btn-Cancel {
-    color: white;
-    background-color: #c34647;
-    width: 80px;
+.angucomplete-holder>input,
+.angucomplete-holder {
+    width: 100% !important;
 }
 
-.montserrat {
-    font-family: 'Montserrat', sans-serif !important;
-    width: 200px;
+.angucomplete-dropdown {
+    border-color: #ececec;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    width: 100% !important;
+    padding: 6px;
+    cursor: pointer;
+    z-index: 9999;
+    position: absolute;
+    top: 35px;
+    margin-top: -6px;
+    background-color: #ffffff;
 }
 
-.grp--padding {
-    padding-top: 35px;
+.ui-select-bootstrap .ui-select-match-text span {
+    position: relative !important;
+    top: 4px;
 }
 
-.form--box {
-    padding-top: 35px;
+.ui-select-bootstrap .ui-select-match-text {
+    position: relative !important;
+    top: -5px;
 }
 
-.grp--padding--2 {
-    padding-top: 36px;
+.ui-select-bootstrap>.ui-select-match>.btn {
+    height: 30px !important;
 }
 
-.form-control-2 {
-    display: block;
-    width: 100%;
-    height: 25px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.close-btn {
+    width: 100% !important;
+    border: none !important;
+    background: rgba(225, 225, 225, 0.5) !important;
 }
 
-.form-contact-box {
-    padding-top: 1px;
-}
-
-.grp--padding--general {
-    padding-top: 38px;
-}
-
-.col-md-8 {
-    border-width: 2px;
-    border-color: #e8e5e5;
-}
-
-.padding--top--20px {
-    padding-top: 20px;
-}
-
-.table-responsive-shedule {
-    padding-top: 20px;
-}
-
-.shedule {
-    text-align: center;
-}
-
-.form-group-add {
-    padding-left: 550px;
-    padding-top: 10px;
-}
-
-.btn-add-doctor:hover {
-    background-color: limegreen;
-    transition: 0.5s;
-    color: white;
-    font-weight: bold
-}
-
-.fomr-group-Cancel {
-    padding-left: 550px;
-}
-
-.btn-Cancel {
-    width: 50px;
-    background-color: rgba(153, 153, 153, 0.48);
-}
-
-.btn-Cancel:hover {
-    background-color: darkred;
-    transition: 0.2s;
-    color: white;
-    font-weight: bold
+.discharged {
+    background-color: #FFCCBC !important;
 }
