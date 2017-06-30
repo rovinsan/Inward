@@ -10,15 +10,20 @@
                 label.content-label 
                     | Patient
                     span.red *
-                select.form-control.input-sm(ng-model="schedule.patientID", required)
+                select.form-control.input-sm(ng-model="schedule.patientID", ng-change="getDisease();" required)
                     option(ng-repeat="patient in rpatient" value="{{patient.ID}}") {{patient.Name.firstName}}
+            .form-group.col-md-3.col-sm-12.col-xs-12
+                label.content-label 
+                    | Disease
+                    span.red *
+                input.form-control.input-sm(ng-model="podiyanodaDisease", ng-disabled="true")
             .form-group.col-md-3.col-sm-12.col-xs-12
                 label.content-label 
                     | Doctor
                     span.red *
                 select.form-control.input-sm(ng-model="schedule.doctorID", required)
                     option(ng-repeat="doctor in rdoctors" value="{{doctor.ID}}") {{doctor.Name.Firstname}} 
-            .form-group.col-md-3.col-sm-12.col-xs-12
+            .form-group.col-md-5.col-sm-12.col-xs-12
                 label.content-label 
                     | Date & Time
                     span.red *

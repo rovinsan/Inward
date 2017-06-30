@@ -10,23 +10,23 @@
         button.btn.btn-default.btn-circle.btn-green(ng-click="partialForm='addScheduleForm'", name="addScheduleForm")
             i.fa.fa-plus
         span.top-selection--inner Schedule
-    //- span.col-md-2.col-sm-4.col-xs-12.top-selection
-    //-     button.btn.btn-default.btn-circle.btn-green(ng-click="partialForm='scheduleDetails'", name="scheduleDetails")
-    //-         i.fa.fa-plus
-    //-     span.top-selection--inner Calender
+    span.col-md-2.col-md-offset-6
+            button.btn.btn-default(ng-click="$parent.refresh();")
+                i.fa.fa-refresh
+            span.top-selection--inner  Refresh
 
 include doctor.add.jade
 include doctor.schedule.jade
 
-.col-md-12.padding--top--20px
+.col-md-8.padding--top--20px
      .table-responsive
         table.table.table-hover.table-striped
             thead.thead-default
                 tr
-                    td #
-                    td Name
-                    td Professional
-                    td
+                    th #
+                    th Name
+                    th Professional
+                    th
             tbody
                 tr(ng-repeat-start="doctor in rdoctors", ng-init="doctor.expanded = false" , ng-click="doctor.expanded = !doctor.expanded")
                     td {{$index + 1}}
@@ -35,8 +35,23 @@ include doctor.schedule.jade
                     td
                         small(ng-bind="doctor.expanded ? 'Close' : 'View'")
                 tr.no_hover(ng-if="doctor.expanded" ng-repeat-end)
-                        td.padding-top--20px(colspan="4")
+                        td.padding-top--20px(colspan="4" style="border:2px solid gold; border-radius:2px;")
                             include doctor.info.jade
+.col-md-6.padding--top--20px
+     .table-responsive
+        table.table.table-hover.table-striped
+            thead.thead-default
+                tr
+                    th Patient
+                    th Date & Time
+                    th Doctor
+                    th
+            tbody
+                tr(ng-repeat-satrt="schedule in schedule")
+                    td {{schedule.Patient.Name.Firstname}}
+                    td {{schedule.startsAt}}
+                    td {{schedule.doctor.Name.Firstname}}
+                    
 
 .col-md-10.col-md-offset-1.col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1
     mwl-calendar(view="calendarView", view-date="viewDate", events="events",cell-is-open="true")

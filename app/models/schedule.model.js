@@ -1,7 +1,10 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const DoctorModel = mongoose.model('Doctor');
+const PatientModel = mongoose.model('Patient')
 const Counter = mongoose.model('Counter');
+
 
 const scheduleSchema = mongoose.Schema({
     ID: {
@@ -28,7 +31,7 @@ const scheduleSchema = mongoose.Schema({
         required: true
     },
     startsAt: {
-        type: Date,
+        type: Date
     },
     color: {
         primary: {
@@ -51,12 +54,23 @@ scheduleSchema.pre('save', function(next) {
         if (error) {
             return next(error);
         }
-        doc.ID = "SC-" + counter.seq;
-        doc.title = doc.patientID + ' Appoints ' + doc.doctorID;
-        doc.startsAt = new Date(doc.date);
-        doc.color.primary = '#e3bc08';
-        doc.color.secondary = '#fdf1ba';
-        next();
+        PatientModel.findOne({ 'ID': doc.patientID }, function(error, patient) {
+            if (error) {
+                return next(error);
+            }
+            DoctorModel.findOne({ 'ID': doc.doctorID }, function(error, doctor) {
+                if (error) {
+                    return next(error);
+                }
+                doc.title = patient.Name.firstName + ' ' + patient.Name.lastName + ' Appoints ' + doctor.Name.Firstname;
+                doc.ID = "SC-" + counter.seq;
+                // doc.title = doc.patientID + ' Appoints ' + doc.doctorID;
+                doc.startsAt = new Date(doc.date);
+                doc.color.primary = '#e3bc08';
+                doc.color.secondary = '#fdf1ba';
+                next();
+            });
+        });
     });
 });
 

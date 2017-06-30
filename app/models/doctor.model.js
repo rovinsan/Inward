@@ -9,41 +9,55 @@ const DoctorSchema = mongoose.Schema({
     },
     Name: {
         Title: {
-            type: String
+            type: String,
+            required: true
         },
         Firstname: {
-            type: String
+            type: String,
+            required: true
         },
         Lastname: {
-            type: String
+            type: String,
+            required: true
         }
     },
     HealthCare: {
         Type: {
-            type: String
+            type: String,
+            required: true
         },
         SpecialType: {
-            type: String
+            type: String,
+            required: true
         }
     },
     ContactInfo: {
         Address: {
             AddressLine: {
-                type: String
+                type: String,
+                required: true
             },
             City: {
-                type: String
+                type: String,
+                required: true
             },
             State: {
-                type: String
+                type: String,
+                required: true
             },
             Zip: {
-                type: Number
+                type: Number,
+                required: true
+            },
+            country: {
+                type: String,
+                required: true
             }
         },
         Phone: {
             Mobile: {
                 type: String,
+                required: true,
                 validator: (v) => {
                     return /d{10}/.test(v);
                 }
@@ -51,19 +65,28 @@ const DoctorSchema = mongoose.Schema({
         }
     },
     Age: {
-        type: String
+        type: Number,
+        required: true
     },
     Status: {
-        type: String
+        type: String,
+        required: true
     },
     Gender: {
-        type: String
+        type: String,
+        required: true
     },
     Department: {
-        type: String
+        type: String,
+        required: true
     },
     Designation: {
-        type: String
+        type: String,
+        required: true
+    },
+    NIC: {
+        type: String,
+        required: true
     }
 
 

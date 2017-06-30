@@ -67,7 +67,7 @@
                         label.no-padding--left.width--100
                             div.grp--padding--type
                                 div.form-box
-                                    input.form-control-2(type="text", ng-model="cdoctor.HealthCare.Type", placeholder="Others")
+                                    input.form-control-2(type="text", ng-model="cdoctor.HealthCare.Type", placeholder="Others", required)
                 .form-group.col-md-12
                     .form.group.col-md-3
                         h5.montserrat Specialty Type
@@ -113,7 +113,7 @@
                                     span.montserrat.light.size-12  Othopedics
                                 label.no-padding--left.width--100
                                     div.form-box
-                                        input.form-control-2(type="text", ng-model="cdoctor.HealthCare.SpecialType", placeholder="Others")
+                                        input.form-control-2(type="text", ng-model="cdoctor.HealthCare.SpecialType", placeholder="Others", required)
                 .form-group.col-md-12
                     .form.group.col-md-6
                         h5.montserrat Billing Address
@@ -130,7 +130,7 @@
                             input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Address.State", placeholder="State" ,required)
                      .form-group.col-md-4
                         div.form-contact-box
-                            input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Address.State", placeholder="State" ,required)
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Address.country", placeholder="Country" ,required)
                     .form-group.col-md-4
                         div.form-contact-box
                             input.form-control.input-sm(type="text", ng-model="cdoctor.ContactInfo.Phone.Mobile", placeholder="Phone" ,required)
@@ -156,6 +156,9 @@
                     .form-group.col-md-3
                         div.grp--padding--general
                             input.form-control.input-sm(type="text", ng-model="cdoctor.Designation", placeholder="Designation")
+                    .form-group.col-md-4
+                        div.grp
+                            input.form-control.input-sm(type="text", ng-model="cdoctor.NIC", placeholder="NIC", required)
                 .form-group.col-md-12
                     .form-group-add
                         button.btn.btn-add-doctor(type="submit") Add 

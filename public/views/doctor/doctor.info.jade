@@ -1,6 +1,60 @@
+//- .col-md-12.col-sm-12.col-xs-12.card
+//-     .row
+//-         .col-md-12.col-sm-12.col-xs-12.card-top
+//-             h4.col-md-6.col-sm-12-col-xs-12.montserrat 
+//-                 b {{doctor.Name.Title}}. {{doctor.Name.Firstname}} {{doctor.Name.Lastname}}
+
+   
+//- .col-md-12.col-sm-12.col-xs-12.card
+//-     .row
+//-         .col-md-12.col-sm-12.col-xs-12.card-top
+//-             h4.col-md-12.col-sm-12.col-xs-12.montserrat
+//-                 | &nbsp;&nbsp;&nbsp;&nbsp;{{doctor.Name.Title}} {{doctor.Name.Firstname}} {{doctor.Name.Lastname}}
+//-             h5.col-md-6 Address
+//-                 | {{doctor.ContactInfo.Address.AddressLine}}
+
+//- .col-md-12.montserrat
+//-     h4 {{doctor.Name.Title}} {{doctor.Name.Firstname}} {{doctor.Name.Lastname}}
+//- .col-md-6.montserrat
+//-     h5
+//-     b Address
+//-     | &nbsp;&nbsp;&nbsp;&nbsp; : {{doctor.ContactInfo.Address.AddressLine}}
+//- .col-md-6.montserrat
+//-     b {{doctor.HealthCare.Type}} & {{doctor.HealthCare.SpecialType}}
+
+
 .col-md-12.col-sm-12.col-xs-12.card
     .row
         .col-md-12.col-sm-12.col-xs-12.card-top
-            h4.col-md-4.col-sm-12-col-xs-12.montserrat 
-                b {{doctor.Name.Firstname}} 
-   
+            h4.col-md-12.col-sm-12-col-xs-12.montserrat(style="width:100%;")
+                | {{doctor.Name.Title}} {{doctor.Name.Firstname}} {{doctor.Name.Lastname}} &nbsp; {{doctor.Designation}}
+            .col-md-12.col-sm-12.col-xs-12
+                    .fa.fa-phone 
+                    | &nbsp; &nbsp; {{doctor.ContactInfo.Phone.Mobile}}
+                    .col-md-12.col-sm-12.col-xs-12.col-md-offset-8  
+                        i.fa(ng-class="(doctor.Gender == 'Male') ? 'fa-mars' : ((doctor.Gender== 'Female') ? 'fa-venus' : '')") 
+                        | &nbsp; &nbsp; {{doctor.Gender}}
+        .col-md-12.col-sm-12.col-xs-12(style="padding: 15px 0px 15px 0px !important;")
+            span.col-md-12.col-sm-12.col-xs-12.montserrat(style="padding: 5px 0px 5px 15px !important;")
+                b Specialist
+            span.col.md-12.col-sm-12.col-xs-12 {{doctor.HealthCare.Type}} & {{doctor.HealthCare.SpecialType}}
+        .col-md-12.col-sm-12.col-xs-12
+            .col-md-12.col-sm-12.col-xs-12(style="padding-top: 15px 0px 15px 15px !important;")
+            span 
+                b Age 
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :   &nbsp;{{doctor.Age}} 
+            span Married Status
+                b &nbsp; &nbsp;  : &nbsp; {{doctor.Status}}
+        .col-md-12.col-sm-12.col-xs-12
+            .col-md-12.col-sm-12.col-xs-12(style="padding-top: 15px 0px 15px 15px !important;")
+            span Department  
+                b &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; {{doctor.Department}} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+            span Designation 
+                b &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; {{doctor.Designation}}
+        .col-md-12.col-sm-12.col-xs-12
+            .col-md-12.col-sm-12.col-xs-12(style="padding-top: 15px 0px 15px 15px !important;")
+            span Address 
+                b &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  : &nbsp;{{doctor.ContactInfo.Address.AddressLine}} {{doctor.ContactInfo.Address.State}} {{doctor.ContactInfo.Address.City}} {{doctor.ContactInfo.Address.country}}
+        .col-md-12.col-sm-12.col-xs-12.col-md-offset-9
+            .col-md-12.col-sm-12.col-xs-12(style="padding-top: 15px 0px 15px 15px !important;")
+                button.btn.btn-add-doctor(type="button" , ng-click="UpdateDotor(doctorID)") Update  

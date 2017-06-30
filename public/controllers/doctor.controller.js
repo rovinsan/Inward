@@ -8,7 +8,8 @@ angular.module('doctor.controller', []).controller('DoctorController', [
     'DoctorService',
     'PatientService',
     'moment',
-    function($scope, $rootScope, $http, DoctorService, PatientService, moment) {
+    '$route',
+    function($scope, $rootScope, $http, DoctorService, PatientService, moment, $route) {
         $scope.partialForm = 'null';
         $scope.cdoctor = {};
         $scope.schedule = {};
@@ -40,6 +41,7 @@ angular.module('doctor.controller', []).controller('DoctorController', [
         $scope.scheduleAppointment = function() {
             DoctorService.scheduleAppointment($scope.schedule).then(results => {
                 console.log("Something Happened");
+                $route.reload();
             }, err => {
                 console.error(err);
             });
@@ -86,6 +88,15 @@ angular.module('doctor.controller', []).controller('DoctorController', [
         // }];
 
         $scope.viewDate = moment().startOf('month').toDate();
+
+        $scope.getDisease = function() {
+            for (var i in $scope.rpatient) {
+                if ($scope.schedule.patientID == $scope.rpatient[i].ID) {
+                    $scope.podiyanodaDisease = $scope.rpatient[i].Inward.disease.diseaseType;
+                    break;
+                }
+            }
+        };
 
         initializeDoctor();
         $scope.getScheduledEvents();
