@@ -1,13 +1,14 @@
 .col-md-12.col-sm-12.col-xs-12(name="addPatientForm")
     form.col-md-12.col-sm-12.col-xs-12.border-top--2px(role="form", ng-submit="addPatient(cpatient)", ng-show="partialForm=='addPatientForm'", name="addPatientForm")
         span.col-md-12.col-sm-12.col-xs-12.text-align--right.padding-top--10px.form-group(ng-click="partialForm='null';clearAll();", name="closePatientForm")
-            label.btn.btn-default.btn-circle
+            label.btn.btn-default.btn-circle.close-btn
                 i.fa.fa-times
         .step-progress.form-group.col-md-12.col-sm-12.col-xs-12.padding-top--10px
             .step-slider.col-md-12.col-sm-12.col-xs-12
-                .step-slider-item._30(data-id="personal")
-                .step-slider-item._30(data-id="responsible")
-                .step-slider-item._30(data-id="wardAdmission")
+                .step-slider-item._25(data-id="personal")
+                .step-slider-item._25(data-id="disease")
+                .step-slider-item._25(data-id="responsible")
+                .step-slider-item._25(data-id="wardAdmission")
             .step-content.col-md-12.col-sm-12.col-xs-12
                 .step-content-body#personal
                     h5.col-md-12.col-sm-12.col-xs-12.content-heading 
@@ -33,13 +34,13 @@
                             | D.O.B
                             span.red *
                         div.dropdown
-                            a.dropdown-toggle#dLabel(role="button" data-toggle="dropdown" data-target=".dropdown" href="#")
+                            a.dropdown-toggle#addLabel(role="button" data-toggle="dropdown" data-target=".dropdown" href="#")
                                 div.input-group
                                     input.form-control.input-sm#date(type="text", name="date", ng-model="cpatient.DOB", placeholder="Date of Birth", required)
                                     span.input-group-addon
                                         i.glyphicon.glyphicon-calendar
-                            ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
-                                datetimepicker(ng-model="cpatient.DOB", data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }")
+                            ul.dropdown-menu(role="menu" aria-labelledby="addLabel")
+                                datetimepicker(ng-model="cpatient.DOB", data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle', startView:'day', minView:'day' }")
                     .form-group.col-md-12.col-sm-12.col-xs-12.no_padding.margin-top--10px
                         .form-group.col-md-12.col-sm-12.col-xs-12
                             label.col-md-3.col-sm-6.col-xs-12.content-label 
@@ -111,6 +112,19 @@
                             label.content-label 
                                 | Office Number
                             input.form-control.input-sm(type="text", placeholder="Office", ng-model="cpatient.ContactInfo.Phone.Office")
+                .step-content-body.out#disease
+                    h5.col-md-12.col-sm-12.col-xs-12.content-heading 
+                        | Disease
+                    .form-group.col-md-6.col-sm-12.col-xs-12
+                        label.content-label 
+                            | Disease Selection
+                            span.red *
+                        select.form-control.input-sm(placeholder="Disease Selection", ng-model="cpatient.Inward.disease.diseaseType", required)
+                            option(ng-repeat="d in diseaseList", value="{{d}}") {{d}}
+                    .form-group.col-md-6.col-sm-12.col-xs-12
+                        label.content-label 
+                            | Explanation
+                        input.form-control.input-sm(type="text", placeholder="Explanation", ng-model="cpatient.Inward.disease.diseaseType.explanation")
                 .step-content-body.out#responsible
                     h5.col-md-12.col-sm-12.col-xs-12.content-heading 
                         | Guardian Details
